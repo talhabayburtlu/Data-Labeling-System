@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 public class RandomLabelingMechanism extends LabelingMechanism {
 
+    public RandomLabelingMechanism(String name) {
+        super(name);
+    }
+
     @Override
     public void label(User user, Instance instance, Label[] labels) {
 
-        Database database = instance.getDatabase();
-        int maxNumberOfLabelsPerInstance = database.getMaxNumberOfLabelsPerInstance();
+        Dataset dataset = instance.getDataset();
+        int maxNumberOfLabelsPerInstance = dataset.getMaxNumberOfLabelsPerInstance();
 
         ArrayList<Label> selectedLabels = new ArrayList<Label>();
         for (int i = 0; i < maxNumberOfLabelsPerInstance ; i++) {
