@@ -15,12 +15,12 @@ public class Dataset {
 
     Dataset(int id, String name, String instanceType, int maxNumberOfLabelsPerInstance,
             ArrayList<Label> labels, ArrayList<Instance> instances){
-        this.id = getId();
-        this.name = getName();
-        this.instanceType = getInstanceType();
-        this.maxNumberOfLabelsPerInstance = getMaxNumberOfLabelsPerInstance();
-        this.labels = getLabels();
-        this.instances = getInstances();
+        this.id = id;
+        this.name = name;
+        this.instanceType = instanceType;
+        this.maxNumberOfLabelsPerInstance = maxNumberOfLabelsPerInstance;
+        this.labels = labels;
+        this.instances = instances;
     }
 
     public int getId() {
