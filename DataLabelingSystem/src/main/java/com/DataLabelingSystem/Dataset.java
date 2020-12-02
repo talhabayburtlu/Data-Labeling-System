@@ -9,7 +9,7 @@ public class Dataset {
     private String instanceType;
     private int maxNumberOfLabelsPerInstance;
 
-    private ArrayList<Label> labels = new ArrayList<Label>()
+    private ArrayList<Label> labels = new ArrayList<Label>();
     private ArrayList<Instance> instances = new ArrayList<Instance>();
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<LabelAssignment>();
 
