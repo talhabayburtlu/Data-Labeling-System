@@ -1,4 +1,4 @@
-package DataLabelingSystem.src.main.java.com.DataLabelingSystem;
+package com.DataLabelingSystem;
 
 public class Instance {
 
@@ -36,7 +36,6 @@ public class Instance {
         this.dataset = dataset;
     }
 
-    private Dataset dataset;
 
 
 }
