@@ -1,20 +1,33 @@
 package com.DataLabelingSystem;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 public class Dataset {
 
+    @JsonProperty("dataset id")
     private int id;
+    @JsonProperty("dataset name")
     private String name;
+    @JsonProperty("instance type")
     private String instanceType;
+    @JsonProperty("maximum number of labels per instance")
     private int maxNumberOfLabelsPerInstance;
 
+    @JsonProperty("class labels")
     private ArrayList<Label> labels = new ArrayList<Label>();
+    @JsonProperty("instances")
     private ArrayList<Instance> instances = new ArrayList<Instance>();
+    @JsonProperty("class label assignments")
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<LabelAssignment>();
 
+    Dataset() {
+    }
+
     Dataset(int id, String name, String instanceType, int maxNumberOfLabelsPerInstance,
-            ArrayList<Label> labels, ArrayList<Instance> instances){
+            ArrayList<Label> labels, ArrayList<Instance> instances) {
         this.id = id;
         this.name = name;
         this.instanceType = instanceType;
@@ -77,5 +90,15 @@ public class Dataset {
 
     public void setLabelAssignments(ArrayList<LabelAssignment> labelAssignments) {
         this.labelAssignments = labelAssignments;
+    }
+
+    @JsonGetter("users")
+    public ArrayList<User> getUsers() {
+        ArrayList<User> users = new ArrayList<>();
+        for (LabelAssignment labelAssignment :
+                this.labelAssignments) {
+            users.add(labelAssignment.getUser());
+        }
+        return users;
     }
 }

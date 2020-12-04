@@ -1,15 +1,23 @@
 package com.DataLabelingSystem;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Instance {
 
+    @JsonProperty("id")
     private int id;
+    @JsonProperty("instance")
     private String content;
+    @JsonIgnore
     private Dataset dataset;
 
-    Instance(int id, String content){
+    Instance() {
+    }
+
+    Instance(int id, String content) {
         this.id = id;
         this.content = content;
-
     }
 
     public int getId() {
