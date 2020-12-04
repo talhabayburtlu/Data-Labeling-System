@@ -8,7 +8,7 @@ public class LabelAssignment {
     private User user;
     private Date datetime;
 
-    protected LabelAssignment(User user,Instance instance, Label[] labels) {
+    protected LabelAssignment(User user, Instance instance, Label[] labels) {
         this.user = user;
         this.instance = instance;
         this.labels = labels;

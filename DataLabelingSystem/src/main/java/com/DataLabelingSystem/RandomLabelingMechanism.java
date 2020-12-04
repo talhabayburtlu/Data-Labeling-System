@@ -14,18 +14,17 @@ public class RandomLabelingMechanism extends LabelingMechanism {
         Dataset dataset = instance.getDataset();
         int maxNumberOfLabelsPerInstance = dataset.getMaxNumberOfLabelsPerInstance();
 
-        ArrayList<Label> selectedLabelsAsList = new ArrayList<Label>();
-        for (int i = 0; i < maxNumberOfLabelsPerInstance ; i++) { // Selecting labels based on determined number of labels per instance
-
-            Label theLabel = labels[(int)(Math.random() * labels.length)]; // Selecting random label.
+        ArrayList<Label> selectedLabelsAsList = new ArrayList<>();
+        for (int i = 0; i < maxNumberOfLabelsPerInstance; i++) { // Selecting labels based on determined number of labels per instance
+            Label theLabel = labels[(int) (Math.random() * labels.length)]; // Selecting random label.
 
             while (selectedLabelsAsList.contains(theLabel)) // Checking duplicates
-                theLabel = labels[(int)(Math.random() * labels.length)];
+                theLabel = labels[(int) (Math.random() * labels.length)];
 
             selectedLabelsAsList.add(theLabel);
 
-            int random1 = (int)(Math.random() * 100);
-            int random2 = (int)(Math.random() * 100);
+            int random1 = (int) (Math.random() * 100);
+            int random2 = (int) (Math.random() * 100);
 
             if (random1 > random2) // Stop adding label with based on two random numbers' comparison.
                 break;
@@ -35,7 +34,7 @@ public class RandomLabelingMechanism extends LabelingMechanism {
 
         LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager(); // Getting manager of label assignments.
 
-        LabelAssignment labelAssignment = labelAssignmentManager.createLabelAssignment(user,instance,selectedLabels); // Creating label assignment.
+        LabelAssignment labelAssignment = labelAssignmentManager.createLabelAssignment(user, instance, selectedLabels); // Creating label assignment.
         labelAssignmentManager.addToDataset(labelAssignment); // Adding label assignment to the dataset.
     }
 }

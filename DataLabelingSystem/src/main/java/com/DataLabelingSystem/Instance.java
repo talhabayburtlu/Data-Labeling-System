@@ -17,11 +17,10 @@ public class Instance {
     private ArrayList<SubInstance> subInstances = new ArrayList<>();
 
 
-    Instance(){
-
+    Instance() {
     }
 
-    Instance(int id, String content){
+    Instance(int id, String content) {
         this.id = id;
         this.content = content;
     }

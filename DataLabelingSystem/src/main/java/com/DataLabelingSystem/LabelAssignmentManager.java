@@ -6,7 +6,7 @@ public class LabelAssignmentManager {
     private LabelAssignmentManager() { }
 
     private static LabelAssignmentManager createInstance() {
-         return new LabelAssignmentManager();
+        return new LabelAssignmentManager();
     }
 
     public static LabelAssignmentManager getLabelAssignmentManager() {
@@ -16,7 +16,7 @@ public class LabelAssignmentManager {
     }
 
     public LabelAssignment createLabelAssignment(User user, Instance instance, Label[] labels) {
-        return new LabelAssignment(user,instance,labels);
+        return new LabelAssignment(user, instance, labels);
     }
 
     public void addToDataset(LabelAssignment labelAssignment) {

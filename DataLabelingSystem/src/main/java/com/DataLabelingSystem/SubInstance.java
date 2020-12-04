@@ -1,14 +1,13 @@
 package com.DataLabelingSystem;
 
 public class SubInstance extends Instance {
-    private String content ;
+    private String content;
     private Instance instance;
     private Dataset dataset;
 
 
-    SubInstance(String content, Instance instance){
+    SubInstance(String content, Instance instance) {
         super();
-
         this.content = content;
         this.instance = instance;
     }

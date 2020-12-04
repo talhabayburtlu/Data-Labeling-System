@@ -17,20 +17,19 @@ public class Dataset {
     private int maxNumberOfLabelsPerInstance;
 
     @JsonProperty("class labels")
-    private ArrayList<Label> labels = new ArrayList<Label>();
+    private ArrayList<Label> labels = new ArrayList<>();
     @JsonProperty("instances")
-    private ArrayList<Instance> instances = new ArrayList<Instance>();
+    private ArrayList<Instance> instances = new ArrayList<>();
     @JsonProperty("class label assignments")
-    private ArrayList<LabelAssignment> labelAssignments = new ArrayList<LabelAssignment>();
+    private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
 
-    Dataset(){
-
-        for(int i =0; i<labels.size(); i++){
-            labels.get(i).setDataset(this);
+    Dataset() {
+        for (Label label : labels) {
+            label.setDataset(this);
         }
 
-        for(int i = 0; i<instances.size(); i++){
-            instances.get(i).setDataset(this);
+        for (Instance instance : instances) {
+            instance.setDataset(this);
         }
     }
 
