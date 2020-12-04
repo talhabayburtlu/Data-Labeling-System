@@ -6,6 +6,10 @@ public class Label {
     private String text;
     private Dataset dataset;
 
+    Label(){
+
+    }
+
     Label(int id, String text){
         this.id = id;
         this.text = text;

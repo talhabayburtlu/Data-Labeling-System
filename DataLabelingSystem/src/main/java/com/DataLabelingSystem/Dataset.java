@@ -13,6 +13,17 @@ public class Dataset {
     private ArrayList<Instance> instances = new ArrayList<Instance>();
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<LabelAssignment>();
 
+    Dataset(){
+
+        for(int i =0; i<labels.size(); i++){
+            labels.get(i).setDataset(this);
+        }
+
+        for(int i = 0; i<instances.size(); i++){
+            instances.get(i).setDataset(this);
+        }
+    }
+
     Dataset(int id, String name, String instanceType, int maxNumberOfLabelsPerInstance,
             ArrayList<Label> labels, ArrayList<Instance> instances){
         this.id = id;
