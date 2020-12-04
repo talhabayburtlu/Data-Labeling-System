@@ -14,21 +14,24 @@ public class RandomLabelingMechanism extends LabelingMechanism {
         Dataset dataset = instance.getDataset();
         int maxNumberOfLabelsPerInstance = dataset.getMaxNumberOfLabelsPerInstance();
 
-        ArrayList<Label> selectedLabels = new ArrayList<Label>();
+        ArrayList<Label> selectedLabelsAsList = new ArrayList<Label>();
         for (int i = 0; i < maxNumberOfLabelsPerInstance ; i++) {
 
-            Label theLabel = label[(int)(Math.random() * label.length)];
+            Label theLabel = labels[(int)(Math.random() * labels.length)];
 
-            while (selectedLabels.contains(theLabel))
-                theLabel = label[(int)(Math.random() * label.length)];
+            while (selectedLabelsAsList.contains(theLabel))
+                theLabel = labels[(int)(Math.random() * labels.length)];
 
-            selectedLabels.add(theLabel);
+            selectedLabelsAsList.add(theLabel);
 
-            if ((int)(Math.random() * maxNumberOfLabelsPerInstance)
-                    == (maxNumberOfLabelsPerInstance / 5)) // Stop adding label with %20 chance.
+            int random1 = (int)(Math.random() * 100);
+            int random2 = (int)(Math.random() * 100);
+
+            if (random1 > random2) // Stop adding label with based on two random numbers' comparison.
                 break;
         }
 
+        Label[] selectedLabels = (Label[]) selectedLabelsAsList.toArray();
         LabelAssignment labelAssignment = new LabelAssignment(user,instance,selectedLabels);
     }
 }
