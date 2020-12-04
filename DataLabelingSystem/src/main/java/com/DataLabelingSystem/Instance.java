@@ -1,10 +1,19 @@
 package com.DataLabelingSystem;
 
+import java.util.ArrayList;
+
 public class Instance {
 
     private int id;
     private String content;
     private Dataset dataset;
+
+    private ArrayList<SubInstance> subInstances = new ArrayList<>();
+
+
+    Instance(){
+
+    }
 
     Instance(int id, String content){
         this.id = id;
@@ -36,5 +45,12 @@ public class Instance {
         this.dataset = dataset;
     }
 
+    public ArrayList<SubInstance> getSubInstances() {
+        return subInstances;
+    }
+
+    public void setSubInstances(ArrayList<SubInstance> subInstances) {
+        this.subInstances = subInstances;
+    }
 
 }
