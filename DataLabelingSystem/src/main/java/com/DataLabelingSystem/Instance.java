@@ -3,6 +3,8 @@ package com.DataLabelingSystem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
+
 public class Instance {
 
     @JsonProperty("id")
@@ -12,10 +14,14 @@ public class Instance {
     @JsonIgnore
     private Dataset dataset;
 
-    Instance() {
+    private ArrayList<SubInstance> subInstances = new ArrayList<>();
+
+
+    Instance(){
+
     }
 
-    Instance(int id, String content) {
+    Instance(int id, String content){
         this.id = id;
         this.content = content;
     }
@@ -44,5 +50,12 @@ public class Instance {
         this.dataset = dataset;
     }
 
+    public ArrayList<SubInstance> getSubInstances() {
+        return subInstances;
+    }
+
+    public void setSubInstances(ArrayList<SubInstance> subInstances) {
+        this.subInstances = subInstances;
+    }
 
 }

@@ -23,7 +23,15 @@ public class Dataset {
     @JsonProperty("class label assignments")
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<LabelAssignment>();
 
-    Dataset() {
+    Dataset(){
+
+        for(int i =0; i<labels.size(); i++){
+            labels.get(i).setDataset(this);
+        }
+
+        for(int i = 0; i<instances.size(); i++){
+            instances.get(i).setDataset(this);
+        }
     }
 
     Dataset(int id, String name, String instanceType, int maxNumberOfLabelsPerInstance,

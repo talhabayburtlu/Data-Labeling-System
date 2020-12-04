@@ -13,10 +13,11 @@ public class Label {
     @JsonIgnore
     private Dataset dataset;
 
-    public Label() {
+    Label(){
+
     }
 
-    Label(int id, String text) {
+    Label(int id, String text){
         this.id = id;
         this.text = text;
     }
