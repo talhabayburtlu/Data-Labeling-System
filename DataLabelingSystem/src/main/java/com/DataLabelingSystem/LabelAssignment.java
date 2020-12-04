@@ -8,21 +8,12 @@ public class LabelAssignment {
     private User user;
     private Date datetime;
 
-    LabelAssignment(Instance instance, Label[] labels, User user) {
+    protected LabelAssignment(User user,Instance instance, Label[] labels) {
+        this.user = user;
         this.instance = instance;
         this.labels = labels;
-        this.user = user;
-
-        addToDataset();
+        this.datetime = new Date();
     }
-
-
-    private void addToDataset(){
-        Dataset dataset = this.instance.getDataset(); //get dataset from instance
-        dataset.getLabelAssignment().add(this);
-
-    }
-
 
     public Instance getInstance() {
         return instance;
