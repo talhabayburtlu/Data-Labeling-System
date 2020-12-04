@@ -1,5 +1,6 @@
 package com.DataLabelingSystem;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -23,7 +24,19 @@ public class Dataset {
     @JsonProperty("class label assignments")
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
 
-    Dataset() {
+    @JsonCreator
+    Dataset(@JsonProperty("dataset id") int id,
+            @JsonProperty("dataset name") String name,
+            @JsonProperty("instance type") String instanceType,
+            @JsonProperty("maximum number of labels per instance") int maxNumberOfLabelsPerInstance,
+            @JsonProperty("class labels") ArrayList<Label> labels,
+            @JsonProperty("instances") ArrayList<Instance> instances) {
+        this.id = id;
+        this.name = name;
+        this.instanceType = instanceType;
+        this.maxNumberOfLabelsPerInstance = maxNumberOfLabelsPerInstance;
+        this.labels = labels;
+        this.instances = instances;
         for (Label label : labels) {
             label.setDataset(this);
         }
@@ -31,16 +44,6 @@ public class Dataset {
         for (Instance instance : instances) {
             instance.setDataset(this);
         }
-    }
-
-    Dataset(int id, String name, String instanceType, int maxNumberOfLabelsPerInstance,
-            ArrayList<Label> labels, ArrayList<Instance> instances) {
-        this.id = id;
-        this.name = name;
-        this.instanceType = instanceType;
-        this.maxNumberOfLabelsPerInstance = maxNumberOfLabelsPerInstance;
-        this.labels = labels;
-        this.instances = instances;
     }
 
     public int getId() {
