@@ -15,11 +15,11 @@ public class RandomLabelingMechanism extends LabelingMechanism {
         int maxNumberOfLabelsPerInstance = dataset.getMaxNumberOfLabelsPerInstance();
 
         ArrayList<Label> selectedLabelsAsList = new ArrayList<Label>();
-        for (int i = 0; i < maxNumberOfLabelsPerInstance ; i++) {
+        for (int i = 0; i < maxNumberOfLabelsPerInstance ; i++) { // Selecting labels based on determined number of labels per instance
 
-            Label theLabel = labels[(int)(Math.random() * labels.length)];
+            Label theLabel = labels[(int)(Math.random() * labels.length)]; // Selecting random label.
 
-            while (selectedLabelsAsList.contains(theLabel))
+            while (selectedLabelsAsList.contains(theLabel)) // Checking duplicates
                 theLabel = labels[(int)(Math.random() * labels.length)];
 
             selectedLabelsAsList.add(theLabel);
@@ -31,7 +31,11 @@ public class RandomLabelingMechanism extends LabelingMechanism {
                 break;
         }
 
-        Label[] selectedLabels = (Label[]) selectedLabelsAsList.toArray();
-        LabelAssignment labelAssignment = new LabelAssignment(user,instance,selectedLabels);
+        Label[] selectedLabels = (Label[]) selectedLabelsAsList.toArray(); // Creating label array from arraylist.
+
+        LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager(); // Getting manager of label assignments.
+
+        LabelAssignment labelAssignment = labelAssignmentManager.createLabelAssignment(user,instance,selectedLabels); // Creating label assignment.
+        labelAssignmentManager.addToDataset(labelAssignment); // Adding label assignment to the dataset.
     }
 }
