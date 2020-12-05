@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class LabelAssignment {
+
     @JsonIgnore
     private Instance instance;
     @JsonIgnore
@@ -62,10 +63,11 @@ public class LabelAssignment {
     @JsonGetter("class label ids")
     public ArrayList<Integer> getClassLabelIds() {
         ArrayList<Integer> classLabelIds = new ArrayList<>();
-        for (Label label :
-                getLabels()) {
+
+        for (Label label : getLabels()) {
             classLabelIds.add(label.getId());
         }
+
         return classLabelIds;
     }
 

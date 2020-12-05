@@ -22,12 +22,14 @@ public class LabelAssignmentManager {
     public void addToDataset(LabelAssignment labelAssignment) {
         Instance instance = labelAssignment.getInstance();
         Dataset dataset = instance.getDataset(); //get dataset from instance
+
         dataset.getLabelAssignments().add(labelAssignment);
     }
 
     public void removeFromDataset(LabelAssignment labelAssignment) {
         Instance instance = labelAssignment.getInstance();
         Dataset dataset = instance.getDataset(); //get dataset from instance
+
         dataset.getLabelAssignments().remove(labelAssignment);
     }
 

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
+
     @JsonProperty("user id")
     private int id;
     @JsonProperty("user name")

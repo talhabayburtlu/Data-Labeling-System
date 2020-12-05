@@ -16,9 +16,7 @@ public class Instance {
     @JsonIgnore
     private ArrayList<SubInstance> subInstances = new ArrayList<>();
 
-
-    Instance() {
-    }
+    Instance() {}
 
     Instance(int id, String content) {
         this.id = id;
