@@ -1,10 +1,17 @@
 package com.DataLabelingSystem;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 public class LabelAssignment {
+    @JsonIgnore
     private Instance instance;
+    @JsonIgnore
     private Label[] labels;
+    @JsonIgnore
     private User user;
     private Date datetime;
 
@@ -45,5 +52,30 @@ public class LabelAssignment {
 
     public void setDatetime(Date datetime) {
         this.datetime = datetime;
+    }
+
+    @JsonGetter("instance id")
+    public int getInstanceId() {
+        return this.getInstance().getId();
+    }
+
+    @JsonGetter("class label ids")
+    public ArrayList<Integer> getClassLabelIds() {
+        ArrayList<Integer> classLabelIds = new ArrayList<>();
+        for (Label label :
+                getLabels()) {
+            classLabelIds.add(label.getId());
+        }
+        return classLabelIds;
+    }
+
+    @JsonGetter("user id")
+    public int getUserId() {
+        return this.getUser().getId();
+    }
+
+    @JsonGetter("datetime")
+    public String getDatetimeString() {
+        return this.getDatetime().toString();
     }
 }

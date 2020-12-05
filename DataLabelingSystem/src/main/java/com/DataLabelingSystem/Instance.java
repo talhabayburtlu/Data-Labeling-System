@@ -13,7 +13,7 @@ public class Instance {
     private String content;
     @JsonIgnore
     private Dataset dataset;
-
+    @JsonIgnore
     private ArrayList<SubInstance> subInstances = new ArrayList<>();
 
 
