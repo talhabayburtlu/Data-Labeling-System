@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Label {
 
-
     @JsonProperty("label id")
     private int id;
     @JsonProperty("label text")
@@ -13,8 +12,7 @@ public class Label {
     @JsonIgnore
     private Dataset dataset;
 
-    Label() {
-    }
+    Label() { }
 
     Label(int id, String text) {
         this.id = id;

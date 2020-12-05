@@ -15,8 +15,7 @@ import java.util.Scanner;
 public class JsonParser {
     private static final JsonParser instance = new JsonParser();
 
-    private JsonParser() {
-    }
+    private JsonParser() { }
 
     public static JsonParser getJsonParser() {
         return instance;
@@ -24,20 +23,23 @@ public class JsonParser {
 
     public ArrayList<Dataset> readDatasets(String[] filenames) throws FileNotFoundException, JsonProcessingException {
         ArrayList<Dataset> datasets = new ArrayList<>();
-        for (String filename :
-                filenames) {
+
+        for (String filename : filenames) {
             String jsonString = readAllLines(filename);
             ObjectMapper objectMapper = new ObjectMapper();
             Dataset dataset = objectMapper.readValue(jsonString, Dataset.class);
             datasets.add(dataset);
         }
+
         return datasets;
     }
 
     public ArrayList<User> readUsers(String filename) throws FileNotFoundException, JsonProcessingException {
         String jsonString = readAllLines(filename);
+
         ObjectMapper objectMapper = new ObjectMapper();
         User[] parsedUsers = objectMapper.readValue(jsonString, User[].class);
+
         return new ArrayList<>(Arrays.asList(parsedUsers));
     }
 
@@ -45,9 +47,11 @@ public class JsonParser {
     private String readAllLines(String filename) throws FileNotFoundException {
         Scanner fileScanner = new Scanner(new File(filename));
         StringBuilder sb = new StringBuilder();
+
         while (fileScanner.hasNextLine()) {
             sb.append(fileScanner.nextLine());
         }
+
         fileScanner.close();
         return sb.toString();
     }
@@ -62,17 +66,13 @@ public class JsonParser {
 
         for (int i = 0; i < datasets.size(); i++) {
             File outputFile = new File(filenames[i]);
+            String outputJson;
+
             ObjectMapper objectMapper = new ObjectMapper();
-            StringBuilder outputBuilder = new StringBuilder(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(datasets.get(i)));
-            for (int counter = 0; counter < 3; counter++)
-                outputBuilder.deleteCharAt(outputBuilder.length() - 1);
-            outputBuilder.append(","); // Since "users" containing every user registered is not a property of Dataset, we have to manually format our JSON
-            outputBuilder.append(System.lineSeparator());
-            outputBuilder.append("\"users\":");
-            outputBuilder.append(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(users));
-            outputBuilder.append("}");
+            outputJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(datasets.get(i));
+
             FileWriter fileWriter = new FileWriter(outputFile);
-            fileWriter.write(outputBuilder.toString());
+            fileWriter.write(outputJson);
             fileWriter.close();
         }
     }

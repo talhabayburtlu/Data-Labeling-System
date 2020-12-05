@@ -1,10 +1,10 @@
 package com.DataLabelingSystem;
 
 public class SubInstance extends Instance {
+
     private String content;
     private Instance instance;
     private Dataset dataset;
-
 
     SubInstance(String content, Instance instance) {
         super();
@@ -39,4 +39,5 @@ public class SubInstance extends Instance {
     public void setDataset(Dataset dataset) {
         this.dataset = dataset;
     }
+
 }

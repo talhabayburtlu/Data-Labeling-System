@@ -36,6 +36,7 @@ public class Dataset {
         this.maxNumberOfLabelsPerInstance = maxNumberOfLabelsPerInstance;
         this.labels = labels;
         this.instances = instances;
+
         for (Label label : labels) {
             label.setDataset(this);
         }

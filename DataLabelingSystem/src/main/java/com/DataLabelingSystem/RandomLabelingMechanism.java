@@ -2,10 +2,18 @@ package com.DataLabelingSystem;
 
 import java.util.ArrayList;
 
-public class RandomLabelingMechanism extends LabelingMechanism {
+public class RandomLabelingMechanism implements LabelingMechanism {
 
-    public RandomLabelingMechanism(String name) {
-        super(name);
+    private static RandomLabelingMechanism randomLabelingMechanism;
+
+    private static RandomLabelingMechanism getInstance() {
+        return new RandomLabelingMechanism();
+    }
+
+    protected static RandomLabelingMechanism getRandomLabelingMechanism() {
+        if (randomLabelingMechanism == null)
+            randomLabelingMechanism = getInstance();
+        return randomLabelingMechanism;
     }
 
     @Override
@@ -30,8 +38,7 @@ public class RandomLabelingMechanism extends LabelingMechanism {
                 break;
         }
 
-        //TODO Casting error on this line
-        Label[] selectedLabels = (Label[]) selectedLabelsAsList.toArray(); // Creating label array from arraylist.
+        Label[] selectedLabels = selectedLabelsAsList.toArray(new Label[selectedLabelsAsList.size()]); // Creating label array from arraylist.
 
         LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager(); // Getting manager of label assignments.
 

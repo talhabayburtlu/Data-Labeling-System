@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
+
     @JsonProperty("user id")
     private int id;
     @JsonProperty("user name")
@@ -22,6 +23,7 @@ public class User {
         this.name = name;
         this.type = type;
         //noinspection SwitchStatementWithTooFewBranches
+        // TODO: Cases should be reconsidered for possible different bots.
         switch (type) {
             case "RandomBot":
                 this.mechanism = new RandomLabelingMechanism("RandomLabelingMechanism");
