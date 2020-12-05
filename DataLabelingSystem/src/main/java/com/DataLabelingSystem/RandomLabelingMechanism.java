@@ -38,7 +38,7 @@ public class RandomLabelingMechanism implements LabelingMechanism {
                 break;
         }
 
-        Label[] selectedLabels = selectedLabelsAsList.toArray(new Label[selectedLabelsAsList.size()]); // Creating label array from arraylist.
+        Label[] selectedLabels = selectedLabelsAsList.toArray(new Label[0]); // Creating label array from arraylist.
 
         LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager(); // Getting manager of label assignments.
 
