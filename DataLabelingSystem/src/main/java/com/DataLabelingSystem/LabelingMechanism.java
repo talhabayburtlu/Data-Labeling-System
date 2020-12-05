@@ -1,20 +1,7 @@
 package com.DataLabelingSystem;
 
-public abstract class LabelingMechanism {
+public interface LabelingMechanism {
 
-    private String name;
+    void label(User user, Instance instance, Label[] label);
 
-    public LabelingMechanism(String name) {
-        this.name = name;
-    }
-
-    public abstract void label(User user, Instance instance, Label[] label);
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

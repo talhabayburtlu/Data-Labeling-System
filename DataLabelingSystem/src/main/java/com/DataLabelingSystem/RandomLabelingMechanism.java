@@ -2,10 +2,18 @@ package com.DataLabelingSystem;
 
 import java.util.ArrayList;
 
-public class RandomLabelingMechanism extends LabelingMechanism {
+public class RandomLabelingMechanism implements LabelingMechanism {
 
-    public RandomLabelingMechanism(String name) {
-        super(name);
+    private static RandomLabelingMechanism randomLabelingMechanism;
+
+    private static RandomLabelingMechanism getInstance() {
+        return new RandomLabelingMechanism();
+    }
+
+    protected static RandomLabelingMechanism getRandomLabelingMechanism() {
+        if (randomLabelingMechanism == null)
+            randomLabelingMechanism = getInstance();
+        return randomLabelingMechanism;
     }
 
     @Override
