@@ -35,7 +35,6 @@ public class RandomLabelingMechanism implements LabelingMechanism {
 
         LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager(); // Getting manager of label assignments.
 
-        LabelAssignment labelAssignment = labelAssignmentManager.createLabelAssignment(user, instance, selectedLabels); // Creating label assignment.
-        labelAssignmentManager.addToDataset(labelAssignment); // Adding label assignment to the dataset.
+        labelAssignmentManager.createLabelAssignment(user, instance, selectedLabels); // Creating label assignment.
     }
 }
