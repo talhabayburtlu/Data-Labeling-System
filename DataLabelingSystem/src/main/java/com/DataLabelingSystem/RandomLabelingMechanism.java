@@ -21,8 +21,8 @@ public class RandomLabelingMechanism implements LabelingMechanism {
 
         Dataset dataset = instance.getDataset();
         int maxNumberOfLabelsPerInstance = dataset.getMaxNumberOfLabelsPerInstance();
-
         ArrayList<Label> selectedLabelsAsList = new ArrayList<>();
+        maxNumberOfLabelsPerInstance = (int) (Math.random() * maxNumberOfLabelsPerInstance);
         for (int i = 0; i < maxNumberOfLabelsPerInstance; i++) { // Selecting labels based on determined number of labels per instance
             Label theLabel = labels[(int) (Math.random() * labels.length)]; // Selecting random label.
 
@@ -31,11 +31,6 @@ public class RandomLabelingMechanism implements LabelingMechanism {
 
             selectedLabelsAsList.add(theLabel);
 
-            int random1 = (int) (Math.random() * 100);
-            int random2 = (int) (Math.random() * 100);
-
-            if (random1 > random2) // Stop adding label with based on two random numbers' comparison.
-                break;
         }
 
         Label[] selectedLabels = selectedLabelsAsList.toArray(new Label[selectedLabelsAsList.size()]); // Creating label array from arraylist.
