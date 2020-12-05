@@ -55,4 +55,11 @@ public class Instance {
         this.subInstances = subInstances;
     }
 
+    @Override
+    public String toString() {
+        return "Instance{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

@@ -3,8 +3,11 @@ package com.DataLabelingSystem;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class User {
+    private static final Logger logger = LogManager.getLogger();
 
     @JsonProperty("user id")
     private int id;
@@ -29,6 +32,8 @@ public class User {
                 LabelingMechanismFactory labelingMechanismFactory = LabelingMechanismFactory.getLabelingMechanismFactory();
                 this.mechanism = labelingMechanismFactory.getMechanism("RandomLabelingMechanism");
         }
+
+        logger.trace("User created with information: " + toString());
     }
 
     User(int id, String type, LabelingMechanism mechanism) {
@@ -71,5 +76,14 @@ public class User {
 
     public void setMechanism(LabelingMechanism mechanism) {
         this.mechanism = mechanism;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

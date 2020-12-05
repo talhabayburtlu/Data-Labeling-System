@@ -42,4 +42,12 @@ public class Label {
     public void setDataset(Dataset dataset) {
         this.dataset = dataset;
     }
+
+    @Override
+    public String toString() {
+        return "Label{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

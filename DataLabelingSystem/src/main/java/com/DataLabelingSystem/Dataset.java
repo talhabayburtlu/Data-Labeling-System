@@ -2,10 +2,13 @@ package com.DataLabelingSystem;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
 public class Dataset {
+    private static final Logger logger = LogManager.getLogger();
 
     @JsonProperty("dataset id")
     private int id;
@@ -44,6 +47,8 @@ public class Dataset {
         for (Instance instance : instances) {
             instance.setDataset(this);
         }
+
+        logger.trace("Created dataset with information " + toString());
     }
 
     public int getId() {
@@ -100,5 +105,15 @@ public class Dataset {
 
     public void setLabelAssignments(ArrayList<LabelAssignment> labelAssignments) {
         this.labelAssignments = labelAssignments;
+    }
+
+    @Override
+    public String toString() {
+        return "Dataset{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", instanceType='" + instanceType + '\'' +
+                ", maxNumberOfLabelsPerInstance=" + maxNumberOfLabelsPerInstance +
+                '}';
     }
 }

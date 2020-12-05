@@ -40,4 +40,10 @@ public class SubInstance extends Instance {
         this.dataset = dataset;
     }
 
+    @Override
+    public String toString() {
+        return "SubInstance{" +
+                "content='" + content + '\'' +
+                '}';
+    }
 }

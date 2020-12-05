@@ -3,7 +3,6 @@ package com.DataLabelingSystem;
 import java.util.ArrayList;
 
 public class RandomLabelingMechanism implements LabelingMechanism {
-
     private static RandomLabelingMechanism randomLabelingMechanism;
 
     private static RandomLabelingMechanism getInstance() {
