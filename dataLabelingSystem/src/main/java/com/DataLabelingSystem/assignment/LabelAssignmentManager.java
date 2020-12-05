@@ -29,12 +29,13 @@ public class LabelAssignmentManager {
     public LabelAssignment createLabelAssignment(User user, Instance instance, Label[] labels) {
         logger.info("User " + user + " labeled instance: " + instance + " with class label(s):" + Arrays.toString(labels));
 
-        return new LabelAssignment(user, instance, labels);
+        LabelAssignment assignment = new LabelAssignment(user, instance, labels);
+        this.addToDataset(assignment);
+        return assignment;
     }
 
     public void addToDataset(LabelAssignment labelAssignment) {
-        Instance instance = labelAssignment.getInstance();
-        Dataset dataset = instance.getDataset(); //get dataset from instance
+        Dataset dataset = labelAssignment.getInstance().getDataset(); //get dataset from instance
 
         dataset.getLabelAssignments().add(labelAssignment);
     }
