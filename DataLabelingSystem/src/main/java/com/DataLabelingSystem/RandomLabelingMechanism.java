@@ -30,6 +30,7 @@ public class RandomLabelingMechanism extends LabelingMechanism {
                 break;
         }
 
+        //TODO Casting error on this line
         Label[] selectedLabels = (Label[]) selectedLabelsAsList.toArray(); // Creating label array from arraylist.
 
         LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager(); // Getting manager of label assignments.
