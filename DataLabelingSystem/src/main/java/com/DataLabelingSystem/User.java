@@ -18,17 +18,12 @@ public class User {
     @JsonCreator
     User(@JsonProperty("user id") int id,
          @JsonProperty("user name") String name,
-         @JsonProperty("user type") String type) {
+         @JsonProperty("user type") String type) throws UnsupportedOperationException {
         this.id = id;
         this.name = name;
         this.type = type;
-        // TODO: Cases should be reconsidered for possible different bots.
-        //noinspection SwitchStatementWithTooFewBranches
-        switch (type) {
-            case "RandomBot":
-                LabelingMechanismFactory labelingMechanismFactory = LabelingMechanismFactory.getLabelingMechanismFactory();
-                this.mechanism = labelingMechanismFactory.getMechanism("RandomLabelingMechanism");
-        }
+        LabelingMechanismFactory labelingMechanismFactory = LabelingMechanismFactory.getLabelingMechanismFactory();
+        this.mechanism = labelingMechanismFactory.getMechanism(type);
     }
 
     User(int id, String type, LabelingMechanism mechanism) {

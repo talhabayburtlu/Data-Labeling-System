@@ -17,13 +17,13 @@ public class LabelingMechanismFactory {
         return labelingMechanismFactory;
     }
 
-    public LabelingMechanism getMechanism(String mechanismType) {
+    public LabelingMechanism getMechanism(String mechanismType) throws UnsupportedOperationException {
         //noinspection SwitchStatementWithTooFewBranches
         switch (mechanismType) {
             case "RandomLabelingMechanism":
                 return RandomLabelingMechanism.getRandomLabelingMechanism();
             default:
-                throw new RuntimeException("The mechanism is not implemented.");
+                throw new UnsupportedOperationException("Mechanism \"" + mechanismType + "\" cannot be found.");
         }
     }
 
