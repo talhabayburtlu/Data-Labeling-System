@@ -13,13 +13,13 @@ public class DataLabelingSystem {
 		ArrayList<Dataset> datasets = jsonParser.readDatasets(new String[]{"input-1.json", "input-2.json"});
 		ArrayList<User> users = jsonParser.readUsers("users.json");
 
-		datasets.forEach((dataset -> {
-			users.forEach(user -> {
-				dataset.getInstances().forEach(instance -> {
-					user.labelWithMechanism(instance, dataset.getLabels().toArray(new Label[dataset.getLabels().size()]));
-				});
-			});
-		}));
+		for (Dataset dataset : datasets) {
+			for (User user : users) {
+				for (Instance instance : dataset.getInstances()) {
+					user.labelWithMechanism(instance, dataset.getLabels().toArray(new Label[0]));
+				}
+			}
+		}
 
 		System.out.println("Simulation complete.");
 	}

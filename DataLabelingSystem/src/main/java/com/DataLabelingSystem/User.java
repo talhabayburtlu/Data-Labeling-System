@@ -22,11 +22,12 @@ public class User {
         this.id = id;
         this.name = name;
         this.type = type;
-        //noinspection SwitchStatementWithTooFewBranches
         // TODO: Cases should be reconsidered for possible different bots.
+        //noinspection SwitchStatementWithTooFewBranches
         switch (type) {
             case "RandomBot":
-                this.mechanism = new RandomLabelingMechanism("RandomLabelingMechanism");
+                LabelingMechanismFactory labelingMechanismFactory = LabelingMechanismFactory.getLabelingMechanismFactory();
+                this.mechanism = labelingMechanismFactory.getMechanism("RandomLabelingMechanism");
         }
     }
 
