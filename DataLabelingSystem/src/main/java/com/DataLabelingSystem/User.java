@@ -23,6 +23,7 @@ public class User {
         this.name = name;
         this.type = type;
         //noinspection SwitchStatementWithTooFewBranches
+        // TODO: Cases should be reconsidered for possible different bots.
         switch (type) {
             case "RandomBot":
                 this.mechanism = new RandomLabelingMechanism("RandomLabelingMechanism");
