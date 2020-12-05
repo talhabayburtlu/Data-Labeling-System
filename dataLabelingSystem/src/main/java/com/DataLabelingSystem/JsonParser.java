@@ -1,5 +1,7 @@
 package com.DataLabelingSystem;
 
+import com.DataLabelingSystem.model.Dataset;
+import com.DataLabelingSystem.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +20,8 @@ public class JsonParser {
     private static final JsonParser instance = new JsonParser();
     private static final Logger logger = LogManager.getLogger();
 
-    private JsonParser() { }
+    private JsonParser() {
+    }
 
     public static JsonParser getJsonParser() {
         return instance;

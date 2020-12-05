@@ -1,4 +1,4 @@
-package com.DataLabelingSystem;
+package com.DataLabelingSystem.labelingMechanism;
 
 public class LabelingMechanismFactory {
 

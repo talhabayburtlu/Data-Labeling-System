@@ -1,4 +1,4 @@
-package com.DataLabelingSystem;
+package com.DataLabelingSystem.model;
 
 public class SubInstance extends Instance {
 

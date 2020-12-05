@@ -1,5 +1,9 @@
-package com.DataLabelingSystem;
+package com.DataLabelingSystem.assignment;
 
+import com.DataLabelingSystem.model.Dataset;
+import com.DataLabelingSystem.model.Instance;
+import com.DataLabelingSystem.model.Label;
+import com.DataLabelingSystem.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

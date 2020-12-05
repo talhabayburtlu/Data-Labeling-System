@@ -1,4 +1,4 @@
-package com.DataLabelingSystem;
+package com.DataLabelingSystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +14,8 @@ public class Label {
     @JsonIgnore
     private Dataset dataset;
 
-    Label() { }
+    Label() {
+    }
 
     Label(int id, String text) {
         this.id = id;

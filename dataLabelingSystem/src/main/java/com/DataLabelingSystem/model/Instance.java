@@ -1,4 +1,4 @@
-package com.DataLabelingSystem;
+package com.DataLabelingSystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,7 +18,8 @@ public class Instance {
     @JsonIgnore
     private ArrayList<SubInstance> subInstances = new ArrayList<>();
 
-    Instance() {}
+    Instance() {
+    }
 
     Instance(int id, String content) {
         this.id = id;

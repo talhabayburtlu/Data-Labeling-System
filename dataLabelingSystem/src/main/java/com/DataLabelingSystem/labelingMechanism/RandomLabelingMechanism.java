@@ -1,4 +1,11 @@
-package com.DataLabelingSystem;
+package com.DataLabelingSystem.labelingMechanism;
+
+import com.DataLabelingSystem.assignment.LabelAssignment;
+import com.DataLabelingSystem.assignment.LabelAssignmentManager;
+import com.DataLabelingSystem.model.Dataset;
+import com.DataLabelingSystem.model.Instance;
+import com.DataLabelingSystem.model.Label;
+import com.DataLabelingSystem.model.User;
 
 import java.util.ArrayList;
 

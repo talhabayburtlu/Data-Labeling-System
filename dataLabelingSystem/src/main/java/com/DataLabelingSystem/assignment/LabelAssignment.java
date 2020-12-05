@@ -1,5 +1,8 @@
-package com.DataLabelingSystem;
+package com.DataLabelingSystem.assignment;
 
+import com.DataLabelingSystem.model.Instance;
+import com.DataLabelingSystem.model.Label;
+import com.DataLabelingSystem.model.User;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -13,12 +16,12 @@ import java.util.Date;
 public class LabelAssignment {
 
     @JsonIgnore
-    private Instance instance;
+    private final Instance instance;
     @JsonIgnore
-    private Label[] labels;
+    private final Label[] labels;
     @JsonIgnore
-    private User user;
-    private Date datetime;
+    private final User user;
+    private final Date datetime;
 
     protected LabelAssignment(User user, Instance instance, Label[] labels) {
         this.user = user;

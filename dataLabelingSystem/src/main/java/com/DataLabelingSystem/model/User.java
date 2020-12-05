@@ -1,5 +1,7 @@
-package com.DataLabelingSystem;
+package com.DataLabelingSystem.model;
 
+import com.DataLabelingSystem.labelingMechanism.LabelingMechanism;
+import com.DataLabelingSystem.labelingMechanism.LabelingMechanismFactory;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,28 +47,28 @@ public class User {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public LabelingMechanism getMechanism() {
-        return mechanism;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getType() {
+        return type;
+    }
+
     public void setType(String type) {
         this.type = type;
+    }
+
+    public LabelingMechanism getMechanism() {
+        return mechanism;
     }
 
     public void setMechanism(LabelingMechanism mechanism) {
