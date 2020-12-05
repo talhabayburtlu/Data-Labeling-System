@@ -22,7 +22,7 @@ public class RandomLabelingMechanism implements LabelingMechanism {
         int maxNumberOfLabelsPerInstance = dataset.getMaxNumberOfLabelsPerInstance();
         ArrayList<Label> selectedLabelsAsList = new ArrayList<>();
 
-        randomNumberOfLabelsPerInstance = (int) (Math.random() * maxNumberOfLabelsPerInstance + 1); // Randomizing algorithm, between 0 and maxNumberOfLabelsPerInstance (included)
+        int randomNumberOfLabelsPerInstance = (int) (Math.random() * maxNumberOfLabelsPerInstance + 1); // Randomizing algorithm, between 0 and maxNumberOfLabelsPerInstance (included)
         for (int i = 0; i < randomNumberOfLabelsPerInstance; i++) { // Selecting labels based on random number of label
             Label theLabel = labels[(int) (Math.random() * labels.length)]; // Selecting random label.
 
