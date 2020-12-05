@@ -18,19 +18,18 @@ public class RandomLabelingMechanism implements LabelingMechanism {
 
     @Override
     public void label(User user, Instance instance, Label[] labels) {
-
         Dataset dataset = instance.getDataset();
         int maxNumberOfLabelsPerInstance = dataset.getMaxNumberOfLabelsPerInstance();
         ArrayList<Label> selectedLabelsAsList = new ArrayList<>();
-        maxNumberOfLabelsPerInstance = (int) (Math.random() * maxNumberOfLabelsPerInstance); // Randomizing algorithm based on maxNumberOfLabelsPerInstance
-        for (int i = 0; i < maxNumberOfLabelsPerInstance; i++) { // Selecting labels based on determined number of labels per instance
+
+        randomNumberOfLabelsPerInstance = (int) (Math.random() * maxNumberOfLabelsPerInstance + 1); // Randomizing algorithm, between 0 and maxNumberOfLabelsPerInstance (included)
+        for (int i = 0; i < randomNumberOfLabelsPerInstance; i++) { // Selecting labels based on random number of label
             Label theLabel = labels[(int) (Math.random() * labels.length)]; // Selecting random label.
 
             while (selectedLabelsAsList.contains(theLabel)) // Checking duplicates
                 theLabel = labels[(int) (Math.random() * labels.length)];
 
             selectedLabelsAsList.add(theLabel);
-
         }
 
         Label[] selectedLabels = selectedLabelsAsList.toArray(new Label[0]); // Creating label array from arraylist.
