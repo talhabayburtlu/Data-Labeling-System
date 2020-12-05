@@ -14,8 +14,9 @@ public class DataLabelingSystem {
 		logger.info("Starting simulation.");
 
 		JsonParser jsonParser = JsonParser.getJsonParser();
-		ArrayList<Dataset> datasets = jsonParser.readDatasets(new String[]{"input-1.json", "input-2.json"});
 		ArrayList<User> users = jsonParser.readUsers("users.json");
+		ArrayList<Dataset> datasets = jsonParser.readDatasets(new String[]{"input-1.json", "input-2.json"});
+
 
 		logger.info("Looping through all datasets, user and instances for random labeling.");
 		for (Dataset dataset : datasets) {
