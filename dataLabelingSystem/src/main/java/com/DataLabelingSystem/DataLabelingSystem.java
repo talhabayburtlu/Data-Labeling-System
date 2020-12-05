@@ -7,6 +7,7 @@ import com.DataLabelingSystem.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -17,9 +18,29 @@ public class DataLabelingSystem {
     public static void main(String[] args) throws IOException {
         logger.info("Starting simulation.");
 
+        if (args.length < 3) {
+            logger.error("At least 3 arguments are required.");
+            System.exit(-1);
+        } else if (args.length % 2 != 1) {
+            logger.error("You must provide an input filename for users, and a pair of filenames for each input, one input and one output.");
+            System.exit(-1);
+        }
+        String usersFile = args[0];
+        if (!(new File(usersFile).exists())) {
+            logger.error("File \"" + usersFile + " does not exist.");
+            System.exit(-1);
+        }
+        ArrayList<String> inputFiles = new ArrayList<>();
+        ArrayList<String> outputFiles = new ArrayList<>();
+        for (int i = 1; i < args.length; i += 2) {
+            inputFiles.add(args[i]);
+            outputFiles.add(args[i + 1]);
+        }
+
+
         JsonParser jsonParser = JsonParser.getJsonParser();
-        ArrayList<Dataset> datasets = jsonParser.readDatasets(new String[]{"input-1.json", "input-2.json"});
-        ArrayList<User> users = jsonParser.readUsers("users.json");
+        ArrayList<Dataset> datasets = jsonParser.readDatasets(inputFiles.toArray(new String[0]));
+        ArrayList<User> users = jsonParser.readUsers(usersFile);
 
         logger.info("Looping through all datasets, user and instances for random labeling.");
         for (Dataset dataset : datasets) {
@@ -32,7 +53,7 @@ public class DataLabelingSystem {
             }
         }
 
-        jsonParser.writeDatasetsWithUsers(new String[]{"output-1.json", "output-2.json"}, datasets, users);
+        jsonParser.writeDatasetsWithUsers(outputFiles.toArray(new String[0]), datasets, users);
         logger.info("Ending simulation.");
     }
 
