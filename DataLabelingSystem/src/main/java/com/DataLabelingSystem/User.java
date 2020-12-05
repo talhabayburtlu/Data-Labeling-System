@@ -1,5 +1,6 @@
 package com.DataLabelingSystem;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -8,18 +9,23 @@ public class User {
     private int id;
     @JsonProperty("user name")
     private String name;
-    @JsonProperty("userType")
+    @JsonProperty("user type")
     private String type;
     @JsonIgnore
     private LabelingMechanism mechanism;
 
-    User() {
-    }
-
-    User(int id, String name, String type) {
+    @JsonCreator
+    User(@JsonProperty("user id") int id,
+         @JsonProperty("user name") String name,
+         @JsonProperty("user type") String type) {
         this.id = id;
         this.name = name;
         this.type = type;
+        //noinspection SwitchStatementWithTooFewBranches
+        switch (type) {
+            case "RandomBot":
+                this.mechanism = new RandomLabelingMechanism("RandomLabelingMechanism");
+        }
     }
 
     User(int id, String type, LabelingMechanism mechanism) {
