@@ -1,7 +1,6 @@
 package com.DataLabelingSystem;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -101,15 +100,5 @@ public class Dataset {
 
     public void setLabelAssignments(ArrayList<LabelAssignment> labelAssignments) {
         this.labelAssignments = labelAssignments;
-    }
-
-    @JsonGetter("users")
-    public ArrayList<User> getUsers() {
-        ArrayList<User> users = new ArrayList<>();
-        for (LabelAssignment labelAssignment :
-                this.labelAssignments) {
-            users.add(labelAssignment.getUser());
-        }
-        return users;
     }
 }
