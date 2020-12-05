@@ -1,10 +1,14 @@
 package com.DataLabelingSystem;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.ArrayList;
 
+@JsonPropertyOrder({"dataset id", "dataset name", "instance type", "maximum number of labels per instance", "class labels", "instances", "class label assignments"})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Dataset {
 
     @JsonProperty("dataset id")
