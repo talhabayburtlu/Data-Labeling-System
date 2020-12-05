@@ -17,7 +17,7 @@ public class DataLabelingSystem {
 					users) {
 				for (Instance instance :
 						dataset.getInstances()) {
-					user.labelWithMechanism(instance, dataset.getLabels().toArray(new Label[0]));
+					user.labelWithMechanism(instance, dataset.getLabels().toArray(new Label[dataset.getLabels().size()]));
 				}
 			}
 		}
