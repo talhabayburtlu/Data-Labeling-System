@@ -62,11 +62,17 @@ public class JsonParser {
 
         for (int i = 0; i < datasets.size(); i++) {
             File outputFile = new File(filenames[i]);
-            String outputJson;
             ObjectMapper objectMapper = new ObjectMapper();
-            outputJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(datasets.get(i));
+            StringBuilder outputBuilder = new StringBuilder(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(datasets.get(i)));
+            for (int counter = 0; counter < 3; counter++)
+                outputBuilder.deleteCharAt(outputBuilder.length() - 1);
+            outputBuilder.append(","); // Since "users" containing every user registered is not a property of Dataset, we have to manually format our JSON
+            outputBuilder.append(System.lineSeparator());
+            outputBuilder.append("\"users\":");
+            outputBuilder.append(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(users));
+            outputBuilder.append("}");
             FileWriter fileWriter = new FileWriter(outputFile);
-            fileWriter.write(outputJson);
+            fileWriter.write(outputBuilder.toString());
             fileWriter.close();
         }
     }
