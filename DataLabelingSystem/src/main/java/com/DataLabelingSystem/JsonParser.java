@@ -6,6 +6,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -50,7 +52,22 @@ public class JsonParser {
         return sb.toString();
     }
 
-    public void writeDatasetsWithUsers(String[] filenames, ArrayList<Dataset> datasets, ArrayList<User> users) {
-        throw new UnsupportedOperationException("This method has not been implemented yet.");
+    public void writeDatasetsWithUsers(String[] filenames, ArrayList<Dataset> datasets, ArrayList<User> users) throws IOException {
+        //TODO should we take a dictionary as an input parameter? ex: collection of <filename, dataset> tuples
+        //TODO this overwrites existing files by default
+        //TODO users is not used...
+        if (datasets.size() != filenames.length) {
+            throw new IllegalArgumentException("You must provide at least one filename for each dataset.");
+        }
+
+        for (int i = 0; i < datasets.size(); i++) {
+            File outputFile = new File(filenames[i]);
+            String outputJson;
+            ObjectMapper objectMapper = new ObjectMapper();
+            outputJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(datasets.get(i));
+            FileWriter fileWriter = new FileWriter(outputFile);
+            fileWriter.write(outputJson);
+            fileWriter.close();
+        }
     }
 }
