@@ -1,13 +1,11 @@
 package com.DataLabelingSystem;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class DataLabelingSystem {
 
-	public static void main(String[] args) throws FileNotFoundException, JsonProcessingException {
+	public static void main(String[] args) throws IOException {
 
 		JsonParser jsonParser = JsonParser.getJsonParser();
 		ArrayList<Dataset> datasets = jsonParser.readDatasets(new String[]{"input-1.json", "input-2.json"});
@@ -20,7 +18,7 @@ public class DataLabelingSystem {
 				}
 			}
 		}
-
+		jsonParser.writeDatasetsWithUsers(new String[]{"output-1.json", "output-2.json"}, datasets, users);
 		System.out.println("Simulation complete.");
 	}
 
