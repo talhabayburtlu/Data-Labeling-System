@@ -26,7 +26,8 @@ public class User {
         // TODO: Cases should be reconsidered for possible different bots.
         switch (type) {
             case "RandomBot":
-                this.mechanism = new RandomLabelingMechanism("RandomLabelingMechanism");
+                LabelingMechanismFactory labelingMechanismFactory = LabelingMechanismFactory.getLabelingMechanismFactory();
+                this.mechanism = labelingMechanismFactory.getMechanism("RandomLabelingMechanism");
         }
     }
 
