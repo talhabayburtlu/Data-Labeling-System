@@ -2,7 +2,9 @@ package com.DataLabelingSystem;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"label id", "label text"})
 public class Label {
 
     @JsonProperty("label id")

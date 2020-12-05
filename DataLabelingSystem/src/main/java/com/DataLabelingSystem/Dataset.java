@@ -1,12 +1,16 @@
 package com.DataLabelingSystem;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.ArrayList;
 
+@JsonPropertyOrder({"dataset id", "dataset name", "instance type", "maximum number of labels per instance", "class labels", "instances", "class label assignments"})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Dataset {
     private static final Logger logger = LogManager.getLogger();
 

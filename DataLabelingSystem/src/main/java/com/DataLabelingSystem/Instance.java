@@ -2,9 +2,11 @@ package com.DataLabelingSystem;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.ArrayList;
 
+@JsonPropertyOrder({"id", "instance"})
 public class Instance {
 
     @JsonProperty("id")

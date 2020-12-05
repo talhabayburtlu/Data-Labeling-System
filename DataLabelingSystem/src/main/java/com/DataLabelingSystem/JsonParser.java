@@ -68,10 +68,7 @@ public class JsonParser {
         return sb.toString();
     }
 
-    public void writeDatasetsWithUsers(String[] filenames, ArrayList<Dataset> datasets, ArrayList<User> users) throws IOException {
-        //TODO should we take a dictionary as an input parameter? ex: collection of <filename, dataset> tuples
-        //TODO this overwrites existing files by default
-        //TODO users is not used...
+    public void writeDatasetsWithUsers(String[] filenames, ArrayList<Dataset> datasets, ArrayList<User> users) throws IOException, IllegalArgumentException {
         if (datasets.size() != filenames.length) {
             throw new IllegalArgumentException("You must provide at least one filename for each dataset.");
         }

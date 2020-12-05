@@ -2,10 +2,14 @@ package com.DataLabelingSystem;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+@JsonPropertyOrder({"instance id", "class label ids", "user id", "datetime"})
 public class LabelAssignment {
 
     @JsonIgnore
@@ -62,6 +66,7 @@ public class LabelAssignment {
 
     @JsonGetter("datetime")
     public String getDatetimeString() {
-        return this.getDatetime().toString();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return dateFormat.format(this.datetime);
     }
 }
