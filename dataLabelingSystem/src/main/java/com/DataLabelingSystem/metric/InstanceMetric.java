@@ -24,6 +24,10 @@ public class InstanceMetric {
         this.labelAssignments = labelAssignments;
     }
 
+    public int getAssignmentCount() { // Returns total number of label assignments.
+        return this.labelAssignments.size();
+    }
+
     public Instance getInstance() {
         return instance;
     }
