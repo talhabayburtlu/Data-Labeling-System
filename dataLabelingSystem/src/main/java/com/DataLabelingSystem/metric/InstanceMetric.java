@@ -3,6 +3,7 @@ package com.DataLabelingSystem.metric;
 import com.DataLabelingSystem.assignment.LabelAssignment;
 import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
+import com.DataLabelingSystem.model.User;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -38,6 +39,15 @@ public class InstanceMetric {
                 labelSet.add(label); // Adding label into label set or not adding if same label added before.
 
         return labelSet.size();
+    }
+
+    public int getUniqueUserCount() { // Returns number of unique users that labeled this instance.
+        HashSet<User> userSet = new HashSet<User>();
+
+        for (LabelAssignment labelAssignment : this.labelAssignments)
+            userSet.add(labelAssignment.getUser()); // Adding user into user set or not adding if same user added before.
+
+        return userSet.size();
     }
 
     public Instance getInstance() {
