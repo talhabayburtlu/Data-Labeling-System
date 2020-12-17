@@ -13,6 +13,7 @@ public class InstanceMetric {
     private Instance instance;
     private ArrayList<LabelAssignment> labelAssignments;
 
+
     public InstanceMetric(Instance instance) {
         this.instance = instance;
     }
@@ -49,7 +50,7 @@ public class InstanceMetric {
         return userSet.size();
     }
 
-    public HashMap<Label, Integer> getMostFrequentLabel() { // Returns most frequent label with it's frequency.
+    private HashMap<Label, Integer> countLabelOccurences() {
         HashMap<Label, Integer> labelIntegerMap = new HashMap<Label, Integer>();
 
         for (LabelAssignment labelAssignment : this.labelAssignments)
@@ -59,6 +60,12 @@ public class InstanceMetric {
                 else // Adds label to the map if doesn't exist.
                     labelIntegerMap.put(label, 0);
             }
+        return labelIntegerMap;
+    }
+
+
+    public HashMap<Label, Integer> getMostFrequentLabel() { // Returns most frequent label with it's frequency.
+        HashMap<Label, Integer> labelIntegerMap = countLabelOccurences();
 
         // Determines label which label is the most frequent one.
         Label label = Collections.max(labelIntegerMap.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
@@ -66,6 +73,20 @@ public class InstanceMetric {
         Integer percentage = (int) (((labelIntegerMap.get(label) * 1.0) / this.getUniqueAssignmentCount()) * 100);
 
         return (HashMap<Label, Integer>) Collections.singletonMap(label, percentage);
+    }
+
+    public HashMap<Label, Integer> getAllLabelFrequencies() { // Returns all labels with their frequency.
+        HashMap<Label, Integer> labelIntegerMap = countLabelOccurences();
+
+        HashMap<Label, Integer> labelPercentageMap = new HashMap<Label, Integer>();
+        Integer uniqueAssignmentCount = this.getUniqueAssignmentCount();
+        for (Label label : labelIntegerMap.keySet()) {
+            // Computing percentage
+            Integer percentage = (int) (((labelIntegerMap.get(label) * 1.0) / uniqueAssignmentCount) * 100);
+            labelPercentageMap.put(label, percentage);
+        }
+
+        return labelPercentageMap;
     }
 
     public Instance getInstance() {
