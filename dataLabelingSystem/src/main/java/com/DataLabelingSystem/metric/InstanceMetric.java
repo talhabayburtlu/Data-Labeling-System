@@ -5,8 +5,7 @@ import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class InstanceMetric {
@@ -48,6 +47,25 @@ public class InstanceMetric {
             userSet.add(labelAssignment.getUser()); // Adding user into user set or not adding if same user added before.
 
         return userSet.size();
+    }
+
+    public HashMap<Label, Integer> getMostFrequentLabel() { // Returns most frequent label with it's frequency.
+        HashMap<Label, Integer> labelIntegerMap = new HashMap<Label, Integer>();
+
+        for (LabelAssignment labelAssignment : this.labelAssignments)
+            for (Label label : labelAssignment.getLabels()) {
+                if (labelIntegerMap.containsKey(label)) // Increments occurrence of label if exist in map.
+                    labelIntegerMap.replace(label, labelIntegerMap.get(label) + 1);
+                else // Adds label to the map if doesn't exist.
+                    labelIntegerMap.put(label, 0);
+            }
+
+        // Determines label which label is the most frequent one.
+        Label label = Collections.max(labelIntegerMap.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
+        // Computing percentage
+        Integer percentage = (int) (((labelIntegerMap.get(label) * 1.0) / this.getUniqueAssignmentCount()) * 100);
+
+        return (HashMap<Label, Integer>) Collections.singletonMap(label, percentage);
     }
 
     public Instance getInstance() {
