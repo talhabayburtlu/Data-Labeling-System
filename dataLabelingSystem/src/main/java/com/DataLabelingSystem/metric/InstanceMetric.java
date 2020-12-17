@@ -2,8 +2,10 @@ package com.DataLabelingSystem.metric;
 
 import com.DataLabelingSystem.assignment.LabelAssignment;
 import com.DataLabelingSystem.model.Instance;
+import com.DataLabelingSystem.model.Label;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 public class InstanceMetric {
@@ -26,6 +28,16 @@ public class InstanceMetric {
 
     public int getAssignmentCount() { // Returns total number of label assignments.
         return this.labelAssignments.size();
+    }
+
+    public int getUniqueAssignmentCount() { // Returns total number of unique label assignments.
+        HashSet<Label> labelSet = new HashSet<Label>();
+
+        for (LabelAssignment labelAssignment : this.labelAssignments)
+            for (Label label : labelAssignment.getLabels())
+                labelSet.add(label); // Adding label into label set or not adding if same label added before.
+
+        return labelSet.size();
     }
 
     public Instance getInstance() {
