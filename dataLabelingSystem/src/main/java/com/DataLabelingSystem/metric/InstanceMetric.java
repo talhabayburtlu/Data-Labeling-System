@@ -50,7 +50,7 @@ public class InstanceMetric {
         return userSet.size();
     }
 
-    private HashMap<Label, Integer> countLabelOccurences() {
+    private HashMap<Label, Integer> countLabelOccurrences() { // Counts occurrences per labels.
         HashMap<Label, Integer> labelIntegerMap = new HashMap<Label, Integer>();
 
         for (LabelAssignment labelAssignment : this.labelAssignments)
@@ -65,7 +65,7 @@ public class InstanceMetric {
 
 
     public HashMap<Label, Integer> getMostFrequentLabel() { // Returns most frequent label with it's frequency.
-        HashMap<Label, Integer> labelIntegerMap = countLabelOccurences();
+        HashMap<Label, Integer> labelIntegerMap = countLabelOccurrences();
 
         // Determines label which label is the most frequent one.
         Label label = Collections.max(labelIntegerMap.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
@@ -76,7 +76,7 @@ public class InstanceMetric {
     }
 
     public HashMap<Label, Integer> getAllLabelFrequencies() { // Returns all labels with their frequency.
-        HashMap<Label, Integer> labelIntegerMap = countLabelOccurences();
+        HashMap<Label, Integer> labelIntegerMap = countLabelOccurrences();
 
         HashMap<Label, Integer> labelPercentageMap = new HashMap<Label, Integer>();
         Integer uniqueAssignmentCount = this.getUniqueAssignmentCount();
@@ -88,6 +88,21 @@ public class InstanceMetric {
 
         return labelPercentageMap;
     }
+
+    public Double getEntropy() {
+        HashMap<Label, Integer> labelPercentageMap = getAllLabelFrequencies();
+
+        Double entropy = 0.0;
+
+        for (Label label : labelPercentageMap.keySet()) {
+            Double percentage = labelPercentageMap.get(label) / 100.0; // Based on formula given
+            entropy += -1 * percentage * (Math.log(percentage) / Math.log(2));
+        }
+
+
+        return entropy;
+    }
+
 
     public Instance getInstance() {
         return instance;
