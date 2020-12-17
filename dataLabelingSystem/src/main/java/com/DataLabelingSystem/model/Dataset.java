@@ -31,6 +31,9 @@ public class Dataset {
     @JsonProperty("class label assignments")
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
 
+    //17.12.2020 23:19
+    private ArrayList<User> assignedUsers = new ArrayList<>();
+
     @JsonCreator
     Dataset(@JsonProperty("dataset id") int id,
             @JsonProperty("dataset name") String name,
