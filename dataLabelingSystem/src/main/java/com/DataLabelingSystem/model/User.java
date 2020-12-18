@@ -19,6 +19,8 @@ public class User {
     private String type;
     @JsonIgnore
     private LabelingMechanism mechanism;
+    @JsonIgnore
+    private Double consistencyCheckProbability;
 
     @JsonCreator
     User(@JsonProperty("user id") int id,
@@ -73,6 +75,14 @@ public class User {
 
     public void setMechanism(LabelingMechanism mechanism) {
         this.mechanism = mechanism;
+    }
+
+    public Double getConsistencyCheckProbability() {
+        return consistencyCheckProbability;
+    }
+
+    public void setConsistencyCheckProbability(Double consistencyCheckProbability) {
+        this.consistencyCheckProbability = consistencyCheckProbability;
     }
 
     @Override

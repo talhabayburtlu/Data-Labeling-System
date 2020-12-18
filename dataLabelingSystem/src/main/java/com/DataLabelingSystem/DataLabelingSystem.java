@@ -63,6 +63,18 @@ public class DataLabelingSystem {
                 }
 
                 user.labelWithMechanism(instance, currentDataset.getLabels().toArray(new Label[0]));
+
+                Integer labelAgainProbability = (int) (Math.random() * 101);
+                // Labeling random labeled instance again if consistency check probability maintains.
+                if (labelAgainProbability > user.getConsistencyCheckProbability() * 100) {
+                    ArrayList<Instance> labeledInstances = new ArrayList<Instance>();
+                    for (LabelAssignment labelAssignment : currentDataset.getLabelAssignments())
+                        if (labelAssignment.getUser() == user)
+                            labeledInstances.add(labelAssignment.getInstance());
+
+                    Integer randomInstanceIndex = (int) (Math.random() * labeledInstances.size());
+                    user.labelWithMechanism(labeledInstances.get(randomInstanceIndex), currentDataset.getLabels().toArray(new Label[0]));
+                }
             }
         }
 
