@@ -1,5 +1,6 @@
 package com.DataLabelingSystem;
 
+import com.DataLabelingSystem.assignment.LabelAssignment;
 import com.DataLabelingSystem.model.Dataset;
 import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
@@ -15,7 +16,7 @@ public class DataLabelingSystem {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public static void main(String[] args) throws IOException {
+    public static <Booelan> void main(String[] args) throws IOException {
         logger.info("Starting simulation.");
 
         if (args.length < 3) {
@@ -42,19 +43,32 @@ public class DataLabelingSystem {
         ArrayList<Dataset> datasets = jsonParser.readDatasets(inputFiles.toArray(new String[0]));
         ArrayList<User> users = jsonParser.readUsers(usersFile);
 
-        logger.info("Looping through all datasets, user and instances for random labeling.");
-        for (Dataset dataset : datasets) {
-            logger.trace("Processing dataset: " + dataset);
-            for (User user : users) {
-                logger.trace("Processing with user: " + user);
-                for (Instance instance : dataset.getInstances()) {
-                    user.labelWithMechanism(instance, dataset.getLabels().toArray(new Label[0]));
+        Integer datasetId = null;
+        Boolean isSameDataset = null;
+        Dataset currentDataset = datasets.get(datasetId);
+
+
+        logger.trace("Processing dataset: " + currentDataset);
+        for (User user : currentDataset.getAssignedUsers()) {
+            logger.trace("Processing with user: " + user);
+            for (Instance instance : currentDataset.getInstances()) {
+                if (isSameDataset) { // If previous dataset is processing again, pass the instances that labeled.
+                    ArrayList<Instance> labeledInstances = new ArrayList<Instance>();
+                    for (LabelAssignment labelAssignment : currentDataset.getLabelAssignments())
+                        if (labelAssignment.getUser() == user)
+                            labeledInstances.add(labelAssignment.getInstance());
+
+                    if (labeledInstances.contains(instance)) // Check if instance previously labeled by this user.
+                        continue;
                 }
+
+                user.labelWithMechanism(instance, currentDataset.getLabels().toArray(new Label[0]));
             }
         }
 
-        jsonParser.writeDatasetsWithUsers(outputFiles.toArray(new String[0]), datasets, users);
-        logger.info("Ending simulation.");
+
+        // jsonParser.writeDatasetsWithUsers(outputFiles.toArray(new String[0]), datasets, users);
+        // logger.info("Ending simulation.");
     }
 
 }

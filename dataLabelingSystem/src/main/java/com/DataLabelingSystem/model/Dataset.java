@@ -115,6 +115,14 @@ public class Dataset {
         this.labelAssignments = labelAssignments;
     }
 
+    public ArrayList<User> getAssignedUsers() {
+        return assignedUsers;
+    }
+
+    public void setAssignedUsers(ArrayList<User> assignedUsers) {
+        this.assignedUsers = assignedUsers;
+    }
+
     @Override
     public String toString() {
         return "Dataset{" +
