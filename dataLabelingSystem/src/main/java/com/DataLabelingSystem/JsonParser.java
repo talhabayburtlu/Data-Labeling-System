@@ -3,17 +3,17 @@ package com.DataLabelingSystem;
 import com.DataLabelingSystem.model.Dataset;
 import com.DataLabelingSystem.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class JsonParser {
@@ -25,6 +25,48 @@ public class JsonParser {
 
     public static JsonParser getJsonParser() {
         return instance;
+    }
+
+    public HashMap<String, Object> readConfig(String filename) throws FileNotFoundException, JsonProcessingException, InvalidObjectException {
+        String jsonString = readAllLines(filename);
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectNode configJsonObject = (ObjectNode) objectMapper.readTree(jsonString);
+
+        ArrayList<User> users = new ArrayList<>(Arrays.asList(objectMapper.treeToValue(configJsonObject.get("users"), User[].class)));
+
+        ArrayList<Dataset> datasets = new ArrayList<>();
+        for (JsonNode node : configJsonObject.get("datasets")) {
+            String filePath = node.get("file path").textValue();
+            String outputFilename = "output-" + node.get("dataset id").intValue() + ".json";
+            if ((new File(outputFilename)).exists()) {
+                filePath = outputFilename;
+            }
+            Dataset dataset = readDataset(filePath);
+            dataset.fixUserReferences(users);
+            datasets.add(dataset);
+        }
+
+        Integer currentDatasetId = configJsonObject.get("current dataset id").intValue();
+
+        return new HashMap<String, Object>() {{ // TODO a different return value can be used here instead of HashMap
+            put("users", users);
+            put("datasets", datasets);
+            put("current dataset id", currentDatasetId);
+        }};
+    }
+
+    public Dataset loadOutput(String filename) throws JsonProcessingException, FileNotFoundException {
+        String jsonString = readAllLines(filename);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode datasetJsonObject = objectMapper.readTree(jsonString);
+        return objectMapper.readValue(jsonString, Dataset.class);
+    }
+
+    public Dataset readDataset(String filename) throws FileNotFoundException, JsonProcessingException {
+        logger.info("Starting to read dataset from " + filename + " file.");
+        String jsonString = readAllLines(filename);
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(jsonString, Dataset.class);
     }
 
     public ArrayList<Dataset> readDatasets(String[] filenames) throws FileNotFoundException, JsonProcessingException {

@@ -1,11 +1,10 @@
 package com.DataLabelingSystem.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 
 import java.util.ArrayList;
 
+@JsonIdentityInfo(scope = Instance.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @JsonPropertyOrder({"id", "instance"})
 public class Instance {
 

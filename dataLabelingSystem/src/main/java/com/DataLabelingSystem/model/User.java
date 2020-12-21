@@ -2,12 +2,12 @@ package com.DataLabelingSystem.model;
 
 import com.DataLabelingSystem.labelingMechanism.LabelingMechanism;
 import com.DataLabelingSystem.labelingMechanism.LabelingMechanismFactory;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+@JsonIdentityInfo(scope = User.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "user id")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
     private static final Logger logger = LogManager.getLogger();
 

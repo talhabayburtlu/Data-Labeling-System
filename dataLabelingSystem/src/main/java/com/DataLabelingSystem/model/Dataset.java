@@ -1,10 +1,7 @@
 package com.DataLabelingSystem.model;
 
 import com.DataLabelingSystem.assignment.LabelAssignment;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,6 +9,8 @@ import java.util.ArrayList;
 
 @JsonPropertyOrder({"dataset id", "dataset name", "instance type", "maximum number of labels per instance", "class labels", "instances", "class label assignments"})
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIdentityInfo(scope = Dataset.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "dataset id")
 public class Dataset {
     private static final Logger logger = LogManager.getLogger();
 
@@ -37,13 +36,16 @@ public class Dataset {
             @JsonProperty("instance type") String instanceType,
             @JsonProperty("maximum number of labels per instance") int maxNumberOfLabelsPerInstance,
             @JsonProperty("class labels") ArrayList<Label> labels,
-            @JsonProperty("instances") ArrayList<Instance> instances) {
+            @JsonProperty("instances") ArrayList<Instance> instances,
+            @JsonProperty("class label assignments") ArrayList<LabelAssignment> labelAssignments) {
         this.id = id;
         this.name = name;
         this.instanceType = instanceType;
         this.maxNumberOfLabelsPerInstance = maxNumberOfLabelsPerInstance;
         this.labels = labels;
         this.instances = instances;
+        if (labelAssignments != null)
+            this.labelAssignments = labelAssignments;
 
         for (Label label : labels) {
             label.setDataset(this);

@@ -1,9 +1,8 @@
 package com.DataLabelingSystem.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 
+@JsonIdentityInfo(scope = Label.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "label id")
 @JsonPropertyOrder({"label id", "label text"})
 public class Label {
 
