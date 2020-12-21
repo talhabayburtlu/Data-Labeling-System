@@ -1,11 +1,14 @@
 package com.DataLabelingSystem.model;
 
 import com.DataLabelingSystem.assignment.LabelAssignment;
+import com.DataLabelingSystem.metric.DatasetMetric;
 import com.fasterxml.jackson.annotation.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.InvalidObjectException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 @JsonPropertyOrder({"dataset id", "dataset name", "instance type", "maximum number of labels per instance", "class labels", "instances", "class label assignments"})
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -22,6 +25,8 @@ public class Dataset {
     private String instanceType;
     @JsonProperty("maximum number of labels per instance")
     private int maxNumberOfLabelsPerInstance;
+    @JsonIgnore
+    private final DatasetMetric datasetMetric;
 
     @JsonProperty("class labels")
     private ArrayList<Label> labels = new ArrayList<>();
@@ -29,6 +34,8 @@ public class Dataset {
     private ArrayList<Instance> instances = new ArrayList<>();
     @JsonProperty("class label assignments")
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
+    @JsonProperty("assigned users")
+    private ArrayList<User> assignedUsers = new ArrayList<>();
 
     @JsonCreator
     Dataset(@JsonProperty("dataset id") int id,
@@ -54,6 +61,8 @@ public class Dataset {
         for (Instance instance : instances) {
             instance.setDataset(this);
         }
+
+        this.datasetMetric = new DatasetMetric(this);
 
         logger.trace("Created dataset with information " + toString());
     }
@@ -112,6 +121,40 @@ public class Dataset {
 
     public void setLabelAssignments(ArrayList<LabelAssignment> labelAssignments) {
         this.labelAssignments = labelAssignments;
+    }
+
+    public ArrayList<User> getAssignedUsers() {
+        return assignedUsers;
+    }
+
+    public void setAssignedUsers(ArrayList<User> assignedUsers) {
+        this.assignedUsers = assignedUsers;
+    }
+
+    public DatasetMetric getDatasetMetric() {
+        return datasetMetric;
+    }
+
+    public void fixUserReferences(ArrayList<User> users) throws InvalidObjectException {
+        ArrayList<User> fixedUsers = new ArrayList<>(getAssignedUsers().size());
+        for (User user : getAssignedUsers()) {
+            Optional<User> fixedUser = users.stream().filter(u -> u.getId() == user.getId()).findFirst();
+            if (fixedUser.isPresent()) {
+                fixedUsers.add(fixedUser.get());
+            } else {
+                throw new InvalidObjectException("User " + user.toString() + " assigned to dataset " + this.toString() + " does not exist in the config file.");
+            }
+        }
+        this.setAssignedUsers(fixedUsers);
+
+        for (LabelAssignment labelAssignment : getLabelAssignments()) {
+            Optional<User> fixedUser = users.stream().filter(u -> u.getId() == labelAssignment.getUser().getId()).findFirst();
+            if (fixedUser.isPresent()) {
+                labelAssignment.setUser(fixedUser.get());
+            } else {
+                throw new InvalidObjectException("User " + labelAssignment.getUser().toString() + " who labeled an instance in dataset " + this.toString() + " does not exist in the config file.");
+            }
+        }
     }
 
     @Override
