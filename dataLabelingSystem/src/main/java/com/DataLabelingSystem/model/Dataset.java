@@ -29,15 +29,12 @@ public class Dataset {
     private final DatasetMetric datasetMetric;
 
     @JsonProperty("class labels")
-    private ArrayList<Label> labels = new ArrayList<>();
+    private ArrayList<Label> labels;
     @JsonProperty("instances")
-    private ArrayList<Instance> instances = new ArrayList<>();
+    private ArrayList<Instance> instances;
     @JsonProperty("class label assignments")
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
     @JsonProperty("assigned users")
-    private ArrayList<User> assignedUsers = new ArrayList<>();
-
-    //17.12.2020 23:19
     private ArrayList<User> assignedUsers = new ArrayList<>();
 
     @JsonCreator
