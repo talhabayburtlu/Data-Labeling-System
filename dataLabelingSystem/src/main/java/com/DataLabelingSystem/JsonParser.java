@@ -75,7 +75,7 @@ public class JsonParser {
         ArrayList<Dataset> datasets = new ArrayList<>();
 
         for (String filename : filenames) {
-            logger.info("Starting to reading dataset from " + filename + " file.");
+            logger.info("Starting to read dataset from " + filename + " file.");
             String jsonString = readAllLines(filename);
             ObjectMapper objectMapper = new ObjectMapper();
 
@@ -113,19 +113,16 @@ public class JsonParser {
         return sb.toString();
     }
 
-    public void writeDatasetsWithUsers(String[] filenames, ArrayList<Dataset> datasets, ArrayList<User> users) throws IOException, IllegalArgumentException {
-        if (datasets.size() != filenames.length) {
-            throw new IllegalArgumentException("You must provide at least one filename for each dataset.");
-        }
+    public void writeDatasetsWithUsers(ArrayList<Dataset> datasets, ArrayList<User> users) throws IOException, IllegalArgumentException {
+        for (Dataset dataset : datasets) {
+            String outputFilename = "output-" + dataset.getId() + ".json";
+            logger.trace("Writing dataset id:" + dataset.getId() + " to " + outputFilename + " file.");
 
-        for (int i = 0; i < datasets.size(); i++) {
-            logger.trace("Writing dataset id:" + datasets.get(i).getId() + " to " + filenames[i] + " file.");
-
-            File outputFile = new File(filenames[i]);
+            File outputFile = new File(outputFilename);
             String outputJson;
 
             ObjectMapper objectMapper = new ObjectMapper();
-            outputJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(datasets.get(i));
+            outputJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(dataset);
 
             FileWriter fileWriter = new FileWriter(outputFile);
             fileWriter.write(outputJson);
