@@ -3,25 +3,26 @@ package com.DataLabelingSystem.assignment;
 import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 @JsonPropertyOrder({"instance id", "class label ids", "user id", "datetime"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LabelAssignment {
 
-    @JsonIgnore
-    private final Instance instance;
-    @JsonIgnore
-    private final Label[] labels;
-    @JsonIgnore
-    private final User user;
-    private final Date datetime;
+    @JsonProperty(value = "instance id", access = JsonProperty.Access.WRITE_ONLY)
+    private Instance instance = null;
+    @JsonProperty(value = "class label ids", access = JsonProperty.Access.WRITE_ONLY)
+    private Label[] labels = null;
+    @JsonProperty(value = "user id", access = JsonProperty.Access.WRITE_ONLY)
+    private User user = null;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    private Date datetime = null;
+
+    protected LabelAssignment() {
+    }
 
     protected LabelAssignment(User user, Instance instance, Label[] labels) {
         this.user = user;
@@ -40,6 +41,10 @@ public class LabelAssignment {
 
     public User getUser() {
         return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getDatetime() {
@@ -65,11 +70,5 @@ public class LabelAssignment {
     @JsonGetter("user id")
     public int getUserId() {
         return this.getUser().getId();
-    }
-
-    @JsonGetter("datetime")
-    public String getDatetimeString() {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        return dateFormat.format(this.datetime);
     }
 }
