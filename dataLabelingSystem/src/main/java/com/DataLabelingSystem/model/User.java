@@ -2,9 +2,12 @@ package com.DataLabelingSystem.model;
 
 import com.DataLabelingSystem.labelingMechanism.LabelingMechanism;
 import com.DataLabelingSystem.labelingMechanism.LabelingMechanismFactory;
+import com.DataLabelingSystem.metric.UserMetric;
 import com.fasterxml.jackson.annotation.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
 
 @JsonIdentityInfo(scope = User.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "user id")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -20,6 +23,30 @@ public class User {
     @JsonIgnore
     private LabelingMechanism mechanism;
 
+    //new 22:49 17:12:2020
+    private ArrayList<Dataset> assignedDatasets = new ArrayList<>();
+    private UserMetric metric ;
+    @JsonIgnore
+    private Double consistencyCheckProbability;
+
+    public ArrayList<Dataset> getAssignedDatasets() {
+        return assignedDatasets;
+    }
+
+    public void setAssignedDatasets(ArrayList<Dataset> assignedDatasets) {
+        this.assignedDatasets = assignedDatasets;
+    }
+
+    public static void initialize (ArrayList<Dataset> assignedDatasets, Instance instance){
+        for(int i=0 ; i < instance.getDataset().getId(); i++){
+            assignedDatasets.add(instance.getDataset());
+        }
+    }
+
+
+
+
+    //
     @JsonCreator
     User(@JsonProperty("user id") int id,
          @JsonProperty("user name") String name,
@@ -73,6 +100,14 @@ public class User {
 
     public void setMechanism(LabelingMechanism mechanism) {
         this.mechanism = mechanism;
+    }
+
+    public Double getConsistencyCheckProbability() {
+        return consistencyCheckProbability;
+    }
+
+    public void setConsistencyCheckProbability(Double consistencyCheckProbability) {
+        this.consistencyCheckProbability = consistencyCheckProbability;
     }
 
     @Override

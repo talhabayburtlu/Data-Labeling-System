@@ -1,5 +1,6 @@
 package com.DataLabelingSystem.model;
 
+import com.DataLabelingSystem.metric.InstanceMetric;
 import com.fasterxml.jackson.annotation.*;
 
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ public class Instance {
     private String content;
     @JsonIgnore
     private Dataset dataset;
+    @JsonIgnore
+    private InstanceMetric instanceMetric;
     @JsonIgnore
     private ArrayList<SubInstance> subInstances = new ArrayList<>();
 
