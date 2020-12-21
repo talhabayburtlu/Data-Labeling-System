@@ -2,11 +2,14 @@ package com.DataLabelingSystem.model;
 
 import com.DataLabelingSystem.labelingMechanism.LabelingMechanism;
 import com.DataLabelingSystem.labelingMechanism.LabelingMechanismFactory;
+import com.DataLabelingSystem.metric.UserMetric;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
 
 public class User {
     private static final Logger logger = LogManager.getLogger();
@@ -19,9 +22,31 @@ public class User {
     private String type;
     @JsonIgnore
     private LabelingMechanism mechanism;
+
+    //new 22:49 17:12:2020
+    private ArrayList<Dataset> assignedDatasets = new ArrayList<>();
+    private UserMetric metric ;
     @JsonIgnore
     private Double consistencyCheckProbability;
 
+    public ArrayList<Dataset> getAssignedDatasets() {
+        return assignedDatasets;
+    }
+
+    public void setAssignedDatasets(ArrayList<Dataset> assignedDatasets) {
+        this.assignedDatasets = assignedDatasets;
+    }
+
+    public static void initialize (ArrayList<Dataset> assignedDatasets, Instance instance){
+        for(int i=0 ; i < instance.getDataset().getId(); i++){
+            assignedDatasets.add(instance.getDataset());
+        }
+    }
+
+
+
+
+    //
     @JsonCreator
     User(@JsonProperty("user id") int id,
          @JsonProperty("user name") String name,
