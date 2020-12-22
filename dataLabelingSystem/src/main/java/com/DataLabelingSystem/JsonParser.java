@@ -28,6 +28,18 @@ public class JsonParser {
     }
 
     // TODO: There should be a method that prints content of metrics (method can assume each metric instance supplied from main method).
+    public String getReport(Object metric) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(metric);
+    }
+
+    public void writeReports() {
+
+    }
+
+    public void writeAll(ArrayList<Dataset> datasets, ArrayList<User> users) {
+
+    }
 
     // TODO: Config should include assigned user ids for each dataset and assign related user objects to dataset.
     public HashMap<String, Object> readConfig(String filename) throws FileNotFoundException, JsonProcessingException, InvalidObjectException {
@@ -58,49 +70,11 @@ public class JsonParser {
         }};
     }
 
-    public Dataset loadOutput(String filename) throws JsonProcessingException, FileNotFoundException {
-        String jsonString = readAllLines(filename);
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode datasetJsonObject = objectMapper.readTree(jsonString);
-        return objectMapper.readValue(jsonString, Dataset.class);
-    }
-
     public Dataset readDataset(String filename) throws FileNotFoundException, JsonProcessingException {
         logger.info("Starting to read dataset from " + filename + " file.");
         String jsonString = readAllLines(filename);
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(jsonString, Dataset.class);
-    }
-
-    public ArrayList<Dataset> readDatasets(String[] filenames) throws FileNotFoundException, JsonProcessingException {
-        logger.info("Starting to reading datasets from " + Arrays.toString(filenames) + " files.");
-
-        ArrayList<Dataset> datasets = new ArrayList<>();
-
-        for (String filename : filenames) {
-            logger.info("Starting to read dataset from " + filename + " file.");
-            String jsonString = readAllLines(filename);
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            Dataset dataset = objectMapper.readValue(jsonString, Dataset.class);
-
-            logger.trace("Adding dataset with information" + dataset.toString());
-            datasets.add(dataset);
-        }
-
-        logger.info("Ending to reading datasets from " + Arrays.toString(filenames) + " files.");
-        return datasets;
-    }
-
-    public ArrayList<User> readUsers(String filename) throws FileNotFoundException, JsonProcessingException {
-        logger.info("Starting to reading users from " + filename + " file.");
-        String jsonString = readAllLines(filename);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        User[] parsedUsers = objectMapper.readValue(jsonString, User[].class);
-
-        logger.info("Ending to reading users from " + filename + " file.");
-        return new ArrayList<>(Arrays.asList(parsedUsers));
     }
 
     @NotNull
@@ -116,21 +90,18 @@ public class JsonParser {
         return sb.toString();
     }
 
-    // TODO: This method should only interact with current dataset.
-    public void writeDatasetsWithUsers(ArrayList<Dataset> datasets, ArrayList<User> users) throws IOException, IllegalArgumentException {
-        for (Dataset dataset : datasets) {
-            String outputFilename = "output-" + dataset.getId() + ".json";
-            logger.trace("Writing dataset id:" + dataset.getId() + " to " + outputFilename + " file.");
+    public void writeDatasetWithUsers(Dataset dataset, ArrayList<User> users) throws IOException, IllegalArgumentException {
+        String outputFilename = "output-" + dataset.getId() + ".json";
+        logger.trace("Writing dataset id:" + dataset.getId() + " to " + outputFilename + " file.");
 
-            File outputFile = new File(outputFilename);
-            String outputJson;
+        File outputFile = new File(outputFilename);
+        String outputJson;
 
-            ObjectMapper objectMapper = new ObjectMapper();
-            outputJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(dataset);
+        ObjectMapper objectMapper = new ObjectMapper();
+        outputJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(dataset);
 
-            FileWriter fileWriter = new FileWriter(outputFile);
-            fileWriter.write(outputJson);
-            fileWriter.close();
-        }
+        FileWriter fileWriter = new FileWriter(outputFile);
+        fileWriter.write(outputJson);
+        fileWriter.close();
     }
 }

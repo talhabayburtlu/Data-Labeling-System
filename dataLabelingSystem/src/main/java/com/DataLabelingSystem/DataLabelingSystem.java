@@ -12,13 +12,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 public class DataLabelingSystem {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
         logger.info("Starting simulation.");
 
         JsonParser jsonParser = JsonParser.getJsonParser();
@@ -53,7 +52,7 @@ public class DataLabelingSystem {
                 }
 
                 user.labelWithMechanism(instance, currentDataset.getLabels().toArray(new Label[0]));
-
+                jsonParser.writeAll(datasets, users);
                 int labelAgainProbability = (int) (Math.random() * 101);
                 // Labeling random labeled instance again if consistency check probability maintains.
                 if (labelAgainProbability <= user.getConsistencyCheckProbability() * 100) {
@@ -64,10 +63,8 @@ public class DataLabelingSystem {
 
                     int randomInstanceIndex = (int) (Math.random() * labeledInstances.size());
                     user.labelWithMechanism(labeledInstances.get(randomInstanceIndex), currentDataset.getLabels().toArray(new Label[0]));
+                    jsonParser.writeAll(datasets, users);
                 }
-
-                jsonParser.writeDatasetsWithUsers(datasets, users);
-                TimeUnit.MILLISECONDS.sleep(500);
             }
         }
         logger.info("Ending simulation.");
