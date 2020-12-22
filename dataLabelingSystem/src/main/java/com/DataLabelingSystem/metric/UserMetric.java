@@ -13,6 +13,19 @@ public class UserMetric {
     private User user ;
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
 
+    public void updateDataset(){
+        for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
+            Dataset dataset = user.getAssignedDatasets().get(i);
+
+            for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
+                LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
+                if(labelAssignment.getUser().getId()==getUser().getId()){
+                    this.labelAssignments.set(j,labelAssignment);
+                }
+            }
+        }
+    }
+
     UserMetric(User user){
         this.user = user;
     }
