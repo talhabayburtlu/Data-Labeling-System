@@ -8,7 +8,6 @@ import com.DataLabelingSystem.model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class UserMetric {
     private User user ;
@@ -96,7 +95,7 @@ public class UserMetric {
 
                 if(labelAssignment.getUser().getId()==getUser().getId()){
                         if(!tempInstances.containsKey(labelAssignment.getInstance()) ) {
-                            tempInstances.put(labelAssignment.getInstance(),labelAssignment.getLabe);
+                            // tempInstances.put(labelAssignment.getInstance(),labelAssignment.getLabe);
                         }
                         else if(tempInstances.containsKey(labelAssignment.getInstance())){
 

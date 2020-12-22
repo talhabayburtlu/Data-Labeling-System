@@ -24,23 +24,21 @@ public class RandomLabelingMechanism implements LabelingMechanism {
     }
 
     @Override
-    public void label(User user, Instance instance, Label[] labels) {
+    public void label(User user, Instance instance, ArrayList<Label> labels) {
         Instant labelingStart = Instant.now();
         Dataset dataset = instance.getDataset();
         int maxNumberOfLabelsPerInstance = dataset.getMaxNumberOfLabelsPerInstance();
-        ArrayList<Label> selectedLabelsAsList = new ArrayList<>();
+        ArrayList<Label> selectedLabels = new ArrayList<>();
 
         int randomNumberOfLabelsPerInstance = (int) (Math.random() * maxNumberOfLabelsPerInstance + 1); // Randomizing algorithm, between 0 and maxNumberOfLabelsPerInstance (included)
         for (int i = 0; i < randomNumberOfLabelsPerInstance; i++) { // Selecting labels based on random number of label
-            Label theLabel = labels[(int) (Math.random() * labels.length)]; // Selecting random label.
+            Label theLabel = labels.get((int) (Math.random() * labels.size())); // Selecting random label.
 
-            while (selectedLabelsAsList.contains(theLabel)) // Checking duplicates
-                theLabel = labels[(int) (Math.random() * labels.length)];
+            while (selectedLabels.contains(theLabel)) // Checking duplicates
+                theLabel = labels.get((int) (Math.random() * labels.size()));
 
-            selectedLabelsAsList.add(theLabel);
+            selectedLabels.add(theLabel);
         }
-
-        Label[] selectedLabels = selectedLabelsAsList.toArray(new Label[0]); // Creating label array from arraylist.
 
         LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager(); // Getting manager of label assignments.
 

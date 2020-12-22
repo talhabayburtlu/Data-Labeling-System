@@ -3,7 +3,6 @@ package com.DataLabelingSystem;
 import com.DataLabelingSystem.assignment.LabelAssignment;
 import com.DataLabelingSystem.model.Dataset;
 import com.DataLabelingSystem.model.Instance;
-import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -51,7 +50,7 @@ public class DataLabelingSystem {
                         continue;
                 }
 
-                user.labelWithMechanism(instance, currentDataset.getLabels().toArray(new Label[0]));
+                user.labelWithMechanism(instance, currentDataset.getLabels());
                 jsonParser.writeAll(datasets, users);
                 int labelAgainProbability = (int) (Math.random() * 101);
                 // Labeling random labeled instance again if consistency check probability maintains.
@@ -62,7 +61,7 @@ public class DataLabelingSystem {
                             labeledInstances.add(labelAssignment.getInstance());
 
                     int randomInstanceIndex = (int) (Math.random() * labeledInstances.size());
-                    user.labelWithMechanism(labeledInstances.get(randomInstanceIndex), currentDataset.getLabels().toArray(new Label[0]));
+                    user.labelWithMechanism(labeledInstances.get(randomInstanceIndex), currentDataset.getLabels());
                     jsonParser.writeAll(datasets, users);
                 }
             }

@@ -98,7 +98,7 @@ public class DatasetMetric {
             for (Instance instance : instanceLabelAssignments.keySet()) {
                 int consistencyPercentageForInstance = 0;
                 // Calculate the consistency percentage for all recurrences of this instance for this user
-                Map<Label[], List<LabelAssignment>> classLabelAssignmentFrequencies = instanceLabelAssignments.get(instance).stream().collect(Collectors.groupingBy(LabelAssignment::getLabels));
+                Map<ArrayList<Label>, List<LabelAssignment>> classLabelAssignmentFrequencies = instanceLabelAssignments.get(instance).stream().collect(Collectors.groupingBy(LabelAssignment::getLabels));
                 userPercentageSum += consistencyPercentageForInstance;
             }
             usersWithConsistencyPercentages.put(user, (int) Math.round(userPercentageSum / userPercentageCount));

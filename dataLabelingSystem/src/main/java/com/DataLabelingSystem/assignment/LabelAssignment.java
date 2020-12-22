@@ -16,7 +16,7 @@ public class LabelAssignment {
     @JsonProperty(value = "instance id", access = JsonProperty.Access.WRITE_ONLY)
     private Instance instance = null;
     @JsonProperty(value = "class label ids", access = JsonProperty.Access.WRITE_ONLY)
-    private Label[] labels = null;
+    private ArrayList<Label> labels = null;
     @JsonProperty(value = "user id", access = JsonProperty.Access.WRITE_ONLY)
     private User user = null;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
@@ -27,7 +27,7 @@ public class LabelAssignment {
     protected LabelAssignment() {
     }
 
-    protected LabelAssignment(User user, Instance instance, Label[] labels, Duration duration) {
+    protected LabelAssignment(User user, Instance instance, ArrayList<Label> labels, Duration duration) {
         this.user = user;
         this.instance = instance;
         this.labels = labels;
@@ -39,7 +39,7 @@ public class LabelAssignment {
         return instance;
     }
 
-    public Label[] getLabels() {
+    public ArrayList<Label> getLabels() {
         return labels;
     }
 

@@ -66,7 +66,7 @@ public class User {
         this.mechanism = mechanism;
     }
 
-    public void labelWithMechanism(Instance instance, Label[] labels) {
+    public void labelWithMechanism(Instance instance, ArrayList<Label> labels) {
         mechanism.label(this, instance, labels);
     }
 

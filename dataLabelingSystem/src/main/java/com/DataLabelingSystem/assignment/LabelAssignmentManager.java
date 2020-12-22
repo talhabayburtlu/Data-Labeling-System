@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.time.Duration;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class LabelAssignmentManager {
     private static final Logger logger = LogManager.getLogger();
@@ -27,8 +27,12 @@ public class LabelAssignmentManager {
         return labelAssignmentManager;
     }
 
-    public LabelAssignment createLabelAssignment(User user, Instance instance, Label[] labels, Duration duration) {
-        logger.info("User " + user + " labeled instance: " + instance + " with class label(s):" + Arrays.toString(labels));
+    public LabelAssignment createLabelAssignment(User user, Instance instance, ArrayList<Label> labels, Duration duration) {
+        String labelsInfo = "";
+        for (Label label : labels)
+            labelsInfo += label.toString();
+
+        logger.info("User " + user + " labeled instance: " + instance + " with class label(s):" + labelsInfo);
 
         LabelAssignment assignment = new LabelAssignment(user, instance, labels, duration);
         this.addToDataset(assignment);
