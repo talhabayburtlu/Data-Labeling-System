@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "user id": 1,
+      "user name": "User1",
+      "user type": "RandomBot",
+      "consistency check probability": 0.1
+    },
+    {
+      "user id": 2,
+      "user name": "User2",
+      "user type": "RandomBot",
+      "consistency check probability": 0.1
+    },
+    {
+      "user id": 3,
+      "user name": "User3",
+      "user type": "RandomBot",
+      "consistency check probability": 0.1
+    }
+  ],
+  "datasets": [
+    {
+      "dataset id": 1,
+      "dataset name": "Sentiment Dataset",
+      "file path": "input-1.json"
+    },
+    {
+      "dataset id": 2,
+      "dataset name": "Multi-label Topic Classification Dataset",
+      "file path": "input-2.json"
+    },
+    {
+      "dataset id": 999,
+      "dataset name": "Testing Dataset",
+      "file path": "test.json"
+    }
+  ],
+  "current dataset id": 999
+}

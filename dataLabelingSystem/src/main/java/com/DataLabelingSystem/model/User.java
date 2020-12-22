@@ -25,9 +25,9 @@ public class User {
 
     //new 22:49 17:12:2020
     private ArrayList<Dataset> assignedDatasets = new ArrayList<>();
-    private UserMetric metric ;
+    private UserMetric metric;
     @JsonIgnore
-    private Double consistencyCheckProbability;
+    private Double consistencyCheckProbability = 0.10;
 
     public ArrayList<Dataset> getAssignedDatasets() {
         return assignedDatasets;
