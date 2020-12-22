@@ -6,6 +6,8 @@ import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class RandomLabelingMechanism implements LabelingMechanism {
@@ -23,6 +25,7 @@ public class RandomLabelingMechanism implements LabelingMechanism {
 
     @Override
     public void label(User user, Instance instance, Label[] labels) {
+        Instant labelingStart = Instant.now();
         Dataset dataset = instance.getDataset();
         int maxNumberOfLabelsPerInstance = dataset.getMaxNumberOfLabelsPerInstance();
         ArrayList<Label> selectedLabelsAsList = new ArrayList<>();
@@ -41,6 +44,7 @@ public class RandomLabelingMechanism implements LabelingMechanism {
 
         LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager(); // Getting manager of label assignments.
 
-        labelAssignmentManager.createLabelAssignment(user, instance, selectedLabels); // Creating label assignment.
+        Duration labelingDuration = Duration.between(labelingStart, Instant.now());
+        labelAssignmentManager.createLabelAssignment(user, instance, selectedLabels, labelingDuration); // Creating label assignment.
     }
 }
