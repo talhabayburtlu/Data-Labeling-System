@@ -7,6 +7,7 @@ import com.DataLabelingSystem.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.time.Duration;
 import java.util.Arrays;
 
 public class LabelAssignmentManager {
@@ -26,10 +27,10 @@ public class LabelAssignmentManager {
         return labelAssignmentManager;
     }
 
-    public LabelAssignment createLabelAssignment(User user, Instance instance, Label[] labels) {
+    public LabelAssignment createLabelAssignment(User user, Instance instance, Label[] labels, Duration duration) {
         logger.info("User " + user + " labeled instance: " + instance + " with class label(s):" + Arrays.toString(labels));
 
-        LabelAssignment assignment = new LabelAssignment(user, instance, labels);
+        LabelAssignment assignment = new LabelAssignment(user, instance, labels, duration);
         this.addToDataset(assignment);
         return assignment;
     }

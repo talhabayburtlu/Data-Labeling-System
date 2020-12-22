@@ -4,9 +4,8 @@ import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
 import com.fasterxml.jackson.annotation.*;
-import java.time.*;
 
-
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -28,12 +27,6 @@ public class LabelAssignment {
     protected LabelAssignment() {
     }
 
-    protected LabelAssignment(User user, Instance instance, Label[] labels) {
-        this.user = user;
-        this.instance = instance;
-        this.labels = labels;
-        this.datetime = new Date();
-    }
     protected LabelAssignment(User user, Instance instance, Label[] labels, Duration duration) {
         this.user = user;
         this.instance = instance;
