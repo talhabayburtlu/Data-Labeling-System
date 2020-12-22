@@ -96,7 +96,7 @@ public class InstanceMetric {
 
         for (Label label : labelPercentageMap.keySet()) {
             Double percentage = labelPercentageMap.get(label) / 100.0; // Based on formula given
-            entropy += -1 * percentage * (Math.log(percentage) / Math.log(2));
+            entropy += -1 * percentage * (Math.log(percentage) / Math.log(labelPercentageMap.size())); // Using labelPercentageMap.size() as num of unique labels
         }
 
 

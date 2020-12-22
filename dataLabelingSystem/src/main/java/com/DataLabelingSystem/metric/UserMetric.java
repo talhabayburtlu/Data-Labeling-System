@@ -24,14 +24,30 @@ public class UserMetric {
 
     public HashMap<Dataset,Integer> getDatasetWithCompletenessPercentage(){
         HashMap<Dataset,Integer> completenessPercentage = new HashMap<>();
+        ArrayList<Integer> tempInstances = new ArrayList<>();
+        int InstanceCounter = 0;
 
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
-            completenessPercentage.put(dataset, dataset.getDatasetMetric().getCompletenessPercentage());
+            int numOfInstanceInDataset = dataset.getInstances().size();
+            tempInstances.clear();
+            for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
+                LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
+
+                if(labelAssignment.getUser().getId()==getUser().getId()) {
+
+                    if (!tempInstances.contains(labelAssignment.getInstanceId())) {
+                        tempInstances.add(labelAssignment.getInstanceId());
+                    }
+                }
+            }
+
+            InstanceCounter = tempInstances.size();
+            int compPercentage = (InstanceCounter/numOfInstanceInDataset)*100;
+            completenessPercentage.put(dataset,compPercentage);
         }
         return completenessPercentage;
     }
-    
     public int getInstancesLabeledCount(){
         int InstanceCounter = 0;
 
@@ -67,22 +83,22 @@ public class UserMetric {
         InstanceCounter = tempInstances.size();
         return InstanceCounter;
     }
-
+    //A-5
     public double getConsistencyPercentage(){
         int datasetNumber = user.getAssignedDatasets().size();
         ArrayList<Label> tempLabels = new ArrayList<Label>();
-
+        ArrayList<Label[]> list = new ArrayList<Label[]>();
 
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
             for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
                 LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
                 if(labelAssignment.getUser().getId()==getUser().getId()){
-                    j=0;
+                    //label assignmentlarında sayısında bi list oluştur
+                    list.add(labelAssignment.getLabels());
                 }
-                }
-
             }
+        }
         return 0;
         }
     public double getAverageLabelTime(){
