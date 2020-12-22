@@ -23,12 +23,15 @@ public class UserMetric {
     }
 
     public HashMap<Dataset,Integer> getDatasetWithCompletenessPercentage(){
-        int completenessPercentage;
+        HashMap<Dataset,Integer> completenessPercentage = new HashMap<>();
+
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
-            dataset.getDatasetMetric().getCompletenessPercentage();
+            completenessPercentage.put(dataset, dataset.getDatasetMetric().getCompletenessPercentage());
         }
+        return completenessPercentage;
     }
+    
     public int getInstancesLabeledCount(){
         int InstanceCounter = 0;
 
@@ -83,6 +86,8 @@ public class UserMetric {
         return 0;
         }
     public double getAverageLabelTime(){
+
+
         return 0;
     }
     public double getStandartDeviation(){
