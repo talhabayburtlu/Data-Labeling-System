@@ -8,6 +8,7 @@ import com.DataLabelingSystem.model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class UserMetric {
     private User user ;
@@ -85,17 +86,22 @@ public class UserMetric {
     }
     //A-5
     public double getConsistencyPercentage(){
-        int datasetNumber = user.getAssignedDatasets().size();
-        ArrayList<Label> tempLabels = new ArrayList<Label>();
-        ArrayList<Label[]> list = new ArrayList<Label[]>();
-
+        int globalInstanceCounter = 0; //label'ı birden fazla olan instance'ların sayısı
+        HashMap<Instance,ArrayList<Label>> tempInstances = new HashMap<Instance,ArrayList<Label>>();
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
+
             for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
                 LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
+
                 if(labelAssignment.getUser().getId()==getUser().getId()){
-                    //label assignmentlarında sayısında bi list oluştur
-                    list.add(labelAssignment.getLabels());
+                        if(!tempInstances.containsKey(labelAssignment.getInstance()) ) {
+                            tempInstances.put(labelAssignment.getInstance(),labelAssignment.getLabe);
+                        }
+                        else if(tempInstances.containsKey(labelAssignment.getInstance())){
+
+                        }
+
                 }
             }
         }
