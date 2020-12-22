@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DataLabelingSystem {
 
@@ -19,34 +20,14 @@ public class DataLabelingSystem {
     public static <Booelan> void main(String[] args) throws IOException {
         logger.info("Starting simulation.");
 
-        if (args.length < 3) {
-            logger.error("At least 3 arguments are required.");
-            System.exit(-1);
-        } else if (args.length % 2 != 1) {
-            logger.error("You must provide an input filename for users, and a pair of filenames for each input, one input and one output.");
-            System.exit(-1);
-        }
-        String usersFile = args[0];
-        if (!(new File(usersFile).exists())) {
-            logger.error("File \"" + usersFile + " does not exist.");
-            System.exit(-1);
-        }
-        ArrayList<String> inputFiles = new ArrayList<>();
-        ArrayList<String> outputFiles = new ArrayList<>();
-        for (int i = 1; i < args.length; i += 2) {
-            inputFiles.add(args[i]);
-            outputFiles.add(args[i + 1]);
-        }
-
-
         JsonParser jsonParser = JsonParser.getJsonParser();
-        ArrayList<Dataset> datasets = jsonParser.readDatasets(inputFiles.toArray(new String[0]));
-        ArrayList<User> users = jsonParser.readUsers(usersFile);
+        HashMap<String,Object> config = jsonParser.readConfig("config.json");
+        ArrayList<Dataset> datasets = (ArrayList<Dataset>) config.get("datasets");
+        ArrayList<User> users = (ArrayList<User>) config.get("users");
 
-        Integer datasetId = null;
-        Boolean isSameDataset = null;
-        Dataset currentDataset = datasets.get(datasetId);
-
+        Integer datasetId = (Integer) config.get("current dataset id");
+        Dataset currentDataset = datasets.stream().filter(d -> d.getId() == datasetId).findFirst().get();
+        Boolean isSameDataset = !currentDataset.getLabelAssignments().isEmpty();
 
         logger.trace("Processing dataset: " + currentDataset);
         for (User user : currentDataset.getAssignedUsers()) {

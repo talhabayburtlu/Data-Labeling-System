@@ -21,23 +21,23 @@ public class UserMetric {
         return getNumberOfDatasets;
     }
 
-    public HashMap<Dataset,Integer> getDatasetWithCompletenessPercentage{
-
+    public HashMap<Dataset,Integer> getDatasetWithCompletenessPercentage() {
+        return null;
     }
     public int getInstancesLabeledCount(){
-
+        return 0;
     }
     public int getUniqueInstancesLabeledCount(){
-
+        return 0;
     }
     public double getConsistencyPercentage(){
-
+        return 0;
     }
     public double getAverageLabelTime(){
-
+        return 0;
     }
     public double getStandartDeviation(){
-
+        return 0;
     }
 
 }
