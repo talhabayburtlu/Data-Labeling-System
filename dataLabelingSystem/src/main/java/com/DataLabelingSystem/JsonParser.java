@@ -27,6 +27,9 @@ public class JsonParser {
         return instance;
     }
 
+    // TODO: There should be a method that prints content of metrics (method can assume each metric instance supplied from main method).
+
+    // TODO: Config should include assigned user ids for each dataset and assign related user objects to dataset.
     public HashMap<String, Object> readConfig(String filename) throws FileNotFoundException, JsonProcessingException, InvalidObjectException {
         String jsonString = readAllLines(filename);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -113,6 +116,7 @@ public class JsonParser {
         return sb.toString();
     }
 
+    // TODO: This method should only interact with current dataset.
     public void writeDatasetsWithUsers(ArrayList<Dataset> datasets, ArrayList<User> users) throws IOException, IllegalArgumentException {
         for (Dataset dataset : datasets) {
             String outputFilename = "output-" + dataset.getId() + ".json";
