@@ -18,8 +18,8 @@ public class UserMetric {
     }
 
     public int getNumberOfDatasets(){
-        int getNumberOfDatasets = user.getAssignedDatasets().size();
-        return getNumberOfDatasets;
+        int numberOfDatasets = user.getAssignedDatasets().size();
+        return numberOfDatasets;
     }
 
     public HashMap<Dataset,Integer> getDatasetWithCompletenessPercentage(){
@@ -86,12 +86,43 @@ public class UserMetric {
         return 0;
         }
     public double getAverageLabelTime(){
+        double averageTime = 0;
+        int labelAssignmentCounter = 0;
+        for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
+            Dataset dataset = user.getAssignedDatasets().get(i);
+                for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
+                    LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
+                    if(labelAssignment.getUser().getId()==getUser().getId()){
+                    averageTime += labelAssignment.getDuration().getSeconds();
+                    labelAssignmentCounter++;
+                    }
+                }
+        }
+        averageTime = averageTime/labelAssignmentCounter;
 
-
-        return 0;
+        return averageTime;
     }
-    public double getStandartDeviation(){
-        return 0;
+
+
+    public long getStandardDeviation(){
+        long standartDeviation = 0;
+        ArrayList<Long> durations = new ArrayList<Long>();
+        for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
+            Dataset dataset = user.getAssignedDatasets().get(i);
+            for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
+                LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
+                if(labelAssignment.getUser().getId()==getUser().getId()){
+                    durations.add(labelAssignment.getDuration().getSeconds());
+                }
+
+            }
+        }
+        double averageTime = getAverageLabelTime();
+        for (int i = 0; i < durations.size(); i++) {
+        standartDeviation += (Math.pow((durations.get(i)-averageTime),2) / (durations.size()-1) );
+        }
+        standartDeviation = (long) Math.sqrt(standartDeviation);
+        return standartDeviation;
     }
 
     public User getUser() {

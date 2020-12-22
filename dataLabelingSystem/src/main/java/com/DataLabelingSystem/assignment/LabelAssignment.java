@@ -4,6 +4,8 @@ import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
 import com.fasterxml.jackson.annotation.*;
+import java.time.*;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,6 +23,8 @@ public class LabelAssignment {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private Date datetime = null;
 
+    private Duration duration;
+
     protected LabelAssignment() {
     }
 
@@ -29,6 +33,13 @@ public class LabelAssignment {
         this.instance = instance;
         this.labels = labels;
         this.datetime = new Date();
+    }
+    protected LabelAssignment(User user, Instance instance, Label[] labels, Duration duration) {
+        this.user = user;
+        this.instance = instance;
+        this.labels = labels;
+        this.datetime = new Date();
+        this.duration = duration;
     }
 
     public Instance getInstance() {
@@ -70,5 +81,13 @@ public class LabelAssignment {
     @JsonGetter("user id")
     public int getUserId() {
         return this.getUser().getId();
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
     }
 }
