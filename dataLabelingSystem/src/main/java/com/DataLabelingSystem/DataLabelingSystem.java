@@ -51,7 +51,7 @@ public class DataLabelingSystem {
                 }
 
                 user.labelWithMechanism(instance, currentDataset.getLabels());
-                jsonParser.writeAll(datasets, users);
+                jsonParser.writeAll(currentDataset, datasets, users);
                 int labelAgainProbability = (int) (Math.random() * 101);
                 // Labeling random labeled instance again if consistency check probability maintains.
                 if (labelAgainProbability <= user.getConsistencyCheckProbability() * 100) {
@@ -62,7 +62,7 @@ public class DataLabelingSystem {
 
                     int randomInstanceIndex = (int) (Math.random() * labeledInstances.size());
                     user.labelWithMechanism(labeledInstances.get(randomInstanceIndex), currentDataset.getLabels());
-                    jsonParser.writeAll(datasets, users);
+                    jsonParser.writeAll(currentDataset, datasets, users);
                 }
             }
         }
