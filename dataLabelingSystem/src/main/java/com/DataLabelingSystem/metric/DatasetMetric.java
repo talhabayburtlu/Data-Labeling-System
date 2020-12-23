@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 public class DatasetMetric {
     private final Dataset dataset;
     private ArrayList<LabelAssignment> labelAssignments;
-    private int completenessPercentage;
 
     public DatasetMetric(Dataset dataset) {
         this.dataset = dataset;
@@ -26,7 +25,7 @@ public class DatasetMetric {
         labelAssignments = dataset.getLabelAssignments();
     }
 
-    public void updateCompletenessPercentage() {
+    public int getCompletenessPercentage() {
         ArrayList<Instance> labeledInstances = new ArrayList<>();
         for (LabelAssignment labelAssignment : labelAssignments) {
             if (!labeledInstances.contains(labelAssignment.getInstance())) {
@@ -35,15 +34,24 @@ public class DatasetMetric {
         }
         double labeledCount = labeledInstances.size();
         double totalCount = dataset.getInstances().size();
-        this.completenessPercentage = (int) Math.round((labeledCount / totalCount) * 100);
-    }
-
-    public int getCompletenessPercentage() {
-        return completenessPercentage;
+        return (int) Math.round((labeledCount / totalCount) * 100);
     }
 
     public HashMap<Label, Integer> getFinalLabelsWithPercentages() {
-        throw new UnsupportedOperationException("Not implemented");
+        HashMap<Label, Integer> finalLabelCounts = new HashMap<>();
+        int allLabelsCount = dataset.getLabels().size();
+        for (Label label : dataset.getLabels()) {
+            finalLabelCounts.put(label, 0);
+        }
+        for (Instance instance : dataset.getInstances()) {
+            int curVal = finalLabelCounts.get(instance.getFinalLabel());
+            finalLabelCounts.put(instance.getFinalLabel(), curVal + 1);
+        }
+        for (Label label : finalLabelCounts.keySet()) {
+            int curVal = finalLabelCounts.get(label);
+            finalLabelCounts.put(label, (int) Math.round((((double) curVal) / allLabelsCount) * 100));
+        }
+        return finalLabelCounts;
     }
 
     public HashMap<Label, Integer> getLabelsWithUniqueInstanceCount() {
