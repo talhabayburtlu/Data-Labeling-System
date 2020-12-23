@@ -45,7 +45,7 @@ public class UserMetric {
     public HashMap<Dataset,Integer> getDatasetWithCompletenessPercentage(){
         HashMap<Dataset,Integer> completenessPercentage = new HashMap<>();
         ArrayList<Integer> tempInstances = new ArrayList<>();
-        int InstanceCounter = 0;
+        int InstanceCounter;
 
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
@@ -86,7 +86,7 @@ public class UserMetric {
     }
     /* A-4 This method brings total number instances which are labeled just one time by a specific user. */
     public int getUniqueInstancesLabeledCount(){
-        int InstanceCounter = 0;
+        int InstanceCounter;
         ArrayList<Integer> tempInstances = new ArrayList<>();
 
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
@@ -108,8 +108,7 @@ public class UserMetric {
        and returns it with percentage form.
     */
     public double getConsistencyPercentage(){
-        int globalInstanceCounter = 0; //label'ı birden fazla olan instance'ların sayısı
-        HashMap<Instance,ArrayList<Integer>> tempInstances = new HashMap<Instance,ArrayList<Integer>>();
+        HashMap<Instance,ArrayList<Integer>> tempInstances = new HashMap<>();
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
 
@@ -135,14 +134,19 @@ public class UserMetric {
                 }
             }
         }
-        int labelsMoreThanOne = 0;
-        int inconsistent = 0;
+        double labelsMoreThanOne = 0;
+        double inconsistent = 0;
 
         for (HashMap.Entry everySingleInstance : tempInstances.entrySet()) {
-            if (everySingleInstance.getValue().toString().length() > 1) {
+            String newLabels = everySingleInstance.getValue().toString().replace("[","")
+                    .replace("]","").replace(",","").replace(" ","");
+            int lengthOfNewLabels = everySingleInstance.getValue().toString().replace("[","")
+                    .replace("]","").replace(",","").replace(" ","").length();
+
+            if ( lengthOfNewLabels > 1) {
                 labelsMoreThanOne++;
-                for (int i = 0; i < everySingleInstance.getValue().toString().length() ; i++) {
-                    if (!(everySingleInstance.getValue().toString().charAt(0)==everySingleInstance.getValue().toString().charAt(i)))
+                for (int i = 0; i < lengthOfNewLabels ; i++) {
+                    if (!(newLabels.charAt(0)==newLabels.charAt(i)))
                               {
                         inconsistent++;
                         break;
@@ -150,9 +154,8 @@ public class UserMetric {
                 }
             }
         }
-        int consistency = (labelsMoreThanOne - inconsistent) / labelsMoreThanOne * 100; //FIXME integer division
-
-        return consistency;
+        double consistency = (((labelsMoreThanOne - inconsistent) / labelsMoreThanOne) * 100);
+        return (int)consistency;
 
     }
     /* A-6 This method calculates the average time spent at labeling an instance in seconds */
@@ -177,7 +180,7 @@ public class UserMetric {
     /* A-7 This method calculates Standard Deviation of time spent at labeling an instance in seconds */
     public long getStandardDeviation(){
         long standartDeviation = 0;
-        ArrayList<Long> durations = new ArrayList<Long>();
+        ArrayList<Long> durations = new ArrayList<>();
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
             for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
