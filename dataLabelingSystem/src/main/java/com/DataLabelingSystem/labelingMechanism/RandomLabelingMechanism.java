@@ -9,6 +9,7 @@ import com.DataLabelingSystem.model.User;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class RandomLabelingMechanism implements LabelingMechanism {
     private static RandomLabelingMechanism randomLabelingMechanism;
@@ -42,6 +43,12 @@ public class RandomLabelingMechanism implements LabelingMechanism {
 
         LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager(); // Getting manager of label assignments.
 
+        try {
+            TimeUnit.MILLISECONDS.sleep(500); // synthetic delay
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
         Duration labelingDuration = Duration.between(labelingStart, Instant.now());
         labelAssignmentManager.createLabelAssignment(user, instance, selectedLabels, labelingDuration); // Creating label assignment.
     }

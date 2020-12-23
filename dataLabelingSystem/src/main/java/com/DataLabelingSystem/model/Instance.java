@@ -60,6 +60,12 @@ public class Instance {
         this.subInstances = subInstances;
     }
 
+    //TODO output to JSON?
+    public Label getFinalLabel() {
+        instanceMetric.updateLabelAssignments(); //FIXME delegate update to separate method
+        return instanceMetric.getMostFrequentLabel();
+    }
+
     @Override
     public String toString() {
         return "Instance{" +

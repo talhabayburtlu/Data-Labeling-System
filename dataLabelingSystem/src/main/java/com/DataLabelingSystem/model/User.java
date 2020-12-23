@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
+//TODO Check JsonIgnore annotations for assignedDatasets and metric
+//TODO Change getMetric method name for all three classes
 @JsonIdentityInfo(scope = User.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "user id")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
@@ -24,7 +26,9 @@ public class User {
     private LabelingMechanism mechanism;
 
     //new 22:49 17:12:2020
+    @JsonIgnore
     private ArrayList<Dataset> assignedDatasets = new ArrayList<>();
+    @JsonIgnore
     private UserMetric metric;
     @JsonIgnore
     private Double consistencyCheckProbability = 0.10;
@@ -37,13 +41,15 @@ public class User {
         this.assignedDatasets = assignedDatasets;
     }
 
-    public static void initialize (ArrayList<Dataset> assignedDatasets, Instance instance){
-        for(int i=0 ; i < instance.getDataset().getId(); i++){
+    public static void initialize(ArrayList<Dataset> assignedDatasets, Instance instance) {
+        for (int i = 0; i < instance.getDataset().getId(); i++) {
             assignedDatasets.add(instance.getDataset());
         }
     }
 
-
+    public UserMetric getMetric() {
+        return metric;
+    }
 
 
     //

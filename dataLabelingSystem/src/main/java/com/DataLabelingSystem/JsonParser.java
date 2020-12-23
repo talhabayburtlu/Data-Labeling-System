@@ -5,6 +5,7 @@ import com.DataLabelingSystem.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,6 +20,7 @@ import java.util.Scanner;
 public class JsonParser {
     private static final JsonParser instance = new JsonParser();
     private static final Logger logger = LogManager.getLogger();
+    private static final ObjectMapper objectMapper = JsonMapper.builder().findAndAddModules().build();
 
     private JsonParser() {
     }
@@ -27,24 +29,28 @@ public class JsonParser {
         return instance;
     }
 
-    // TODO: There should be a method that prints content of metrics (method can assume each metric instance supplied from main method).
-    public String getReport(Object metric) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
+    public String getReport(Object metric) throws JsonProcessingException { //TODO Create an abstract metrics superclass with the update method and use that method polymorphically here?
+        //TODO metric.updateLabelAssignments()
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(metric);
     }
 
-    public void writeReports() {
-
+    public void writeReports(ArrayList<Dataset> datasets, ArrayList<User> users) {
+        throw new UnsupportedOperationException("Method writeReports() is not implemented yet.");
     }
 
-    public void writeAll(ArrayList<Dataset> datasets, ArrayList<User> users) {
-
+    public void writeAll(Dataset currentDataset, ArrayList<Dataset> datasets, ArrayList<User> users) throws IOException {
+        writeDatasetWithUsers(currentDataset);
+        for (Dataset dataset : datasets) {
+            String report = getReport(dataset.getDatasetMetric());
+        }
+        for (User user : users) {
+            String report = getReport(user.getMetric());
+        }
     }
 
     // TODO: Config should include assigned user ids for each dataset and assign related user objects to dataset.
     public HashMap<String, Object> readConfig(String filename) throws FileNotFoundException, JsonProcessingException, InvalidObjectException {
         String jsonString = readAllLines(filename);
-        ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode configJsonObject = (ObjectNode) objectMapper.readTree(jsonString);
 
         ArrayList<User> users = new ArrayList<>(Arrays.asList(objectMapper.treeToValue(configJsonObject.get("users"), User[].class)));
@@ -73,7 +79,6 @@ public class JsonParser {
     public Dataset readDataset(String filename) throws FileNotFoundException, JsonProcessingException {
         logger.info("Starting to read dataset from " + filename + " file.");
         String jsonString = readAllLines(filename);
-        ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(jsonString, Dataset.class);
     }
 
@@ -90,14 +95,14 @@ public class JsonParser {
         return sb.toString();
     }
 
-    public void writeDatasetWithUsers(Dataset dataset, ArrayList<User> users) throws IOException, IllegalArgumentException {
+    // TODO Print assigned users!
+    public void writeDatasetWithUsers(Dataset dataset) throws IOException, IllegalArgumentException {
         String outputFilename = "output-" + dataset.getId() + ".json";
         logger.trace("Writing dataset id:" + dataset.getId() + " to " + outputFilename + " file.");
 
         File outputFile = new File(outputFilename);
         String outputJson;
 
-        ObjectMapper objectMapper = new ObjectMapper();
         outputJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(dataset);
 
         FileWriter fileWriter = new FileWriter(outputFile);
