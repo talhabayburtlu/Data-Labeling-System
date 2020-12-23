@@ -44,8 +44,12 @@ public class DatasetMetric {
             finalLabelCounts.put(label, 0);
         }
         for (Instance instance : dataset.getInstances()) {
-            int curVal = finalLabelCounts.get(instance.getFinalLabel());
-            finalLabelCounts.put(instance.getFinalLabel(), curVal + 1);
+            Label finalLabel = instance.getFinalLabel();
+            if (finalLabel == null) {
+                continue;
+            }
+            int curVal = finalLabelCounts.get(finalLabel);
+            finalLabelCounts.put(finalLabel, curVal + 1);
         }
         for (Label label : finalLabelCounts.keySet()) {
             int curVal = finalLabelCounts.get(label);

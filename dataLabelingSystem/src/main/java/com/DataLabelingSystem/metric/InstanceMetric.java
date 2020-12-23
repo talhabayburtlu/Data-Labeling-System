@@ -4,6 +4,7 @@ import com.DataLabelingSystem.assignment.LabelAssignment;
 import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -72,8 +73,13 @@ public class InstanceMetric {
         return (HashMap<Label, Integer>) Collections.singletonMap(label, percentage);
     }
 
+    @Nullable
     public Label getMostFrequentLabel() {
-        return Collections.max(countLabelOccurrences().entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
+        HashMap<Label, Integer> labelOccurrences = countLabelOccurrences();
+        if (labelOccurrences.isEmpty()) {
+            return null;
+        }
+        return Collections.max(labelOccurrences.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
     }
 
     public HashMap<Label, Integer> getAllLabelFrequencies() { // Returns all labels with their frequency.

@@ -29,8 +29,8 @@ public class User {
     @JsonIgnore
     private ArrayList<Dataset> assignedDatasets = new ArrayList<>();
     @JsonIgnore
-    private UserMetric metric;
-    @JsonIgnore
+    private final UserMetric metric = new UserMetric(this);
+    @JsonIgnore //TODO Read from JSON
     private Double consistencyCheckProbability = 0.10;
 
     public ArrayList<Dataset> getAssignedDatasets() {

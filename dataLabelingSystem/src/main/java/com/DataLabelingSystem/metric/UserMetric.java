@@ -11,29 +11,29 @@ import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class UserMetric {
-    private User user ;
+    private User user;
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
 
-    public void updateDataset(){
-        for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
+    public UserMetric(User user) {
+        this.user = user;
+        this.updateDataset();
+    }
+
+    public void updateDataset() {
+        for (int i = 0; i < user.getAssignedDatasets().size(); i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
 
             for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
                 LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
-                if(labelAssignment.getUser().getId()==getUser().getId()){
-                    this.labelAssignments.set(j,labelAssignment);
+                if (labelAssignment.getUser().getId() == getUser().getId()) {
+                    this.labelAssignments.set(j, labelAssignment);
                 }
             }
         }
     }
 
-    UserMetric(User user){
-        this.user = user;
-    }
-
     public int getNumberOfDatasets(){
-        int numberOfDatasets = user.getAssignedDatasets().size();
-        return numberOfDatasets;
+        return user.getAssignedDatasets().size();
     }
 
     public HashMap<Dataset,Integer> getDatasetWithCompletenessPercentage(){
@@ -130,7 +130,7 @@ public class UserMetric {
         int inconsistent = 0;
 
         for (HashMap.Entry everySingleInstance : tempInstances.entrySet()) {
-            if (tempInstances.get(everySingleInstance.getValue()).size() > 1) {
+            if (tempInstances.get(everySingleInstance.getValue()).size() > 1) { //FIXME
                 labelsMoreThanOne++;
                 for (int i = 0; i < tempInstances.get(everySingleInstance.getValue()).size(); i++) {
                     if (tempInstances.get(everySingleInstance.getValue()).get(0)
@@ -141,7 +141,7 @@ public class UserMetric {
                 }
             }
         }
-        int consistency = (labelsMoreThanOne - inconsistent)/labelsMoreThanOne*100;
+        int consistency = (labelsMoreThanOne - inconsistent) / labelsMoreThanOne * 100; //FIXME integer division
 
         return consistency;
 

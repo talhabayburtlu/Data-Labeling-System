@@ -2,6 +2,7 @@ package com.DataLabelingSystem.model;
 
 import com.DataLabelingSystem.metric.InstanceMetric;
 import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ public class Instance {
     @JsonIgnore
     private Dataset dataset;
     @JsonIgnore
-    private InstanceMetric instanceMetric;
+    private final InstanceMetric instanceMetric = new InstanceMetric(this);
     @JsonIgnore
     private ArrayList<SubInstance> subInstances = new ArrayList<>();
 
@@ -60,6 +61,7 @@ public class Instance {
         this.subInstances = subInstances;
     }
 
+    @Nullable
     //TODO output to JSON?
     public Label getFinalLabel() {
         instanceMetric.updateLabelAssignments(); //FIXME delegate update to separate method
