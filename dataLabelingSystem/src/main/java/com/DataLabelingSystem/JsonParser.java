@@ -2,6 +2,7 @@ package com.DataLabelingSystem;
 
 import com.DataLabelingSystem.model.Dataset;
 import com.DataLabelingSystem.model.User;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,9 +21,11 @@ import java.util.Scanner;
 public class JsonParser {
     private static final JsonParser instance = new JsonParser();
     private static final Logger logger = LogManager.getLogger();
-    private static final ObjectMapper objectMapper = JsonMapper.builder().findAndAddModules().build();
+    private static ObjectMapper objectMapper;
 
     private JsonParser() {
+        objectMapper = JsonMapper.builder().findAndAddModules().build();
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
     public static JsonParser getJsonParser() {

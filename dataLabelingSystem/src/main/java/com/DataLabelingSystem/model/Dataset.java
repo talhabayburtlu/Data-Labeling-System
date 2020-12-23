@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @JsonPropertyOrder({"dataset id", "dataset name", "instance type", "maximum number of labels per instance", "class labels", "instances", "class label assignments"})
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonIdentityInfo(scope = Dataset.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "dataset id")
 public class Dataset {
