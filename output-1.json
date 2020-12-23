@@ -24,33 +24,26 @@
     "instance" : "mesela kamerası aldık yoktu"
   }, {
     "id" : 4,
-    "instance": "siteniz çalışmıyor kaç gündür"
-  },
-    {
-      "id": 5,
-      "instance": "şimdilik memnun kaldım umarım kararım değişmez"
-    },
-    {
-      "id": 6,
-      "instance": "durduğu yerde sessiz moduna geçmesi başta fazla giden bataryasının ayda kapasitesinin ciddi anlamda düşmesi dışında fiyatı düşünüldüğünde iyi"
-    },
-    {
-      "id": 7,
-      "instance": "filmin büyük artısı uzun zamandır görmediğimiz oyunculuğunu döktürmesini sağlamasıydı"
-    },
-    {
-      "id": 8,
-      "instance": "şarjı hemen bitiriyor"
-    },
-    {
-      "id": 9,
-      "instance": "in yeni kampanyasi cok basarili"
-    },
-    {
-      "id": 10,
-      "instance": "kullanışlı fiyata alınabilecek güzel düsünmeden alabilirsiniz"
-    }
-  ],
-  "class label assignments": [],
-  "assigned users": []
+    "instance" : "siteniz çalışmıyor kaç gündür"
+  }, {
+    "id" : 5,
+    "instance" : "şimdilik memnun kaldım umarım kararım değişmez"
+  }, {
+    "id" : 6,
+    "instance" : "durduğu yerde sessiz moduna geçmesi başta fazla giden bataryasının ayda kapasitesinin ciddi anlamda düşmesi dışında fiyatı düşünüldüğünde iyi"
+  }, {
+    "id" : 7,
+    "instance" : "filmin büyük artısı uzun zamandır görmediğimiz oyunculuğunu döktürmesini sağlamasıydı"
+  }, {
+    "id" : 8,
+    "instance" : "şarjı hemen bitiriyor"
+  }, {
+    "id" : 9,
+    "instance" : "in yeni kampanyasi cok basarili"
+  }, {
+    "id" : 10,
+    "instance" : "kullanışlı fiyata alınabilecek güzel düsünmeden alabilirsiniz"
+  } ],
+  "class label assignments" : [ ],
+  "assigned users" : [ ]
 }

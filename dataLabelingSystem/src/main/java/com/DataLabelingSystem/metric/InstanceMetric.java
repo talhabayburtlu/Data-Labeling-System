@@ -56,7 +56,7 @@ public class InstanceMetric {
                 if (labelIntegerMap.containsKey(label)) // Increments occurrence of label if exist in map.
                     labelIntegerMap.replace(label, labelIntegerMap.get(label) + 1);
                 else // Adds label to the map if doesn't exist.
-                    labelIntegerMap.put(label, 0);
+                    labelIntegerMap.put(label, 1); // 1 if adds first time
             }
         return labelIntegerMap;
     }

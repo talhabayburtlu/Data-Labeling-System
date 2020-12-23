@@ -8,10 +8,24 @@ import com.DataLabelingSystem.model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class UserMetric {
     private User user ;
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
+
+    public void updateDataset(){
+        for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
+            Dataset dataset = user.getAssignedDatasets().get(i);
+
+            for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
+                LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
+                if(labelAssignment.getUser().getId()==getUser().getId()){
+                    this.labelAssignments.set(j,labelAssignment);
+                }
+            }
+        }
+    }
 
     UserMetric(User user){
         this.user = user;
@@ -86,7 +100,7 @@ public class UserMetric {
     //A-5
     public double getConsistencyPercentage(){
         int globalInstanceCounter = 0; //label'ı birden fazla olan instance'ların sayısı
-        HashMap<Instance,ArrayList<Label>> tempInstances = new HashMap<Instance,ArrayList<Label>>();
+        HashMap<Instance,ArrayList<Integer>> tempInstances = new HashMap<Instance,ArrayList<Integer>>();
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
 
@@ -94,17 +108,43 @@ public class UserMetric {
                 LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
 
                 if(labelAssignment.getUser().getId()==getUser().getId()){
+
                         if(!tempInstances.containsKey(labelAssignment.getInstance()) ) {
-                            // tempInstances.put(labelAssignment.getInstance(),labelAssignment.getLabe);
+                            ArrayList<Integer> labelIds = labelAssignment.getLabels()
+                                    .stream()
+                                    .map(label -> label.getId())
+                                    .collect(Collectors.toCollection(ArrayList::new));
+                            tempInstances.put(labelAssignment.getInstance(),labelIds);
                         }
                         else if(tempInstances.containsKey(labelAssignment.getInstance())){
+                            ArrayList<Label> currentLabelsList = labelAssignment.getLabels();
 
+                            for (int k = 0; k < currentLabelsList.size(); k++) {
+                                tempInstances.get(labelAssignment.getInstance()).add(currentLabelsList.get(k).getId());
+                            }
                         }
-
                 }
             }
         }
-        return 0;
+        int labelsMoreThanOne = 0;
+        int inconsistent = 0;
+
+        for (HashMap.Entry everySingleInstance : tempInstances.entrySet()) {
+            if (tempInstances.get(everySingleInstance.getValue()).size() > 1) {
+                labelsMoreThanOne++;
+                for (int i = 0; i < tempInstances.get(everySingleInstance.getValue()).size(); i++) {
+                    if (tempInstances.get(everySingleInstance.getValue()).get(0)
+                            != tempInstances.get(everySingleInstance.getValue()).get(i)) {
+                        inconsistent++;
+                        break;
+                    }
+                }
+            }
+        }
+        int consistency = (labelsMoreThanOne - inconsistent)/labelsMoreThanOne*100;
+
+        return consistency;
+
         }
     public double getAverageLabelTime(){
         double averageTime = 0;
