@@ -14,6 +14,10 @@ public class UserMetric {
     private User user ;
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
 
+
+    /*    This method updates the labelAssignments field of this class with using
+     LabelAssignments ArrayList from dataset for a specific user.
+    */
     public void updateDataset(){
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
@@ -30,12 +34,14 @@ public class UserMetric {
     UserMetric(User user){
         this.user = user;
     }
-
+    /* A-1 This methods brings the number of assigned datasets for a specific user. */
     public int getNumberOfDatasets(){
         int numberOfDatasets = user.getAssignedDatasets().size();
         return numberOfDatasets;
     }
-
+    /* A-2 This methods lists all the datasets which a specific user assigned
+       with their completeness percentage.
+    */
     public HashMap<Dataset,Integer> getDatasetWithCompletenessPercentage(){
         HashMap<Dataset,Integer> completenessPercentage = new HashMap<>();
         ArrayList<Integer> tempInstances = new ArrayList<>();
@@ -62,6 +68,7 @@ public class UserMetric {
         }
         return completenessPercentage;
     }
+    /* A-3 This method brings total number of instances which are labeled by a specific user. */
     public int getInstancesLabeledCount(){
         int InstanceCounter = 0;
 
@@ -77,7 +84,7 @@ public class UserMetric {
         }
         return InstanceCounter;
     }
-
+    /* A-4 This method brings total number instances which are labeled just one time by a specific user. */
     public int getUniqueInstancesLabeledCount(){
         int InstanceCounter = 0;
         ArrayList<Integer> tempInstances = new ArrayList<>();
@@ -97,7 +104,9 @@ public class UserMetric {
         InstanceCounter = tempInstances.size();
         return InstanceCounter;
     }
-    //A-5
+    /* A-5 This method calculates labeling consistency of a specific user
+       and returns it with percentage form.
+    */
     public double getConsistencyPercentage(){
         int globalInstanceCounter = 0; //label'ı birden fazla olan instance'ların sayısı
         HashMap<Instance,ArrayList<Integer>> tempInstances = new HashMap<Instance,ArrayList<Integer>>();
@@ -133,8 +142,8 @@ public class UserMetric {
             if (tempInstances.get(everySingleInstance.getValue()).size() > 1) {
                 labelsMoreThanOne++;
                 for (int i = 0; i < tempInstances.get(everySingleInstance.getValue()).size(); i++) {
-                    if (tempInstances.get(everySingleInstance.getValue()).get(0)
-                            != tempInstances.get(everySingleInstance.getValue()).get(i)) {
+                    if (!tempInstances.get(everySingleInstance.getValue()).get(0).equals(tempInstances.get(everySingleInstance.getValue()).get(i)))
+                              {
                         inconsistent++;
                         break;
                     }
@@ -145,7 +154,8 @@ public class UserMetric {
 
         return consistency;
 
-        }
+    }
+    /* A-6 This method calculates the average time spent at labeling an instance in seconds */
     public double getAverageLabelTime(){
         double averageTime = 0;
         int labelAssignmentCounter = 0;
@@ -164,7 +174,7 @@ public class UserMetric {
         return averageTime;
     }
 
-
+    /* A-6 This method calculates Standard Deviation of time spent at labeling an instance in seconds */
     public long getStandardDeviation(){
         long standartDeviation = 0;
         ArrayList<Long> durations = new ArrayList<Long>();
@@ -186,6 +196,7 @@ public class UserMetric {
         return standartDeviation;
     }
 
+    //Getter and Setter methods.
     public User getUser() {
         return user;
     }
