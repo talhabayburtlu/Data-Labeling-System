@@ -139,10 +139,10 @@ public class UserMetric {
         int inconsistent = 0;
 
         for (HashMap.Entry everySingleInstance : tempInstances.entrySet()) {
-            if (tempInstances.get(everySingleInstance.getValue()).size() > 1) { //FIXME
+            if (everySingleInstance.getValue().toString().length() > 1) {
                 labelsMoreThanOne++;
-                for (int i = 0; i < tempInstances.get(everySingleInstance.getValue()).size(); i++) {
-                    if (!tempInstances.get(everySingleInstance.getValue()).get(0).equals(tempInstances.get(everySingleInstance.getValue()).get(i)))
+                for (int i = 0; i < everySingleInstance.getValue().toString().length() ; i++) {
+                    if (!(everySingleInstance.getValue().toString().charAt(0)==everySingleInstance.getValue().toString().charAt(i)))
                               {
                         inconsistent++;
                         break;
@@ -174,7 +174,7 @@ public class UserMetric {
         return averageTime;
     }
 
-    /* A-6 This method calculates Standard Deviation of time spent at labeling an instance in seconds */
+    /* A-7 This method calculates Standard Deviation of time spent at labeling an instance in seconds */
     public long getStandardDeviation(){
         long standartDeviation = 0;
         ArrayList<Long> durations = new ArrayList<Long>();
