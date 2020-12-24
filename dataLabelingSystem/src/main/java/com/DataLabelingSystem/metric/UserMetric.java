@@ -38,7 +38,7 @@ public class UserMetric {
     }
 
     /* A-1 This methods brings the number of assigned datasets for a specific user. */
-    public int getNumberOfDatasets(){
+    public int getNumberOfDatasets() {
         return user.getAssignedDatasets().size();
     }
     /* A-2 This methods lists all the datasets which a specific user assigned
