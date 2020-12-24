@@ -5,6 +5,7 @@ import com.DataLabelingSystem.model.Dataset;
 import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+//TODO JsonPropertyOrder and names for each Metric class
 public class DatasetMetric {
     private final Dataset dataset;
     private ArrayList<LabelAssignment> labelAssignments;
@@ -49,7 +51,6 @@ public class DatasetMetric {
 
     public HashMap<Label, Integer> getFinalLabelsWithPercentages() {
         HashMap<Label, Integer> finalLabelCounts = new HashMap<>();
-        int allLabelsCount = dataset.getLabels().size();
         for (Label label : dataset.getLabels()) {
             finalLabelCounts.put(label, 0);
         }
@@ -61,9 +62,16 @@ public class DatasetMetric {
             int curVal = finalLabelCounts.get(finalLabel);
             finalLabelCounts.put(finalLabel, curVal + 1);
         }
+        int allLabelsCount = 0;
+        for (Label label : finalLabelCounts.keySet()) {
+            if (finalLabelCounts.get(label) != 0) {
+                allLabelsCount++;
+            }
+        }
+
         for (Label label : finalLabelCounts.keySet()) {
             int curVal = finalLabelCounts.get(label);
-            finalLabelCounts.put(label, (int) Math.round((((double) curVal) / allLabelsCount) * 100));
+            finalLabelCounts.put(label, (int) Math.round((((double) curVal) / finalLabelCounts.size()) * 100));
         }
         return finalLabelCounts;
     }
@@ -82,8 +90,13 @@ public class DatasetMetric {
         return labelsWithUniqueInstanceCount;
     }
 
+    @JsonIgnore
     public ArrayList<User> getUsersAssigned() {
         return dataset.getAssignedUsers();
+    }
+
+    public Integer getNumberOfUsersAssigned() {
+        return dataset.getAssignedUsers().size();
     }
 
     public HashMap<User, Integer> getUsersWithCompletenessPercentages() { // TODO maybe use stream filtering here instead of nested for loops?

@@ -9,7 +9,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
-//TODO Check JsonIgnore annotations for assignedDatasets and metric
 //TODO Change getMetric method name for all three classes
 @JsonIdentityInfo(scope = User.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "user id")
 @JsonIgnoreProperties(ignoreUnknown = true)

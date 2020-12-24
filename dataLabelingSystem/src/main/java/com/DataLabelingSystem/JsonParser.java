@@ -34,7 +34,7 @@ public class JsonParser {
         return instance;
     }
 
-    public String getReport(Object metric) throws JsonProcessingException { //TODO Create an abstract metrics superclass with the update method and use that method polymorphically here?
+    public String getReport(Object metric) throws JsonProcessingException {
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(metric);
     }
 
@@ -72,7 +72,6 @@ public class JsonParser {
         fileWriter.close();
     }
 
-    // TODO: Config should include assigned user ids for each dataset and assign related user objects to dataset.
     public HashMap<String, Object> readConfig(String filename) throws FileNotFoundException, JsonProcessingException, InvalidObjectException {
         String jsonString = readAllLines(filename);
         ObjectNode configJsonObject = (ObjectNode) objectMapper.readTree(jsonString);
@@ -104,7 +103,7 @@ public class JsonParser {
 
         Integer currentDatasetId = configJsonObject.get("current dataset id").intValue();
 
-        return new HashMap<String, Object>() {{ // TODO a different return value can be used here instead of HashMap
+        return new HashMap<String, Object>() {{
             put("users", users);
             put("datasets", datasets);
             put("current dataset id", currentDatasetId);

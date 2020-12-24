@@ -67,7 +67,6 @@ public class Instance {
     }
 
     @Nullable
-    //TODO Ignore this and add separate JSON Getter that returns a string representation for the object?
     public Label getFinalLabel() {
         return instanceMetric.getMostFrequentLabel();
     }
