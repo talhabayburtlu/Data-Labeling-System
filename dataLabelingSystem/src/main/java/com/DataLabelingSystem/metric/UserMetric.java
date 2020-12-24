@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class UserMetric {
     private User user;
-    private final ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
+    private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
 
     public UserMetric(User user) {
         this.user = user;
@@ -107,9 +107,7 @@ public class UserMetric {
     /* A-5 This method calculates labeling consistency of a specific user
        and returns it with percentage form.
     */
-
-    public Integer getConsistencyPercentage() {
-        int globalInstanceCounter = 0; //label'ı birden fazla olan instance'ların sayısı
+    public double getConsistencyPercentage() {
         HashMap<Instance, ArrayList<Integer>> tempInstances = new HashMap<>();
         for (int i = 0; i < user.getAssignedDatasets().size(); i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
@@ -122,41 +120,40 @@ public class UserMetric {
                     if (!tempInstances.containsKey(labelAssignment.getInstance())) {
                         ArrayList<Integer> labelIds = labelAssignment.getLabels()
                                 .stream()
-                                .map(Label::getId)
+                                .map(label -> label.getId())
                                 .collect(Collectors.toCollection(ArrayList::new));
                         tempInstances.put(labelAssignment.getInstance(), labelIds);
                     } else if (tempInstances.containsKey(labelAssignment.getInstance())) {
                         ArrayList<Label> currentLabelsList = labelAssignment.getLabels();
 
-                        for (Label label : currentLabelsList) {
-                            tempInstances.get(labelAssignment.getInstance()).add(label.getId());
+                        for (int k = 0; k < currentLabelsList.size(); k++) {
+                            tempInstances.get(labelAssignment.getInstance()).add(currentLabelsList.get(k).getId());
                         }
                     }
                 }
             }
         }
-        int labelsMoreThanOne = 0;
-        int inconsistent = 0;
+        double labelsMoreThanOne = 0;
+        double inconsistent = 0;
 
         for (HashMap.Entry everySingleInstance : tempInstances.entrySet()) {
-            if (everySingleInstance.getValue().toString().length() > 1) {
+            String newLabels = everySingleInstance.getValue().toString().replace("[", "")
+                    .replace("]", "").replace(",", "").replace(" ", "");
+            int lengthOfNewLabels = everySingleInstance.getValue().toString().replace("[", "")
+                    .replace("]", "").replace(",", "").replace(" ", "").length();
+
+            if (lengthOfNewLabels > 1) {
                 labelsMoreThanOne++;
-                for (int i = 0; i < everySingleInstance.getValue().toString().length(); i++) {
-                    if (!(everySingleInstance.getValue().toString().charAt(0) == everySingleInstance.getValue().toString().charAt(i))) {
+                for (int i = 0; i < lengthOfNewLabels; i++) {
+                    if (!(newLabels.charAt(0) == newLabels.charAt(i))) {
                         inconsistent++;
                         break;
                     }
                 }
             }
         }
-
-        if (labelsMoreThanOne == 0) {
-            return null;
-        }
-        //FIXME Integer division
-        int consistency = (labelsMoreThanOne - inconsistent) / labelsMoreThanOne * 100;
-
-        return consistency;
+        double consistency = (((labelsMoreThanOne - inconsistent) / labelsMoreThanOne) * 100);
+        return (int) consistency;
 
     }
     /* A-6 This method calculates the average time spent at labeling an instance in seconds */
