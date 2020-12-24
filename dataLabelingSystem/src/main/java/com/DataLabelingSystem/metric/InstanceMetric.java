@@ -70,8 +70,13 @@ public class InstanceMetric {
         }
         // Determines label which label is the most frequent one.
         Label label = Collections.max(labelIntegerMap.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
+
+        int totalLabelCount = 0;
+        for (Map.Entry<Label, Integer> labelIntegerEntry : labelIntegerMap.entrySet())
+            totalLabelCount += labelIntegerEntry.getValue();
+
         // Computing percentage
-        Integer percentage = (int) (((labelIntegerMap.get(label) * 1.0) / this.getUniqueAssignmentCount()) * 100);
+        Integer percentage = (int) (((labelIntegerMap.get(label) * 1.0) / totalLabelCount * 100));
         return Collections.singletonMap(label, percentage);
     }
 
@@ -86,12 +91,15 @@ public class InstanceMetric {
 
     public HashMap<Label, Integer> getAllLabelFrequencies() { // Returns all labels with their frequency.
         HashMap<Label, Integer> labelIntegerMap = countLabelOccurrences();
-
         HashMap<Label, Integer> labelPercentageMap = new HashMap<>();
-        int uniqueAssignmentCount = this.getUniqueAssignmentCount();
+
+        int totalLabelCount = 0;
+        for (Map.Entry<Label, Integer> labelIntegerEntry : labelIntegerMap.entrySet())
+            totalLabelCount += labelIntegerEntry.getValue();
+
         for (Label label : labelIntegerMap.keySet()) {
             // Computing percentage
-            Integer percentage = (int) (((labelIntegerMap.get(label) * 1.0) / uniqueAssignmentCount) * 100);
+            Integer percentage = (int) (((labelIntegerMap.get(label) * 1.0) / totalLabelCount) * 100);
             labelPercentageMap.put(label, percentage);
         }
 

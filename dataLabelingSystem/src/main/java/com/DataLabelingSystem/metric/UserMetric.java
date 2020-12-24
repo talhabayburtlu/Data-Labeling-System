@@ -23,16 +23,18 @@ public class UserMetric {
      LabelAssignments ArrayList from dataset for a specific user.
     */
     public void updateDataset(){
+        ArrayList<LabelAssignment> tempAssignments = new ArrayList<>();
         for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
 
             for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
                 LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
                 if (labelAssignment.getUser().getId() == getUser().getId()) {
-                    this.labelAssignments.add(labelAssignment);
+                    tempAssignments.add(labelAssignment);
                 }
             }
         }
+        this.labelAssignments = tempAssignments;
     }
 
     /* A-1 This methods brings the number of assigned datasets for a specific user. */
@@ -138,6 +140,9 @@ public class UserMetric {
         double inconsistent = 0;
 
         for (HashMap.Entry everySingleInstance : tempInstances.entrySet()) {
+            if (!isInstanceLabeledMultipleTimes((Instance) everySingleInstance.getKey()))
+                continue;
+
             String newLabels = everySingleInstance.getValue().toString().replace("[", "")
                     .replace("]", "").replace(",", "").replace(" ", "");
             int lengthOfNewLabels = everySingleInstance.getValue().toString().replace("[", "")
@@ -154,7 +159,7 @@ public class UserMetric {
             }
         }
         if (labelsMoreThanOne == 0) {
-            return null;
+            return 100;
         }
         double consistency = (((labelsMoreThanOne - inconsistent) / labelsMoreThanOne) * 100);
         return (int) consistency;
@@ -169,8 +174,8 @@ public class UserMetric {
                 for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
                     LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
                     if(labelAssignment.getUser().getId()==getUser().getId()){
-                    averageTime += labelAssignment.getDuration().getSeconds();
-                    labelAssignmentCounter++;
+                        averageTime += labelAssignment.getDuration().getNano() * Math.pow(10, -9);
+                        labelAssignmentCounter++;
                     }
                 }
         }
@@ -180,25 +185,34 @@ public class UserMetric {
     }
 
     /* A-7 This method calculates Standard Deviation of time spent at labeling an instance in seconds */
-    public long getStandardDeviation(){
-        long standardDeviation = 0;
-        ArrayList<Long> durations = new ArrayList<>();
-        for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
+    public double getStandardDeviation() {
+        double standardDeviation = 0;
+        ArrayList<Double> durations = new ArrayList<>();
+        for (int i = 0; i < user.getAssignedDatasets().size(); i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
             for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
                 LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
                 if (labelAssignment.getUser().getId() == getUser().getId()) {
-                    durations.add(labelAssignment.getDuration().getSeconds());
+                    durations.add(labelAssignment.getDuration().getNano() * Math.pow(10, -9));
                 }
-
             }
         }
         double averageTime = getAverageLabelTime();
         for (int i = 0; i < durations.size(); i++) {
             standardDeviation += (Math.pow((durations.get(i) - averageTime), 2) / (durations.size() - 1));
         }
-        standardDeviation = (long) Math.sqrt(standardDeviation);
+        standardDeviation = Math.sqrt(standardDeviation);
         return standardDeviation;
+    }
+
+    private boolean isInstanceLabeledMultipleTimes(Instance instance) { // Determines if an instance labeled multiple times or not for a user.
+        int instanceCount = 0;
+        for (LabelAssignment labelAssignment : this.labelAssignments) {
+            if (labelAssignment.getInstance().getId() == instance.getId())
+                instanceCount++;
+        }
+
+        return instanceCount != 1;
     }
 
     //Getter and Setter methods.
