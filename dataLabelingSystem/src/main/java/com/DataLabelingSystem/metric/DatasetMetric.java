@@ -140,8 +140,8 @@ public class DatasetMetric {
         return usersWithCompletenessPercentages;
     }
 
-    public HashMap<User, Integer> getUsersWithConsistencyPercentages(ArrayList<User> assignedUsers) {
-        //ArrayList<User> assignedUsers = getUsersAssigned();
+    public HashMap<User, Integer> getUsersWithConsistencyPercentages() {
+        ArrayList<User> assignedUsers = getUsersAssigned();
         logger.trace("Users with consistency percentages for dataset : " + getDataset());
         Map<User, Map<Instance, List<LabelAssignment>>> userLabelAssignmentsByInstance = dataset.getLabelAssignments().stream()
                 .collect(Collectors.groupingBy(LabelAssignment::getUser,
