@@ -7,8 +7,7 @@ import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,11 +15,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-//TODO JsonPropertyOrder and names for each Metric class
+@JsonPropertyOrder({"dataset",
+        "completeness percentage",
+        "class distribution",
+        "number of unique instances for labels",
+        "number of users assigned",
+        "list of users assigned with completeness percentage",
+        "list of users assigned with consistency percentage"})
 public class DatasetMetric {
     private final Dataset dataset;
     private ArrayList<LabelAssignment> labelAssignments;
-    private static final Logger logger = LogManager.getLogger(); //
 
     public DatasetMetric(Dataset dataset) {
         this.dataset = dataset;
@@ -31,6 +35,7 @@ public class DatasetMetric {
         labelAssignments = dataset.getLabelAssignments();
     }
 
+    @JsonProperty("dataset")
     public Object getDataset() {
         return new Object() {
             @JsonProperty("dataset id")
@@ -40,16 +45,17 @@ public class DatasetMetric {
         };
     }
 
+    @JsonProperty("completeness percentage")
     public int getCompletenessPercentage() {
         ArrayList<Instance> labeledInstances = new ArrayList<>();
         for (LabelAssignment labelAssignment : this.labelAssignments)
             if (!labeledInstances.contains(labelAssignment.getInstance()))
                 labeledInstances.add(labelAssignment.getInstance());
 
-        int value = (int) (((labeledInstances.size() * 1.0) / (this.dataset.getInstances().size())) * 100);
-        return value;
+        return (int) (((labeledInstances.size() * 1.0) / (this.dataset.getInstances().size())) * 100);
     }
 
+    @JsonProperty("class distribution")
     public HashMap<Label, Integer> getFinalLabelsWithPercentages() {
 
         HashMap<Label, Integer> finalLabelCounts = new HashMap<>();
@@ -78,6 +84,7 @@ public class DatasetMetric {
         return finalLabelCounts;
     }
 
+    @JsonProperty("number of unique instances for labels")
     public HashMap<Label, Integer> getLabelsWithUniqueInstanceCount() {
         HashMap<Label, Integer> labelsWithUniqueInstanceCount = new HashMap<>(dataset.getLabels().size());
         for (Label label : dataset.getLabels()) {
@@ -97,13 +104,16 @@ public class DatasetMetric {
         return dataset.getAssignedUsers();
     }
 
+    @JsonProperty("number of users assigned")
     public int getNumberOfUsersAssigned() {
         return dataset.getAssignedUsers().size();
     }
 
-    public HashMap<User, Integer> getUsersWithCompletenessPercentages() { // TODO maybe use stream filtering here instead of nested for loops?
+    @JsonProperty("list of users assigned with completeness percentage")
+    public HashMap<User, Integer> getUsersWithCompletenessPercentages() {
         ArrayList<User> assignedUsers = getUsersAssigned();
         HashMap<User, Integer> usersWithCompletenessPercentages = new HashMap<>(dataset.getAssignedUsers().size());
+
         for (User user : assignedUsers) {
             usersWithCompletenessPercentages.put(user, 0);
             ArrayList<Instance> instancesCounted = new ArrayList<>(dataset.getInstances().size());
@@ -120,6 +130,7 @@ public class DatasetMetric {
         return usersWithCompletenessPercentages;
     }
 
+    @JsonProperty("list of users assigned with consistency percentage")
     public HashMap<User, Integer> getUsersWithConsistencyPercentages() {
         ArrayList<User> assignedUsers = getUsersAssigned();
         Map<User, Map<Instance, List<LabelAssignment>>> userLabelAssignmentsByInstance = dataset.getLabelAssignments().stream()
@@ -127,35 +138,34 @@ public class DatasetMetric {
                         Collectors.groupingBy(LabelAssignment::getInstance)));
         HashMap<User, Integer> usersWithConsistencyPercentages = new HashMap<>(assignedUsers.size());
 
+        //checking all users one by one to calculate consistency
         for (User user : userLabelAssignmentsByInstance.keySet()) {
             Map<Instance, List<LabelAssignment>> instanceLabelAssignments = userLabelAssignmentsByInstance.get(user);
-            double userPercentage = 0;
-            //   double userPercentageCount = instanceLabelAssignments.keySet().size();
-
+            double userPercentage;
+            int labelingMoreThanOnce = 0;
+            int inconsistency = 0;
             for (Instance instance : instanceLabelAssignments.keySet()) {
-                int consistencyPercentageForInstance = 0;
                 // Calculate the consistency percentage for all recurrences of this instance for this user
-                // Map<ArrayList<Label>, List<LabelAssignment>> classLabelAssignmentFrequencies = instanceLabelAssignments.get(instance).stream().collect(Collectors.groupingBy(LabelAssignment::getLabels));
+
                 List<LabelAssignment> labels = instanceLabelAssignments.get(instance);
-                int labelingMoreThanOnce = 0;
                 boolean consistency = true;
-                int inconsistency = 0;
+
                 if (labels.size() > 1) {
                     labelingMoreThanOnce++;
                     for (int i = 0; i < labels.size(); i++) {
-                        for (LabelAssignment label : labels) {
-                            if (labels.get(i) != label) {
+                        for (int j = i + 1; j < labels.size(); j++) {
+                            if (labels.get(i) != labels.get(j)) {
                                 consistency = false;
                                 break;
                             }
                         }
                     }
-                    if (!consistency) {
-                        inconsistency++;
-                    }
                 }
-                userPercentage = ((labelingMoreThanOnce - inconsistency) * 1.0) / labelingMoreThanOnce;
+                if (!consistency) {
+                    inconsistency++;
+                }
             }
+            userPercentage = (((labelingMoreThanOnce - inconsistency) * 1.0) / labelingMoreThanOnce) * 100.0;
             usersWithConsistencyPercentages.put(user, (int) Math.round(userPercentage));
         }
         return usersWithConsistencyPercentages;
