@@ -34,13 +34,6 @@ public class DataLabelingSystem {
 
         boolean isSameDataset = !currentDataset.getLabelAssignments().isEmpty();
 
-        currentDataset.setAssignedUsers(users);
-        for (User user : users) {
-            user.setAssignedDatasets(new ArrayList<Dataset>() {{
-                add(currentDataset);
-            }});
-        }
-
         logger.trace("Processing dataset: " + currentDataset);
         for (User user : currentDataset.getAssignedUsers()) {
             logger.trace("Processing with user: " + user);

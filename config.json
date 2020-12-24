@@ -33,7 +33,8 @@
     {
       "dataset id": 999,
       "dataset name": "Testing Dataset",
-      "file path": "test.json"
+      "file path": "test.json",
+      "assigned user ids": [1, 2, 3]
     }
   ],
   "current dataset id": 999

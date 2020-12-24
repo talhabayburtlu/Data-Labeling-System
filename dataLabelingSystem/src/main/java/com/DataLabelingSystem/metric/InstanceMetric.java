@@ -27,7 +27,12 @@ public class InstanceMetric {
     }
 
     public int getAssignmentCount() { // Returns total number of label assignments.
-        return this.labelAssignments.size();
+        logger.trace("Calculating total number of label assignments for instance id : " + this.instance.getId());
+        int totalLabels = 0;
+        for (LabelAssignment labelAssignment : this.labelAssignments)
+            totalLabels += labelAssignment.getLabels().size();
+
+        return totalLabels;
     }
 
     public int getUniqueAssignmentCount() { // Returns total number of unique label assignments.

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,7 +34,7 @@ public class JsonParser {
         return instance;
     }
 
-    public String getReport(Object metric) throws JsonProcessingException { //TODO Create an abstract metrics superclass with the update method and use that method polymorphically here?
+    public String getReport(Object metric) throws JsonProcessingException {
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(metric);
     }
 
@@ -50,25 +51,27 @@ public class JsonParser {
             outputBuilder.append(',');
             outputBuilder.append(System.lineSeparator());
         }
+        outputBuilder.deleteCharAt(outputBuilder.lastIndexOf(","));
         outputBuilder.append("],").append(System.lineSeparator()).append("\"instance metrics\":").append(System.lineSeparator()).append("[").append(System.lineSeparator());
         for (Instance instance : currentDataset.getInstances()) {
             outputBuilder.append(this.getReport(instance.getInstanceMetric()));
             outputBuilder.append(',');
             outputBuilder.append(System.lineSeparator());
         }
+        outputBuilder.deleteCharAt(outputBuilder.lastIndexOf(","));
         outputBuilder.append("],").append(System.lineSeparator()).append("\"user metrics\":").append(System.lineSeparator()).append("[").append(System.lineSeparator());
         for (User user : users) {
             outputBuilder.append(this.getReport(user.getMetric()));
             outputBuilder.append(',');
             outputBuilder.append(System.lineSeparator());
         }
+        outputBuilder.deleteCharAt(outputBuilder.lastIndexOf(","));
         outputBuilder.append("]}");
         FileWriter fileWriter = new FileWriter(outputFile);
         fileWriter.write(outputBuilder.toString());
         fileWriter.close();
     }
 
-    // TODO: Config should include assigned user ids for each dataset and assign related user objects to dataset.
     public HashMap<String, Object> readConfig(String filename) throws FileNotFoundException, JsonProcessingException, InvalidObjectException {
         String jsonString = readAllLines(filename);
         ObjectNode configJsonObject = (ObjectNode) objectMapper.readTree(jsonString);
@@ -77,19 +80,30 @@ public class JsonParser {
 
         ArrayList<Dataset> datasets = new ArrayList<>();
         for (JsonNode node : configJsonObject.get("datasets")) {
+            ArrayList<User> assignedUsers = new ArrayList<>();
+            JsonNode assignedUserIdsNode = node.get("assigned user ids");
+            if (assignedUserIdsNode != null) {
+                ArrayNode assignedUserIds = (ArrayNode) assignedUserIdsNode;
+                for (JsonNode assignedUserId : assignedUserIds) {
+                    users.stream().filter(u -> u.getId() == assignedUserId.asInt()).findFirst().ifPresent(assignedUsers::add);
+                }
+            }
             String filePath = node.get("file path").textValue();
             String outputFilename = "output-" + node.get("dataset id").intValue() + ".json";
             if ((new File(outputFilename)).exists()) {
                 filePath = outputFilename;
             }
             Dataset dataset = readDataset(filePath);
+            dataset.setAssignedUsers(assignedUsers);
+            for (User user : assignedUsers)
+                user.getAssignedDatasets().add(dataset);
             dataset.fixUserReferences(users);
             datasets.add(dataset);
         }
 
         Integer currentDatasetId = configJsonObject.get("current dataset id").intValue();
 
-        return new HashMap<String, Object>() {{ // TODO a different return value can be used here instead of HashMap
+        return new HashMap<String, Object>() {{
             put("users", users);
             put("datasets", datasets);
             put("current dataset id", currentDatasetId);
