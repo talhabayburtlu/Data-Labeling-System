@@ -25,33 +25,11 @@ public class User {
     private LabelingMechanism mechanism;
     @JsonProperty("consistency check probability")
     private Double consistencyCheckProbability = 0.10;
-
-    //new 22:49 17:12:2020
     @JsonIgnore
     private ArrayList<Dataset> assignedDatasets = new ArrayList<>();
     @JsonIgnore
     private final UserMetric metric = new UserMetric(this);
 
-    public ArrayList<Dataset> getAssignedDatasets() {
-        return assignedDatasets;
-    }
-
-    public void setAssignedDatasets(ArrayList<Dataset> assignedDatasets) {
-        this.assignedDatasets = assignedDatasets;
-    }
-
-    public static void initialize(ArrayList<Dataset> assignedDatasets, Instance instance) {
-        for (int i = 0; i < instance.getDataset().getId(); i++) {
-            assignedDatasets.add(instance.getDataset());
-        }
-    }
-
-    public UserMetric getMetric() {
-        return metric;
-    }
-
-
-    //
     @JsonCreator
     User(@JsonProperty("user id") int id,
          @JsonProperty("user name") String name,
@@ -113,6 +91,18 @@ public class User {
 
     public void setConsistencyCheckProbability(Double consistencyCheckProbability) {
         this.consistencyCheckProbability = consistencyCheckProbability;
+    }
+
+    public ArrayList<Dataset> getAssignedDatasets() {
+        return assignedDatasets;
+    }
+
+    public void setAssignedDatasets(ArrayList<Dataset> assignedDatasets) {
+        this.assignedDatasets = assignedDatasets;
+    }
+
+    public UserMetric getMetric() {
+        return metric;
     }
 
     @Override

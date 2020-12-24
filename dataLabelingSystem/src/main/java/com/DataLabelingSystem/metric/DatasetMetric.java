@@ -97,7 +97,7 @@ public class DatasetMetric {
         return dataset.getAssignedUsers();
     }
 
-    public Integer getNumberOfUsersAssigned() {
+    public int getNumberOfUsersAssigned() {
         return dataset.getAssignedUsers().size();
     }
 

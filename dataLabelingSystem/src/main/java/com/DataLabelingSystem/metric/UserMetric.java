@@ -110,7 +110,7 @@ public class UserMetric {
     /* A-5 This method calculates labeling consistency of a specific user
        and returns it with percentage form.
     */
-    public Integer getConsistencyPercentage() {
+    public int getConsistencyPercentage() {
         HashMap<Instance, ArrayList<Integer>> tempInstances = new HashMap<>();
         for (int i = 0; i < user.getAssignedDatasets().size(); i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);

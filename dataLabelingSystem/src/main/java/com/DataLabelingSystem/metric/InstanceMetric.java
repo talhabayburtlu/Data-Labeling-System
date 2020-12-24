@@ -120,7 +120,7 @@ public class InstanceMetric {
         return labelPercentageMap;
     }
 
-    public Double getEntropy() {
+    public double getEntropy() {
         logger.trace("Calculating entropy with given formula for instance id : " + this.instance.getId());
         HashMap<Label, Integer> labelPercentageMap = getAllLabelFrequencies();
 
