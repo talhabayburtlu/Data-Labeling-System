@@ -39,6 +39,7 @@ public class JsonParser {
     }
 
     public void writeAll(Dataset currentDataset, ArrayList<Dataset> datasets, ArrayList<User> users) throws IOException {
+        logger.info("Starting writing output.");
         writeDatasetWithUsers(currentDataset);
 
         String outputFilename = "report.json";
@@ -47,6 +48,7 @@ public class JsonParser {
         outputBuilder.append("{").append(System.lineSeparator());
         outputBuilder.append("\"dataset metrics\":").append("[");
         for (Dataset dataset : datasets) {
+            logger.trace("Starting writing dataset report for dataset : " + dataset.toString());
             outputBuilder.append(this.getReport(dataset.getDatasetMetric()));
             outputBuilder.append(',');
             outputBuilder.append(System.lineSeparator());
@@ -54,6 +56,7 @@ public class JsonParser {
         outputBuilder.deleteCharAt(outputBuilder.lastIndexOf(","));
         outputBuilder.append("],").append(System.lineSeparator()).append("\"instance metrics\":").append(System.lineSeparator()).append("[").append(System.lineSeparator());
         for (Instance instance : currentDataset.getInstances()) {
+            logger.trace("Starting writing instance report for instance : " + instance.toString());
             outputBuilder.append(this.getReport(instance.getInstanceMetric()));
             outputBuilder.append(',');
             outputBuilder.append(System.lineSeparator());
@@ -61,6 +64,7 @@ public class JsonParser {
         outputBuilder.deleteCharAt(outputBuilder.lastIndexOf(","));
         outputBuilder.append("],").append(System.lineSeparator()).append("\"user metrics\":").append(System.lineSeparator()).append("[").append(System.lineSeparator());
         for (User user : users) {
+            logger.trace("Starting writing user report for user : " + user.toString());
             outputBuilder.append(this.getReport(user.getMetric()));
             outputBuilder.append(',');
             outputBuilder.append(System.lineSeparator());
@@ -73,6 +77,7 @@ public class JsonParser {
     }
 
     public HashMap<String, Object> readConfig(String filename) throws FileNotFoundException, JsonProcessingException, InvalidObjectException {
+        logger.info("Starting to read configs from " + filename + " file.");
         String jsonString = readAllLines(filename);
         ObjectNode configJsonObject = (ObjectNode) objectMapper.readTree(jsonString);
 
