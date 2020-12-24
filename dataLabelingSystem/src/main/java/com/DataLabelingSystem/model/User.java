@@ -24,14 +24,14 @@ public class User {
     private String type;
     @JsonIgnore
     private LabelingMechanism mechanism;
+    @JsonProperty("consistency check probability")
+    private Double consistencyCheckProbability = 0.10;
 
     //new 22:49 17:12:2020
     @JsonIgnore
     private ArrayList<Dataset> assignedDatasets = new ArrayList<>();
     @JsonIgnore
     private final UserMetric metric = new UserMetric(this);
-    @JsonIgnore //TODO Read from JSON
-    private Double consistencyCheckProbability = 0.10;
 
     public ArrayList<Dataset> getAssignedDatasets() {
         return assignedDatasets;
