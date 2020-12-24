@@ -140,8 +140,6 @@ public class UserMetric {
         double inconsistent = 0;
 
         for (HashMap.Entry everySingleInstance : tempInstances.entrySet()) {
-            if (!isInstanceLabeledMultipleTimes((Instance) everySingleInstance.getKey()))
-                continue;
 
             String newLabels = everySingleInstance.getValue().toString().replace("[", "")
                     .replace("]", "").replace(",", "").replace(" ", "");
@@ -160,6 +158,7 @@ public class UserMetric {
         }
         if (labelsMoreThanOne == 0) {
             return 100;
+
         }
         double consistency = (((labelsMoreThanOne - inconsistent) / labelsMoreThanOne) * 100);
         return (int) consistency;
@@ -205,15 +204,6 @@ public class UserMetric {
         return standardDeviation;
     }
 
-    private boolean isInstanceLabeledMultipleTimes(Instance instance) { // Determines if an instance labeled multiple times or not for a user.
-        int instanceCount = 0;
-        for (LabelAssignment labelAssignment : this.labelAssignments) {
-            if (labelAssignment.getInstance().getId() == instance.getId())
-                instanceCount++;
-        }
-
-        return instanceCount != 1;
-    }
 
     //Getter and Setter methods.
     public User getUser() {
