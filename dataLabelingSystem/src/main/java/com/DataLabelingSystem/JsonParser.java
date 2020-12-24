@@ -50,18 +50,21 @@ public class JsonParser {
             outputBuilder.append(',');
             outputBuilder.append(System.lineSeparator());
         }
+        outputBuilder.deleteCharAt(outputBuilder.lastIndexOf(","));
         outputBuilder.append("],").append(System.lineSeparator()).append("\"instance metrics\":").append(System.lineSeparator()).append("[").append(System.lineSeparator());
         for (Instance instance : currentDataset.getInstances()) {
             outputBuilder.append(this.getReport(instance.getInstanceMetric()));
             outputBuilder.append(',');
             outputBuilder.append(System.lineSeparator());
         }
+        outputBuilder.deleteCharAt(outputBuilder.lastIndexOf(","));
         outputBuilder.append("],").append(System.lineSeparator()).append("\"user metrics\":").append(System.lineSeparator()).append("[").append(System.lineSeparator());
         for (User user : users) {
             outputBuilder.append(this.getReport(user.getMetric()));
             outputBuilder.append(',');
             outputBuilder.append(System.lineSeparator());
         }
+        outputBuilder.deleteCharAt(outputBuilder.lastIndexOf(","));
         outputBuilder.append("]}");
         FileWriter fileWriter = new FileWriter(outputFile);
         fileWriter.write(outputBuilder.toString());
