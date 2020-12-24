@@ -7,6 +7,7 @@ import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +15,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-//TODO JsonPropertyOrder and names for each Metric class
+@JsonPropertyOrder({"dataset",
+        "completeness percentage",
+        "class distribution",
+        "number of unique instances for labels",
+        "number of users assigned",
+        "list of users assigned with completeness percentage",
+        "list of users assigned with consistency percentage"})
 public class DatasetMetric {
     private final Dataset dataset;
     private ArrayList<LabelAssignment> labelAssignments;
@@ -28,6 +35,7 @@ public class DatasetMetric {
         labelAssignments = dataset.getLabelAssignments();
     }
 
+    @JsonProperty("dataset")
     public Object getDataset() {
         return new Object() {
             @JsonProperty("dataset id")
@@ -37,16 +45,17 @@ public class DatasetMetric {
         };
     }
 
+    @JsonProperty("completeness percentage")
     public int getCompletenessPercentage() {
         ArrayList<Instance> labeledInstances = new ArrayList<>();
         for (LabelAssignment labelAssignment : this.labelAssignments)
             if (!labeledInstances.contains(labelAssignment.getInstance()))
                 labeledInstances.add(labelAssignment.getInstance());
 
-        int value = (int) (((labeledInstances.size() * 1.0) / (this.dataset.getInstances().size())) * 100);
-        return value;
+        return (int) (((labeledInstances.size() * 1.0) / (this.dataset.getInstances().size())) * 100);
     }
 
+    @JsonProperty("class distribution")
     public HashMap<Label, Integer> getFinalLabelsWithPercentages() {
 
         HashMap<Label, Integer> finalLabelCounts = new HashMap<>();
@@ -75,6 +84,7 @@ public class DatasetMetric {
         return finalLabelCounts;
     }
 
+    @JsonProperty("number of unique instances for labels")
     public HashMap<Label, Integer> getLabelsWithUniqueInstanceCount() {
         HashMap<Label, Integer> labelsWithUniqueInstanceCount = new HashMap<>(dataset.getLabels().size());
         for (Label label : dataset.getLabels()) {
@@ -94,11 +104,13 @@ public class DatasetMetric {
         return dataset.getAssignedUsers();
     }
 
+    @JsonProperty("number of users assigned")
     public Integer getNumberOfUsersAssigned() {
         return dataset.getAssignedUsers().size();
     }
 
-    public HashMap<User, Integer> getUsersWithCompletenessPercentages() { // TODO maybe use stream filtering here instead of nested for loops?
+    @JsonProperty("list of users assigned with completeness percentage")
+    public HashMap<User, Integer> getUsersWithCompletenessPercentages() {
         ArrayList<User> assignedUsers = getUsersAssigned();
         HashMap<User, Integer> usersWithCompletenessPercentages = new HashMap<>(dataset.getAssignedUsers().size());
 
@@ -118,6 +130,7 @@ public class DatasetMetric {
         return usersWithCompletenessPercentages;
     }
 
+    @JsonProperty("list of users assigned with consistency percentage")
     public HashMap<User, Integer> getUsersWithConsistencyPercentages() {
         ArrayList<User> assignedUsers = getUsersAssigned();
         Map<User, Map<Instance, List<LabelAssignment>>> userLabelAssignmentsByInstance = dataset.getLabelAssignments().stream()

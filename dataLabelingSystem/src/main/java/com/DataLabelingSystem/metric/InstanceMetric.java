@@ -4,11 +4,21 @@ import com.DataLabelingSystem.assignment.LabelAssignment;
 import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+@JsonPropertyOrder({"instance",
+        "number of label assignments",
+        "number of unique label assignments",
+        "number of unique users",
+        "most frequent class label with percentage",
+        "all class labels with percentages",
+        "entropy"})
 public class InstanceMetric {
     private Instance instance;
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
@@ -26,6 +36,7 @@ public class InstanceMetric {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
+    @JsonProperty("number of label assignments")
     public int getAssignmentCount() { // Returns total number of label assignments.
         int totalLabels = 0;
         for (LabelAssignment labelAssignment : this.labelAssignments)
@@ -34,6 +45,7 @@ public class InstanceMetric {
         return totalLabels;
     }
 
+    @JsonProperty("number of unique label assignments")
     public int getUniqueAssignmentCount() { // Returns total number of unique label assignments.
         HashSet<Label> labelSet = new HashSet<>();
 
@@ -44,6 +56,7 @@ public class InstanceMetric {
         return labelSet.size();
     }
 
+    @JsonProperty("number of unique users")
     public int getUniqueUserCount() { // Returns number of unique users that labeled this instance.
         HashSet<User> userSet = new HashSet<>();
 
@@ -66,6 +79,7 @@ public class InstanceMetric {
         return labelIntegerMap;
     }
 
+    @JsonProperty("most frequent class label with percentage")
     @Nullable
     public Map<Label, Integer> getMostFrequentLabelWithFrequency() { // Returns most frequent label with it's frequency.
         HashMap<Label, Integer> labelIntegerMap = countLabelOccurrences();
@@ -85,7 +99,8 @@ public class InstanceMetric {
     }
 
     @Nullable
-    public Label getMostFrequentLabel() { //FIXME This is serialized as an integer in the JSON file for some reason...
+    @JsonIgnore
+    public Label getMostFrequentLabel() {
         HashMap<Label, Integer> labelOccurrences = countLabelOccurrences();
         if (labelOccurrences.isEmpty()) {
             return null;
@@ -93,6 +108,7 @@ public class InstanceMetric {
         return Collections.max(labelOccurrences.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
     }
 
+    @JsonProperty("all class labels with percentages")
     public HashMap<Label, Integer> getAllLabelFrequencies() { // Returns all labels with their frequency.
         HashMap<Label, Integer> labelIntegerMap = countLabelOccurrences();
         HashMap<Label, Integer> labelPercentageMap = new HashMap<>();
@@ -110,6 +126,7 @@ public class InstanceMetric {
         return labelPercentageMap;
     }
 
+    @JsonProperty("entropy")
     public Double getEntropy() {
         HashMap<Label, Integer> labelPercentageMap = getAllLabelFrequencies();
 

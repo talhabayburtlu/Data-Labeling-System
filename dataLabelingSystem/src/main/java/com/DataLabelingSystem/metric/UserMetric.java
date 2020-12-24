@@ -5,13 +5,25 @@ import com.DataLabelingSystem.model.Dataset;
 import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
+@JsonPropertyOrder({"user",
+        "number of datasets assigned",
+        "datasets with completeness percentages",
+        "number of instances labeled",
+        "number of unique instances labeled",
+        "consistency percentage",
+        "average time spent labeling",
+        "standard deviation of time spent labeling"})
 public class UserMetric {
     private User user;
+    @JsonIgnore
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
 
     public UserMetric(User user) {
@@ -38,12 +50,15 @@ public class UserMetric {
     }
 
     /* A-1 This methods brings the number of assigned datasets for a specific user. */
+    @JsonProperty("number of datasets assigned")
     public int getNumberOfDatasets() {
         return user.getAssignedDatasets().size();
     }
+
     /* A-2 This methods lists all the datasets which a specific user assigned
        with their completeness percentage.
     */
+    @JsonProperty("datasets with completeness percentages")
     public HashMap<Dataset,Integer> getDatasetWithCompletenessPercentage(){
         HashMap<Dataset,Integer> completenessPercentage = new HashMap<>();
         ArrayList<Integer> tempInstances = new ArrayList<>();
@@ -70,7 +85,9 @@ public class UserMetric {
         }
         return completenessPercentage;
     }
+
     /* A-3 This method brings total number of instances which are labeled by a specific user. */
+    @JsonProperty("number of instances labeled")
     public int getInstancesLabeledCount(){
         int InstanceCounter = 0;
 
@@ -86,7 +103,9 @@ public class UserMetric {
         }
         return InstanceCounter;
     }
+
     /* A-4 This method brings total number instances which are labeled just one time by a specific user. */
+    @JsonProperty("number of unique instances labeled")
     public int getUniqueInstancesLabeledCount(){
         int InstanceCounter;
         ArrayList<Integer> tempInstances = new ArrayList<>();
@@ -110,6 +129,7 @@ public class UserMetric {
     /* A-5 This method calculates labeling consistency of a specific user
        and returns it with percentage form.
     */
+    @JsonProperty("consistency percentage")
     public Integer getConsistencyPercentage() {
         HashMap<Instance, ArrayList<Integer>> tempInstances = new HashMap<>();
         for (int i = 0; i < user.getAssignedDatasets().size(); i++) {
@@ -165,19 +185,21 @@ public class UserMetric {
         return (int) consistency;
 
     }
+
+    @JsonProperty("average time spent labeling")
     /* A-6 This method calculates the average time spent at labeling an instance in seconds */
-    public double getAverageLabelTime(){
+    public double getAverageLabelTime() {
         double averageTime = 0;
         int labelAssignmentCounter = 0;
-        for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
+        for (int i = 0; i < user.getAssignedDatasets().size(); i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
-                for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
-                    LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
-                    if(labelAssignment.getUser().getId()==getUser().getId()){
-                        averageTime += labelAssignment.getDuration().getNano() * Math.pow(10, -9);
-                        labelAssignmentCounter++;
-                    }
+            for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
+                LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
+                if (labelAssignment.getUser().getId() == getUser().getId()) {
+                    averageTime += labelAssignment.getDuration().getNano() * Math.pow(10, -9);
+                    labelAssignmentCounter++;
                 }
+            }
         }
         averageTime = averageTime/labelAssignmentCounter;
 
@@ -185,6 +207,7 @@ public class UserMetric {
     }
 
     /* A-7 This method calculates Standard Deviation of time spent at labeling an instance in seconds */
+    @JsonProperty("standard deviation of time spent labeling")
     public double getStandardDeviation() {
         double standardDeviation = 0;
         ArrayList<Double> durations = new ArrayList<>();
