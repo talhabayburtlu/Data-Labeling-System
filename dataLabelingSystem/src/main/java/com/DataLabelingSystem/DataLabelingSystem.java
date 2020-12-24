@@ -53,6 +53,7 @@ public class DataLabelingSystem {
                 int labelAgainProbability = (int) (Math.random() * 101);
                 // Labeling random labeled instance again if consistency check probability maintains.
                 if (labelAgainProbability <= user.getConsistencyCheckProbability() * 100) {
+                    logger.info("Checking consistency probability for user : " + user.toString());
                     ArrayList<Instance> labeledInstances = new ArrayList<>();
                     for (LabelAssignment labelAssignment : currentDataset.getLabelAssignments())
                         if (labelAssignment.getUser() == user)
