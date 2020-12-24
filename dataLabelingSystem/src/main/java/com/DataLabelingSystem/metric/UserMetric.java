@@ -16,15 +16,15 @@ public class UserMetric {
 
     public UserMetric(User user) {
         this.user = user;
-        this.updateDataset();
+        this.updateLabelAssignment();
     }
 
     /*    This method updates the labelAssignments field of this class with using
      LabelAssignments ArrayList from dataset for a specific user.
     */
-    public void updateDataset(){
+    public void updateLabelAssignment() {
         ArrayList<LabelAssignment> tempAssignments = new ArrayList<>();
-        for (int i = 0; i <  user.getAssignedDatasets().size() ; i++) {
+        for (int i = 0; i < user.getAssignedDatasets().size(); i++) {
             Dataset dataset = user.getAssignedDatasets().get(i);
 
             for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
