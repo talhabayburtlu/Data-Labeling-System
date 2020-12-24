@@ -1,6 +1,7 @@
 package com.DataLabelingSystem;
 
 import com.DataLabelingSystem.model.Dataset;
+import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -33,22 +34,38 @@ public class JsonParser {
     }
 
     public String getReport(Object metric) throws JsonProcessingException { //TODO Create an abstract metrics superclass with the update method and use that method polymorphically here?
-        //TODO metric.updateLabelAssignments()
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(metric);
-    }
-
-    public void writeReports(ArrayList<Dataset> datasets, ArrayList<User> users) {
-        throw new UnsupportedOperationException("Method writeReports() is not implemented yet.");
     }
 
     public void writeAll(Dataset currentDataset, ArrayList<Dataset> datasets, ArrayList<User> users) throws IOException {
         writeDatasetWithUsers(currentDataset);
+
+        String outputFilename = "report.json";
+        File outputFile = new File(outputFilename);
+        StringBuilder outputBuilder = new StringBuilder();
+        outputBuilder.append("{").append(System.lineSeparator());
+        outputBuilder.append("\"dataset metrics\":").append("[");
         for (Dataset dataset : datasets) {
-            String report = getReport(dataset.getDatasetMetric());
+            outputBuilder.append(this.getReport(dataset.getDatasetMetric()));
+            outputBuilder.append(',');
+            outputBuilder.append(System.lineSeparator());
         }
+        outputBuilder.append("],").append(System.lineSeparator()).append("\"instance metrics\":").append(System.lineSeparator()).append("[").append(System.lineSeparator());
+        for (Instance instance : currentDataset.getInstances()) {
+            outputBuilder.append(this.getReport(instance.getInstanceMetric()));
+            outputBuilder.append(',');
+            outputBuilder.append(System.lineSeparator());
+        }
+        outputBuilder.append("],").append(System.lineSeparator()).append("\"user metrics\":").append(System.lineSeparator()).append("[").append(System.lineSeparator());
         for (User user : users) {
-            String report = getReport(user.getMetric());
+            outputBuilder.append(this.getReport(user.getMetric()));
+            outputBuilder.append(',');
+            outputBuilder.append(System.lineSeparator());
         }
+        outputBuilder.append("]}");
+        FileWriter fileWriter = new FileWriter(outputFile);
+        fileWriter.write(outputBuilder.toString());
+        fileWriter.close();
     }
 
     // TODO: Config should include assigned user ids for each dataset and assign related user objects to dataset.

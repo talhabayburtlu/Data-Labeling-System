@@ -5,6 +5,7 @@ import com.DataLabelingSystem.model.Dataset;
 import com.DataLabelingSystem.model.Instance;
 import com.DataLabelingSystem.model.Label;
 import com.DataLabelingSystem.model.User;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +24,15 @@ public class DatasetMetric {
 
     public void updateLabelAssignments() {
         labelAssignments = dataset.getLabelAssignments();
+    }
+
+    public Object getDataset() {
+        return new Object() {
+            @JsonProperty("dataset id")
+            public final int datasetId = dataset.getId();
+            @JsonProperty("dataset name")
+            public final String name = dataset.getName();
+        };
     }
 
     public int getCompletenessPercentage() {

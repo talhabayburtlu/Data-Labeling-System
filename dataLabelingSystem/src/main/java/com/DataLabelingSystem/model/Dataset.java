@@ -17,20 +17,20 @@ public class Dataset {
     private static final Logger logger = LogManager.getLogger();
 
     @JsonProperty("dataset id")
-    private int id;
+    private final int id;
     @JsonProperty("dataset name")
-    private String name;
+    private final String name;
     @JsonProperty("instance type")
-    private String instanceType;
+    private final String instanceType;
     @JsonProperty("maximum number of labels per instance")
-    private int maxNumberOfLabelsPerInstance;
+    private final int maxNumberOfLabelsPerInstance;
     @JsonIgnore
     private final DatasetMetric datasetMetric;
 
     @JsonProperty("class labels")
-    private ArrayList<Label> labels;
+    private final ArrayList<Label> labels;
     @JsonProperty("instances")
-    private ArrayList<Instance> instances;
+    private final ArrayList<Instance> instances;
     @JsonProperty("class label assignments")
     private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
     @JsonProperty("assigned users")
@@ -133,8 +133,6 @@ public class Dataset {
         return "Dataset{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", instanceType='" + instanceType + '\'' +
-                ", maxNumberOfLabelsPerInstance=" + maxNumberOfLabelsPerInstance +
                 '}';
     }
 }
