@@ -138,35 +138,34 @@ public class DatasetMetric {
                         Collectors.groupingBy(LabelAssignment::getInstance)));
         HashMap<User, Integer> usersWithConsistencyPercentages = new HashMap<>(assignedUsers.size());
 
+        //checking all users one by one to calculate consistency
         for (User user : userLabelAssignmentsByInstance.keySet()) {
             Map<Instance, List<LabelAssignment>> instanceLabelAssignments = userLabelAssignmentsByInstance.get(user);
-            double userPercentage = 0;
-            //   double userPercentageCount = instanceLabelAssignments.keySet().size();
-
+            double userPercentage;
+            int labelingMoreThanOnce = 0;
+            int inconsistency = 0;
             for (Instance instance : instanceLabelAssignments.keySet()) {
-                int consistencyPercentageForInstance = 0;
                 // Calculate the consistency percentage for all recurrences of this instance for this user
-                // Map<ArrayList<Label>, List<LabelAssignment>> classLabelAssignmentFrequencies = instanceLabelAssignments.get(instance).stream().collect(Collectors.groupingBy(LabelAssignment::getLabels));
+
                 List<LabelAssignment> labels = instanceLabelAssignments.get(instance);
-                int labelingMoreThanOnce = 0;
                 boolean consistency = true;
-                int inconsistency = 0;
+
                 if (labels.size() > 1) {
                     labelingMoreThanOnce++;
                     for (int i = 0; i < labels.size(); i++) {
-                        for (LabelAssignment label : labels) {
-                            if (labels.get(i) != label) {
+                        for (int j = i + 1; j < labels.size(); j++) {
+                            if (labels.get(i) != labels.get(j)) {
                                 consistency = false;
                                 break;
                             }
                         }
                     }
-                    if (!consistency) {
-                        inconsistency++;
-                    }
                 }
-                userPercentage = ((labelingMoreThanOnce - inconsistency) * 1.0) / labelingMoreThanOnce;
+                if (!consistency) {
+                    inconsistency++;
+                }
             }
+            userPercentage = (((labelingMoreThanOnce - inconsistency) * 1.0) / labelingMoreThanOnce) * 100.0;
             usersWithConsistencyPercentages.put(user, (int) Math.round(userPercentage));
         }
         return usersWithConsistencyPercentages;
