@@ -70,56 +70,28 @@ public class Dataset {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getInstanceType() {
         return instanceType;
     }
 
-    public void setInstanceType(String instanceType) {
-        this.instanceType = instanceType;
-    }
-
     public int getMaxNumberOfLabelsPerInstance() {
         return maxNumberOfLabelsPerInstance;
-    }
-
-    public void setMaxNumberOfLabelsPerInstance(int maxNumberOfLabelsPerInstance) {
-        this.maxNumberOfLabelsPerInstance = maxNumberOfLabelsPerInstance;
     }
 
     public ArrayList<Label> getLabels() {
         return labels;
     }
 
-    public void setLabels(ArrayList<Label> labels) {
-        this.labels = labels;
-    }
-
     public ArrayList<Instance> getInstances() {
         return instances;
     }
 
-    public void setInstances(ArrayList<Instance> instances) {
-        this.instances = instances;
-    }
-
     public ArrayList<LabelAssignment> getLabelAssignments() {
         return labelAssignments;
-    }
-
-    public void setLabelAssignments(ArrayList<LabelAssignment> labelAssignments) {
-        this.labelAssignments = labelAssignments;
     }
 
     public ArrayList<User> getAssignedUsers() {

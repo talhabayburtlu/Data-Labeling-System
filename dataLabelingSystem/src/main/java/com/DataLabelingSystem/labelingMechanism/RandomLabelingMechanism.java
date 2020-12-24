@@ -51,5 +51,8 @@ public class RandomLabelingMechanism implements LabelingMechanism {
         }
         Duration labelingDuration = Duration.between(labelingStart, Instant.now());
         labelAssignmentManager.createLabelAssignment(user, instance, selectedLabels, labelingDuration); // Creating label assignment.
+        user.getMetric().updateDataset();
+        instance.getInstanceMetric().updateLabelAssignments();
+        instance.getDataset().getDatasetMetric().updateLabelAssignments();
     }
 }

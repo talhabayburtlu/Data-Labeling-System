@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class InstanceMetric {
 
     private Instance instance;
-    private ArrayList<LabelAssignment> labelAssignments;
+    private ArrayList<LabelAssignment> labelAssignments = new ArrayList<>();
 
 
     public InstanceMetric(Instance instance) {
@@ -62,19 +62,21 @@ public class InstanceMetric {
         return labelIntegerMap;
     }
 
-
-    public HashMap<Label, Integer> getMostFrequentLabelWithFrequency() { // Returns most frequent label with it's frequency.
+    @Nullable
+    public Map<Label, Integer> getMostFrequentLabelWithFrequency() { // Returns most frequent label with it's frequency.
         HashMap<Label, Integer> labelIntegerMap = countLabelOccurrences();
-
+        if (labelIntegerMap.isEmpty()) {
+            return null;
+        }
         // Determines label which label is the most frequent one.
         Label label = Collections.max(labelIntegerMap.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
         // Computing percentage
         Integer percentage = (int) (((labelIntegerMap.get(label) * 1.0) / this.getUniqueAssignmentCount()) * 100);
-        return (HashMap<Label, Integer>) Collections.singletonMap(label, percentage);
+        return Collections.singletonMap(label, percentage);
     }
 
     @Nullable
-    public Label getMostFrequentLabel() {
+    public Label getMostFrequentLabel() { //FIXME This is serialized as an integer in the JSON file for some reason...
         HashMap<Label, Integer> labelOccurrences = countLabelOccurrences();
         if (labelOccurrences.isEmpty()) {
             return null;

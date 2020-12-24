@@ -98,7 +98,6 @@ public class JsonParser {
         return sb.toString();
     }
 
-    // TODO Print assigned users!
     public void writeDatasetWithUsers(Dataset dataset) throws IOException, IllegalArgumentException {
         String outputFilename = "output-" + dataset.getId() + ".json";
         logger.trace("Writing dataset id:" + dataset.getId() + " to " + outputFilename + " file.");

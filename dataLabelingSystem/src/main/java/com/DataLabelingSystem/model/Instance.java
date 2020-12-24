@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 
 @JsonIdentityInfo(scope = Instance.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({"id", "instance"})
 public class Instance {
 
@@ -61,10 +62,13 @@ public class Instance {
         this.subInstances = subInstances;
     }
 
+    public InstanceMetric getInstanceMetric() {
+        return instanceMetric;
+    }
+
     @Nullable
-    //TODO output to JSON?
+    //TODO Ignore this and add separate JSON Getter that returns a string representation for the object?
     public Label getFinalLabel() {
-        instanceMetric.updateLabelAssignments(); //FIXME delegate update to separate method
         return instanceMetric.getMostFrequentLabel();
     }
 
