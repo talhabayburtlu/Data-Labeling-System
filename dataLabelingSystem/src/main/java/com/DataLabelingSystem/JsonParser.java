@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -80,12 +81,23 @@ public class JsonParser {
 
         ArrayList<Dataset> datasets = new ArrayList<>();
         for (JsonNode node : configJsonObject.get("datasets")) {
+            ArrayList<User> assignedUsers = new ArrayList<>();
+            JsonNode assignedUserIdsNode = node.get("assigned user ids");
+            if (assignedUserIdsNode != null) {
+                ArrayNode assignedUserIds = (ArrayNode) assignedUserIdsNode;
+                for (JsonNode assignedUserId : assignedUserIds) {
+                    users.stream().filter(u -> u.getId() == assignedUserId.asInt()).findFirst().ifPresent(assignedUsers::add);
+                }
+            }
             String filePath = node.get("file path").textValue();
             String outputFilename = "output-" + node.get("dataset id").intValue() + ".json";
             if ((new File(outputFilename)).exists()) {
                 filePath = outputFilename;
             }
             Dataset dataset = readDataset(filePath);
+            dataset.setAssignedUsers(assignedUsers);
+            for (User user : assignedUsers)
+                user.getAssignedDatasets().add(dataset);
             dataset.fixUserReferences(users);
             datasets.add(dataset);
         }
