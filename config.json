@@ -17,6 +17,28 @@
       "user name": "User3",
       "user type": "RandomBot",
       "consistency check probability": 0.1
+    },
+    {
+      "user id": 4,
+      "user name": "User4",
+      "user type": "Human",
+      "username": "test",
+      "password": "12345",
+      "consistency check probability": 0.1
+    },
+    {
+      "user id": 5,
+      "user name": "User5",
+      "user type": "KeywordBot",
+      "consistency check probability": 0.1,
+      "keywords": {
+        "1": {
+          "kesinti": 1,
+          "turkcell": 2,
+          "tl": 3,
+          "sahte": 4
+        }
+      }
     }
   ],
   "datasets": [
@@ -34,7 +56,9 @@
       "dataset id": 999,
       "dataset name": "Testing Dataset",
       "file path": "test.json",
-      "assigned user ids": [1, 2, 3]
+      "assigned user ids": [
+        5
+      ]
     }
   ],
   "current dataset id": 999
