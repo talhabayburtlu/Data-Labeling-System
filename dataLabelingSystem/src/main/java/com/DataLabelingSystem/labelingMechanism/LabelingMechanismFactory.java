@@ -18,7 +18,6 @@ public class LabelingMechanismFactory {
     }
 
     public LabelingMechanism getMechanism(String mechanismType) throws UnsupportedOperationException {
-        //noinspection SwitchStatementWithTooFewBranches
         switch (mechanismType) {
             case "RandomBot":
                 return RandomLabelingMechanism.getRandomLabelingMechanism();

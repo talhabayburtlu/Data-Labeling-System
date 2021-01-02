@@ -41,6 +41,12 @@
       }
     },
     {
+      "user id": 6,
+      "user name": "User6",
+      "user type": "AutoBot",
+      "consistency check probability": 0.1
+    },
+    {
       "user id": 7,
       "user name": "User7",
       "user type": "KeywordBot",
@@ -82,6 +88,14 @@
       "file path": "input-2.json"
     },
     {
+      "dataset id": 3,
+      "dataset name": "Auto Labeling Test Dataset",
+      "file path": "input-3.json",
+      "assigned user ids": [
+        6
+      ]
+    },
+    {
       "dataset id": 4,
       "dataset name": "Keyword Based Label Classification Dataset",
       "file path": "input-4.json",
@@ -94,11 +108,9 @@
       "dataset name": "Testing Dataset",
       "file path": "test.json",
       "assigned user ids": [
-        3,
-        4,
-        5
+        6
       ]
     }
   ],
-  "current dataset id": 4
+  "current dataset id": 999
 }
