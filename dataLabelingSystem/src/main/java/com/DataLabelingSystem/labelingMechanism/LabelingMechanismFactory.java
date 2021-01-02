@@ -24,6 +24,8 @@ public class LabelingMechanismFactory {
                 return RandomLabelingMechanism.getRandomLabelingMechanism();
             case "KeywordBot":
                 return KeywordBasedLabelingMechanism.getKeywordBasedLabelingMechanism();
+            case "AutoKeywordBot":
+                return AutoKeywordLabelingMechanism.getAutoKeywordLabelingMechanism();
             case "Human":
                 return ManualLabelingMechanism.getManualLabelingMechanism();
             default:
