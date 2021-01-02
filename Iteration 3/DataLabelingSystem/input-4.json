@@ -1,0 +1,237 @@
+{
+  "dataset id": 4,
+  "dataset name": "Keyword Dataset",
+  "maximum number of labels per instance": 5,
+  "class labels": [
+    {
+      "label id": 1,
+      "label text": "Programming Language"
+    },
+    {
+      "label id": 2,
+      "label text": "Rating"
+    },
+    {
+      "label id": 3,
+      "label text": "Level of Attendant"
+    },
+    {
+      "label id": 4,
+      "label text": "Related to Course"
+    },
+    {
+      "label id": 5,
+      "label text": "Topic"
+    },
+    {
+      "label id": 6,
+      "label text": "Related to Instructor"
+    },
+    {
+      "label id": 7,
+      "label text": "Related to Lecture"
+    }
+  ],
+  "instances": [
+    {
+      "id": 1,
+      "instance": "Nice course! Love the exercise! It would be better if there were more exercises and links to the deeper introductions to the functions mentioned in the course."
+    },
+    {
+      "id": 2,
+      "instance": "Great experience, it was fun and useful for me like beginer....i like it very much."
+    },
+    {
+      "id": 3,
+      "instance": "I loved it, but some exercises and challenges did not rhyme with the coursework. Other exercises were difficult with respect to the lesson."
+    },
+    {
+      "id": 4,
+      "instance": "There is Clarity in teaching and topics are easy to understand, i will definitely recommend to any python beginner."
+    },
+    {
+      "id": 5,
+      "instance": "This course is helpful as I am new to python. this course helped me to make many python projects. I think you should try this course. this course will help you to learn all the basic framework of python. I thank the instructor of this course."
+    },
+    {
+      "id": 6,
+      "instance": "Yes, as an absolute beginner in programming and that too from a non-technical background , I could understand the lectures without any outside help and really found the course helpful in learning the basics of python programming. I would definitely look forward to the next level courses by this instructor. Thanks a lot."
+    },
+    {
+      "id": 7,
+      "instance": "Pretty good course, well explained, and good challenges to put our knowledge on test. Recommended."
+    },
+    {
+      "id": 8,
+      "instance": "I feel this course helped me a lot in trying to understand the basics of python and kudos to everyone who helped in making this a success."
+    },
+    {
+      "id": 9,
+      "instance": "It was wonderful and fulfilled its title by teaching me a good portion of Python without having any past knowledge. The course jumped straight into the actual content and taught me a lot."
+    },
+    {
+      "id": 10,
+      "instance": "i am learning this language for first time and it is clearing all my doubts. All sections so far done is explained all small topics so well that it makes me easy to understand the python language from basics and fundamentals are getting clear easily."
+    },
+    {
+      "id": 11,
+      "instance": "I completed entire course but course is shown 95% completed. what I need to do now."
+    },
+    {
+      "id": 12,
+      "instance": "Great course! Will take for sure 5 times longer to go through information here than 3 hour, as full of information which is clearly explained, but definitely takes time to take notes meanwhile and practice yourself. More exercises would make it even better, for those who feel like really want to lock the fresh knowledge in memory."
+    },
+    {
+      "id": 13,
+      "instance": "This course is great for beginners who want to learn about Python. The instructor presents the course in an easy to follow format, with short lectures. I will definitely recommend. Thank you."
+    },
+    {
+      "id": 14,
+      "instance": "Great course. The lessons are clear. I knocked off a star because of the exercises. My only suggestion is to simplify the exercises/challenges towards the end of the course. Many of the solutions include code that was not discussed in the course. I found this very discouraging. Also, I would be nice to add exercises/challenges to section 8. Also, maybe a final section of challenges that require concepts from various sections."
+    },
+    {
+      "id": 15,
+      "instance": "Explanation could be more in the last few videos."
+    },
+    {
+      "id": 16,
+      "instance": "Just need clarification on factorials. I don't think there was a section explaining them. Just went straight to the challenge."
+    },
+    {
+      "id": 17,
+      "instance": "Great course for beginners to learn the basics and start your path to python programming. I highly recommend this to freshers/beginners. Overall, I was pretty impressed with the coding exercises. There was a lot of good information that was clearly explained."
+    },
+    {
+      "id": 18,
+      "instance": "I am really enjoy the way how knowledge has been represent. In very easy and understandable way. Thank you. The one thing I suggest is to have more exercises, practice."
+    },
+    {
+      "id": 19,
+      "instance": "Yes it gave me a great intro to Python thanks!"
+    },
+    {
+      "id": 20,
+      "instance": "As a complete beginner it was exactly what I was looking for. It showed you the basic skills to learn Python while also pushing you to think critically with those skills to solve problems and build things. Highly recommended!"
+    },
+    {
+      "id": 21,
+      "instance": "Being an Python newbie, i feel this course gave me a good overall understanding of the language."
+    },
+    {
+      "id": 22,
+      "instance": "Yes it was really good.I have finished learning python within a week.Thanks for your help.The professor was too good in teaching."
+    },
+    {
+      "id": 23,
+      "instance": "This course has taught me Python very amazingly, above expectations ."
+    },
+    {
+      "id": 24,
+      "instance": "It seems straightforward and clear enough as well as easily repeatable. Sixth week in: Yeah, still holds up."
+    },
+    {
+      "id": 25,
+      "instance": "This course has been really useful for me to learn the absolute basics of python, as I plan to do computer science at university, the uni of my choice teaches python at year 1, hence why I am here trying to learn and I believe this is a good starting point."
+    },
+    {
+      "id": 26,
+      "instance": "Yes, this is a great course...learnt many things through this, very good tutor and the exercises after each topics were very helpful."
+    },
+    {
+      "id": 27,
+      "instance": "you have some basic things about c . this course is very easier to learn and by the by teaching should be excellent..."
+    },
+    {
+      "id": 28,
+      "instance": "The course is for absolute beginners , it's like LKG,UKG division in python. The explanation is good and will definitely help those who are into starting stage of python. Course duration and video length ( more exercises than lectures) is too low. Could have been better.."
+    },
+    {
+      "id": 29,
+      "instance": "Obviously it was a good match for me... Thank you udemy for providing this course... Thank you sir for guiding me through this course... really enjoyed it."
+    },
+    {
+      "id": 30,
+      "instance": "I like the course, the instructor is very clear and succinct becoming if a teacher for beginner programmers."
+    },
+    {
+      "id": 31,
+      "instance": "Python for Absolute BeginnersIt is interesting and I am till glad I took this course. It is difficult to understand sometimes, as the theory explained is sometimes skipped in the examples or course work. So when I have to do the program challenges, I feel I have to jump straight to solutions to see how its done. I think more basic exercises would have been more welcomed for a 101 course, they were quite challenging for an absolute beginner. The course is still good from a learning perspective.."
+    },
+    {
+      "id": 32,
+      "instance": "This course was a very good introduction to Python for someone who has zero prior experience before. Exercises and challenges helped to put the concepts learnt in a practical example so we can practice them"
+    },
+    {
+      "id": 33,
+      "instance": "Thank you so much for making this great course!!!!! I really love how after each explanation there was exercises and challenges."
+    },
+    {
+      "id": 34,
+      "instance": "the course structure and the way u taught us is fine,but wasnt happy with the exercises part,felt you could have given us more programs to solve and stuff .that is it."
+    },
+    {
+      "id": 35,
+      "instance": "Good overview with lots of valuable examples, really enjoyed this intro to Python, thank you!"
+    },
+    {
+      "id": 36,
+      "instance": "yeah the lectures were pretty good and programming challenges are very helpful to practice."
+    },
+    {
+      "id": 37,
+      "instance": "When I first started coding I had little understanding what was going on. Now I can understand coding and I am more passionate then when I started. A long story short, I loved this course, if you want to get better at coding you got to try this."
+    },
+    {
+      "id": 38,
+      "instance": "Course is nicely designed for beginners.It is very useful for people who are new to programming or having programming background for some other language. Content is very basic. Explanation for each module is good.Learned some new things."
+    },
+    {
+      "id": 39,
+      "instance": "Yes; It is a good match, I could quickly latch on and learn new programming language. Explanation with examples made it very interesting and Amazing."
+    },
+    {
+      "id": 40,
+      "instance": "Real easy to follow - great job - thus far. I really enjoyed this course. It was well designed with the correct gradient. I was able to understand the teacher; clearly, his vocal cadence will on point. I will practice much of what I have learned from this class, so I am far from completing this course."
+    },
+    {
+      "id": 41,
+      "instance": "Using the lesson type as variables was confusing at times. For example, using 'string=' for the example, confused me for a bit on what a string was."
+    },
+    {
+      "id": 42,
+      "instance": "Section 6 loops could have been more detailed as I felt the section was finished in a rush. all in all a good course for learning python for absolute beginners."
+    },
+    {
+      "id": 43,
+      "instance": "It was a really great course. I learned Python which i was willing to do for so long and the lectures were quite interesting. Though i thought this course would give me a certification and i didn't get one."
+    },
+    {
+      "id": 44,
+      "instance": "This course is really good for beginners interested to learn Python. Even if you don`t have prior programming experience you can still learn this course."
+    },
+    {
+      "id": 45,
+      "instance": "This course is so helpful for beginners. Each section of the course is so clear to understand. I recommend this course for new learners for python."
+    },
+    {
+      "id": 46,
+      "instance": "Well, this is my first python course and ive acquired some great knowledge from this course :)"
+    },
+    {
+      "id": 47,
+      "instance": "This course is exactly what I expected to be. Simple, clear and easy to understand intro to the world of Python. I gained enough knowledge and confidence to take advanced courses."
+    },
+    {
+      "id": 48,
+      "instance": "Good communication and explanation timing is perfect."
+    },
+    {
+      "id": 49,
+      "instance": "this is absolutely for a beginner of programming because the author has covered various basic facts in details with this course. it has helped me pickup python and start working with basic coding and given me a foundation that i can use to build on the skill."
+    },
+    {
+      "id": 50,
+      "instance": "was a great way to learn the basics. I was not looking to become a programmer- just the basics to be able to add to my CV and tinker a bit on my own"
+    }
+  ]
+}

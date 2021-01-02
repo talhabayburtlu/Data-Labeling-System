@@ -1,0 +1,117 @@
+{
+  "users": [
+    {
+      "user id": 1,
+      "user name": "User1",
+      "user type": "RandomBot",
+      "consistency check probability": 0.1
+    },
+    {
+      "user id": 2,
+      "user name": "User2",
+      "user type": "RandomBot",
+      "consistency check probability": 0.1
+    },
+    {
+      "user id": 3,
+      "user name": "User3",
+      "user type": "RandomBot",
+      "consistency check probability": 0.1
+    },
+    {
+      "user id": 4,
+      "user name": "User4",
+      "user type": "Human",
+      "username": "test",
+      "password": "12345",
+      "consistency check probability": 0.5
+    },
+    {
+      "user id": 5,
+      "user name": "User5",
+      "user type": "KeywordBot",
+      "consistency check probability": 0.1,
+      "keywords": {
+        "999": {
+          "kesinti": 1,
+          "turkcell": 2,
+          "tl": 3,
+          "sahte": 4
+        }
+      }
+    },
+    {
+      "user id": 6,
+      "user name": "User6",
+      "user type": "AutoBot",
+      "consistency check probability": 0.1
+    },
+    {
+      "user id": 7,
+      "user name": "User7",
+      "user type": "KeywordBot",
+      "consistency check probability": 0.1,
+      "keywords": {
+        "4": {
+          "Python": 1,
+          "C++": 1,
+          "Java": 1,
+          " C ": 1,
+          "Good": 2,
+          "Perfect": 2,
+          "Bad": 2,
+          "Okay": 2,
+          "Beginner": 3,
+          "Intermediate": 3,
+          "Expert": 3,
+          "Course": 4,
+          "String": 5,
+          "LKG": 5,
+          "UKG": 5,
+          "Gradient": 5,
+          "Instructor": 6,
+          "Lecture": 7,
+          "Lesson": 7
+        }
+      }
+    }
+  ],
+  "datasets": [
+    {
+      "dataset id": 1,
+      "dataset name": "Sentiment Dataset",
+      "file path": "input-1.json"
+    },
+    {
+      "dataset id": 2,
+      "dataset name": "Multi-label Topic Classification Dataset",
+      "file path": "input-2.json",
+      "assigned user ids": [ 1, 4 ]
+    },
+    {
+      "dataset id": 3,
+      "dataset name": "Auto Labeling Test Dataset",
+      "file path": "input-3.json",
+      "assigned user ids": [
+        6
+      ]
+    },
+    {
+      "dataset id": 4,
+      "dataset name": "Keyword Based Label Classification Dataset",
+      "file path": "input-4.json",
+      "assigned user ids": [
+        7
+      ]
+    },
+    {
+      "dataset id": 999,
+      "dataset name": "Testing Dataset",
+      "file path": "test.json",
+      "assigned user ids": [
+        6
+      ]
+    }
+  ],
+  "current dataset id": 999
+}
