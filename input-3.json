@@ -1,0 +1,281 @@
+{
+  "dataset id": 3,
+  "dataset name": "Auto Labeling Test Dataset",
+  "maximum number of labels per instance": 10,
+  "class labels": [
+    {
+      "label id": 1,
+      "label text": "kargo"
+    },
+    {
+      "label id": 2,
+      "label text": "gayet"
+    },
+    {
+      "label id": 3,
+      "label text": "kötü"
+    },
+    {
+      "label id": 4,
+      "label text": "tavsiye"
+    },
+    {
+      "label id": 5,
+      "label text": "kedi"
+    },
+    {
+      "label id": 6,
+      "label text": "süper"
+    },
+    {
+      "label id": 7,
+      "label text": "paket"
+    },
+    {
+      "label id": 8,
+      "label text": "hepsiburada"
+    },
+    {
+      "label id": 9,
+      "label text": "kalite"
+    },
+    {
+      "label id": 10,
+      "label text": "açıklama"
+    },
+    {
+      "label id": 11,
+      "label text": "güzel"
+    },
+    {
+      "label id": 12,
+      "label text": "yanlış"
+    },
+    {
+      "label id": 13,
+      "label text": "iyi "
+    },
+    {
+      "label id": 14,
+      "label text": "karantina"
+    },
+    {
+      "label id": 15,
+      "label text": "memnun"
+    },
+    {
+      "label id": 16,
+      "label text": "eksik"
+    },
+    {
+      "label id": 17,
+      "label text": "sıkıntı"
+    }
+  ],
+  "instances": [
+    {
+      "id": 1,
+      "instance": "spor yapmak için aldığım bu dambıllar karantina döneminde çok işime yaradı"
+    },
+    {
+      "id": 2,
+      "instance": "kargo şirketleri bu dolabı getiremiyor."
+    },
+    {
+      "id": 3,
+      "instance": "bu ürün gerçekten çok gereksiz"
+    },
+    {
+      "id": 4,
+      "instance": "bu kulaklıkları arkadaşım hediye etmişti, kırılınca bir daha aldım"
+    },
+    {
+      "id": 5,
+      "instance": "telefonuma yeni bir aksesuar olarak aldım"
+    },
+    {
+      "id": 6,
+      "instance": "kedilerim bu mamaya bayılıyor"
+    },
+    {
+      "id": 7,
+      "instance": "kaç gündür bekliyorum yahu! kargo bir türlü gelemedi, gelince de evde yoksunuz dediler."
+    },
+    {
+      "id": 8,
+      "instance": "gayet hızlı ve güzel paketlenmiş halde geldi ürünün orijinalinde bantları üzerinde duruyordu, bu fiyata alınabilecek en iyi monitör"
+    },
+    {
+      "id": 9,
+      "instance": "kesinlikle fiyat performans ürünü, renk açısından çok tatmin edici"
+    },
+    {
+      "id": 10,
+      "instance": "35 tl kesinti yapmış turkcell'den üzerime kayıtlı numara olmamasına rağmen iki aydır ekstremden 35'er tl. kesilmiştir."
+    },
+    {
+      "id": 11,
+      "instance": "verdiğim her kuruş helal olsun :) seramik atölyesinde çalışıyorum, çok toz oluyor dolayısıyla robota çok ihtiyacım vardı."
+    },
+    {
+      "id": 12,
+      "instance": "öncellikle ilk kullanımımı diye belirtmek isterim ama ilk izlenim süper süper!"
+    },
+    {
+      "id": 13,
+      "instance": "ürünün renkleri canlı üzerindeki hayvanlar güzel fakat keşke ingilizce değil de türkçe olsaymış"
+    },
+    {
+      "id": 14,
+      "instance": "hakikatten süper bir telefon. Özellikle kamerası bence gayet iyi."
+    },
+    {
+      "id": 15,
+      "instance": "Herkese kesinlikle tavsiye ederim, tek sıkıntısı çok uzu sürdü gelmesi"
+    },
+    {
+      "id": 16,
+      "instance": "Telefon güzel fakat hizmet kötü. Hediye olarak yanında verilen kulaklığı göndermediler."
+    },
+    {
+      "id": 17,
+      "instance": "ürün bence mükemmel, çok sabit çalışıyor. Televizyonumu artık daha iyi kullanabiliyorum"
+    },
+    {
+      "id": 18,
+      "instance": "ürünün tedarik edilmesi ve kargolama süreci 5 yıldızı hak eder."
+    },
+    {
+      "id": 19,
+      "instance": "çok iyi kalite beklemeyin, tamamen vasat da diyemeyiz."
+    },
+    {
+      "id": 20,
+      "instance": "Çaykur kalitesiyle üretilen tiryaki çayı her zaman zevkle tükettik tüketmeye de devam edeceğiz"
+    },
+    {
+      "id": 21,
+      "instance": "Kesinlikle tavsiye ediyorum tereddüt etmeden alın derim."
+    },
+    {
+      "id": 22,
+      "instance": "Hepsiburada kalitesi, tartışmaya gerek yok. Verdiğim para sonuna kadar helal olsun."
+    },
+    {
+      "id": 23,
+      "instance": "ürünü dün 3 gibi aldım bu sabah 11 gibi geldi 24 saat bile olmadan geldi hiç beklemiyordum bu kadar hızlı kargolanacağını"
+    },
+    {
+      "id": 24,
+      "instance": "ürün güzel çok hafif bir plastik kokusu var ve küçük kapak zor takılıp çıkıyor ama kayda değer bir sorun değil."
+    },
+    {
+      "id": 25,
+      "instance": "elektrik gelen alt kısım ısınıyor su kaçırmayın erir onun haricinde güzel malzeme"
+    },
+    {
+      "id": 26,
+      "instance": "maskeler çok kaliteli. Nefes testinde ne kadar zorlanırsanız zorlayın çok çok az bir nefes geçiriyor."
+    },
+    {
+      "id": 27,
+      "instance": "çok tşk ederim ürün gayet güzel bir de paketleme olağan üstü güzel paketlenmiş kargoda çabuk geldi"
+    },
+    {
+      "id": 28,
+      "instance": "Açıklamada belirtilen aynı özelliklerde, rengi gayet hoş ve taşlarda eksik yok."
+    },
+    {
+      "id": 29,
+      "instance": "siparişim hızlı bir şekilde kargolandı. sürat kargo sağolsun kurye arkadaş 4. kata kadar çıkardı."
+    },
+    {
+      "id": 30,
+      "instance": "Malzeme kaliteli, kutudan bağlantı vidaları çıkmamıştı ama iletişime geçince hemen gönderdiler teşekkürler."
+    },
+    {
+      "id": 31,
+      "instance": "set gayet güzel ancak 5MP görüntü olarak algıladığımız için biraz yanılmış olduk sadece"
+    },
+    {
+      "id": 32,
+      "instance": "kedilerim ve kirpilerim beraber paylaşıyorlar ne güzel"
+    },
+    {
+      "id": 33,
+      "instance": "Arkadaşımla ortak alıyoruz yarı yarıya bölüşüyoruz o kendi ben kendi evimin sokağındaki kedilere veriyorum."
+    },
+    {
+      "id": 34,
+      "instance": "Kediler sevdi. Kargolama iyi gibi."
+    },
+    {
+      "id": 35,
+      "instance": "siparişimi verdikten 2 gün sonra elime ulaştı. ürün bir çuval içerisinde geldi. Bu da orijinal paketin zarar görmesini engellemektedir."
+    },
+    {
+      "id": 36,
+      "instance": "sokak köpekleri bile yemiyor diyorsunuz ama dağda taşta sokakta dağıtıyorum hepsi yiyorlar."
+    },
+    {
+      "id": 37,
+      "instance": "çok umutsuz şipariş verdim ama pitbul köpeğim için aldım iştahla yiyor"
+    },
+    {
+      "id": 38,
+      "instance": "Güzel masa. kurulumu uğraştırdı. Parçalar üstünde numaralandırma yapsalar daha kolay olurdu."
+    },
+    {
+      "id": 39,
+      "instance": "yanlış ölçüler verilmiş. Konsol derinliği 24 cm değil 20 cm geldi."
+    },
+    {
+      "id": 40,
+      "instance": "ürünü henüz denemedim. Elime ulaştığı kadarıyla kargolama, paketlenmesi gayet yeterli."
+    },
+    {
+      "id": 41,
+      "instance": "Ürün çok iyi bir ürün şık duruyor rustik ampullerle çok tatlı bir görünüm kazandı salonum kesinlikle tavsiye ederim."
+    },
+    {
+      "id": 42,
+      "instance": "Ürün fiyatına göre çok şık sorunsuz şekilde hızlı teslim edildi gönderen firma da çok ilgili bir firma tavsiye ederim."
+    },
+    {
+      "id": 43,
+      "instance": "Efsane bayıldımm, aslında başka bir satıcıdan almıştım ürünü ancak uzun bir süre kargolanmayınca hepsiburada iptal edip başka bir satıcıyla anlaştı."
+    },
+    {
+      "id": 44,
+      "instance": "Dün ilk kez kullandım ve hem kullanım kolaylığı hem de kullanırken verdiği histen çok memnun kaldım"
+    },
+    {
+      "id": 45,
+      "instance": "Birkaç gündür düzenli kullanıyorum. Yüzümdeki pütürler gerçekten azaldı her yıkayışımda yüzüm yumuşacık oldu."
+    },
+    {
+      "id": 46,
+      "instance": "Ürün sürat kargoyla gönderildi ve çok geç elime ulaştı yaklaşık 3 hafta sürdü. Sokağa çıkma yasakları da etkili oldu bu sürece."
+    },
+    {
+      "id": 47,
+      "instance": "Sipariş 24 saat içinde elime ulaştı. Bu anlamda hızlı gönderim çok başarılıydı. Paketten çıkan kahve için de teşekkür ederim."
+    },
+    {
+      "id": 48,
+      "instance": "sadece müzik dinlemek için almıştım ama kulaklık girişi çalışmıyor bile"
+    },
+    {
+      "id": 49,
+      "instance": "kedilerim nedense yaş mamaları kuru mamalardan daha çok seviyorlar"
+    },
+    {
+      "id": 50,
+      "instance": "denediğim hiçbir krem bu kadar iyi ve anında nemlendirmiyor gerçekten çok iyi"
+    },
+    {
+      "id": 51,
+      "instance": "mouse sözde sessiz bir mouse ama geceleri herkesi uykusundan uyandıracak kadar gürültülü!"
+    }
+  ]
+}
