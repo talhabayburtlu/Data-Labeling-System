@@ -28,6 +28,16 @@ public class LabelAssignmentManager {
     }
 
     public LabelAssignment createLabelAssignment(User user, Instance instance, ArrayList<Label> labels, Duration duration) {
+        if (labels.isEmpty())
+            return null;
+
+        ArrayList<Label> tempLabels = new ArrayList<>();
+        for (Label label : labels)
+            if (!tempLabels.contains(label))
+                tempLabels.add(label);
+
+        labels = tempLabels;
+
         String labelsInfo = "";
         for (Label label : labels)
             labelsInfo += label.toString();

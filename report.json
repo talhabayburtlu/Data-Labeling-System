@@ -11,8 +11,8 @@
     "Label{id=3, text='Notr'}": 0
   },
   "number of unique instances for labels": {
-    "Label{id=1, text='Positive'}": 0,
     "Label{id=2, text='Negative'}": 0,
+    "Label{id=1, text='Positive'}": 0,
     "Label{id=3, text='Notr'}": 0
   },
   "number of users assigned": 0,
@@ -26,280 +26,1248 @@
     },
     "completeness percentage": 0,
     "class distribution": {
-      "Label{id=9, text='firma '}": 0,
+      "Label{id=3, text='hat '}": 0,
       "Label{id=8, text='konu '}": 0,
-      "Label{id=12, text='borç '}": 0,
-      "Label{id=15, text='borç '}": 0,
-      "Label{id=2, text='numara '}": 0,
-      "Label{id=1, text='bayi '}": 0,
+      "Label{id=14, text='taraf'}": 0,
       "Label{id=5, text='müşteri'}": 0,
       "Label{id=6, text='bilgi '}": 0,
-      "Label{id=13, text='fatura '}": 0,
-      "Label{id=14, text='taraf'}": 0,
+      "Label{id=9, text='firma '}": 0,
       "Label{id=10, text='cihaz'}": 0,
-      "Label{id=4, text='işlem'}": 0,
-      "Label{id=11, text='hat '}": 0,
+      "Label{id=15, text='borç '}": 0,
       "Label{id=16, text='paket'}": 0,
-      "Label{id=3, text='hat '}": 0,
+      "Label{id=11, text='hat '}": 0,
+      "Label{id=2, text='numara '}": 0,
+      "Label{id=13, text='fatura '}": 0,
+      "Label{id=12, text='borç '}": 0,
+      "Label{id=4, text='işlem'}": 0,
+      "Label{id=1, text='bayi '}": 0,
       "Label{id=7, text='telefon'}": 0
     },
     "number of unique instances for labels": {
-      "Label{id=9, text='firma '}": 0,
+      "Label{id=3, text='hat '}": 0,
       "Label{id=8, text='konu '}": 0,
-      "Label{id=12, text='borç '}": 0,
-      "Label{id=15, text='borç '}": 0,
-      "Label{id=2, text='numara '}": 0,
-      "Label{id=1, text='bayi '}": 0,
+      "Label{id=14, text='taraf'}": 0,
       "Label{id=5, text='müşteri'}": 0,
       "Label{id=6, text='bilgi '}": 0,
-      "Label{id=13, text='fatura '}": 0,
-      "Label{id=14, text='taraf'}": 0,
+      "Label{id=9, text='firma '}": 0,
       "Label{id=10, text='cihaz'}": 0,
-      "Label{id=4, text='işlem'}": 0,
-      "Label{id=11, text='hat '}": 0,
+      "Label{id=15, text='borç '}": 0,
       "Label{id=16, text='paket'}": 0,
-      "Label{id=3, text='hat '}": 0,
+      "Label{id=11, text='hat '}": 0,
+      "Label{id=2, text='numara '}": 0,
+      "Label{id=13, text='fatura '}": 0,
+      "Label{id=12, text='borç '}": 0,
+      "Label{id=4, text='işlem'}": 0,
+      "Label{id=1, text='bayi '}": 0,
       "Label{id=7, text='telefon'}": 0
     },
     "number of users assigned": 0,
     "list of users assigned with completeness percentage": {},
     "list of users assigned with consistency percentage": {}
   },
-{
-  "dataset" : {
-    "dataset id" : 999,
-    "dataset name": "Test Dataset"
-  },
-  "completeness percentage": 100,
-  "class distribution": {
-    "Label{id=5, text='Label E'}": 0,
-    "Label{id=1, text='Label A'}": 20,
-    "Label{id=3, text='Label C'}": 20,
-    "Label{id=2, text='Label B'}": 40,
-    "Label{id=4, text='Label D'}": 20
-  },
-  "number of unique instances for labels": {
-    "Label{id=5, text='Label E'}": 1,
-    "Label{id=1, text='Label A'}": 3,
-    "Label{id=3, text='Label C'}": 6,
-    "Label{id=2, text='Label B'}": 8,
-    "Label{id=4, text='Label D'}": 5
-  },
-  "number of users assigned": 3,
-  "list of users assigned with completeness percentage": {
-    "User{id=3, name='User3', type='RandomBot'}": 0,
-    "User{id=4, name='User4', type='Human'}": 100,
-    "User{id=5, name='User5', type='KeywordBot'}": 100
-  },
-  "list of users assigned with consistency percentage": {
-    "User{id=5, name='User5', type='KeywordBot'}": 0,
-    "User{id=4, name='User4', type='Human'}": 0
-  }
-}
-],
-"instance metrics": [
   {
-    "instance": {
-      "id": 1,
-      "instance": "35 tl kesinti yapmış turkcell'den üzerime kayıtlı numara olmamasına rağmen iki aydır ekstremden 35'er tl. kesilmiştir.",
-      "finalLabel": {
-        "label id": 2,
-        "label text": "Label B"
-      }
+    "dataset": {
+      "dataset id": 4,
+      "dataset name": "Keyword Dataset"
     },
-    "number of label assignments": 7,
-    "number of unique label assignments": 3,
-    "number of unique users": 2,
-    "most frequent class label with percentage": {
-      "Label{id=2, text='Label B'}": 42
+    "completeness percentage": 88,
+    "class distribution": {
+      "Label{id=7, text='Related to Lecture'}": 114,
+      "Label{id=5, text='Topic'}": 14,
+      "Label{id=1, text='Programming Language'}": 200,
+      "Label{id=3, text='Level of Attendant'}": 143,
+      "Label{id=2, text='Rating'}": 71,
+      "Label{id=4, text='Related to Course'}": 86,
+      "Label{id=6, text='Related to Instructor'}": 0
     },
-    "all class labels with percentages": {
-      "Label{id=3, text='Label C'}": 28,
-      "Label{id=1, text='Label A'}": 28,
-      "Label{id=2, text='Label B'}": 42
+    "number of unique instances for labels": {
+      "Label{id=7, text='Related to Lecture'}": 8,
+      "Label{id=5, text='Topic'}": 3,
+      "Label{id=1, text='Programming Language'}": 27,
+      "Label{id=3, text='Level of Attendant'}": 13,
+      "Label{id=2, text='Rating'}": 20,
+      "Label{id=4, text='Related to Course'}": 38,
+      "Label{id=6, text='Related to Instructor'}": 5
     },
-    "entropy": 0.9805197229289554
+    "number of users assigned": 1,
+    "list of users assigned with completeness percentage": {
+      "User{id=7, name='User7', type='KeywordBot'}": 100
+    },
+    "list of users assigned with consistency percentage": {
+      "User{id=7, name='User7', type='KeywordBot'}": 100
+    }
   },
   {
-    "instance": {
-      "id": 2,
-      "instance": "tele kurye işık hızında turkcell'den aldığım cihaz tele kurye denen ilgisiz, telefonlara bakmayan bir kurye tarafından 10 gündür elime ulaşılmadı. telefonlarıma bakılmıyor ne ciddiyetsiz kurumsallaşmamış bir kurye firması turkcell'e bu katkılarından dolayı teşekkürler!",
-      "finalLabel": {
-        "label id": 1,
-        "label text": "Label A"
-      }
+    "dataset": {
+      "dataset id": 999,
+      "dataset name": "Test Dataset"
     },
-    "number of label assignments": 3,
-    "number of unique label assignments": 3,
-    "number of unique users": 2,
-    "most frequent class label with percentage": {
-      "Label{id=1, text='Label A'}": 33
+    "completeness percentage": 100,
+    "class distribution": {
+      "Label{id=2, text='Label B'}": 0,
+      "Label{id=3, text='Label C'}": 0,
+      "Label{id=4, text='Label D'}": 0,
+      "Label{id=5, text='Label E'}": 0,
+      "Label{id=1, text='Label A'}": 0
     },
-    "all class labels with percentages": {
-      "Label{id=1, text='Label A'}": 33,
-      "Label{id=2, text='Label B'}": 33,
-      "Label{id=4, text='Label D'}": 33
+    "number of unique instances for labels": {
+      "Label{id=3, text='Label C'}": 6,
+      "Label{id=4, text='Label D'}": 5,
+      "Label{id=5, text='Label E'}": 1,
+      "Label{id=1, text='Label A'}": 3,
+      "Label{id=2, text='Label B'}": 8
     },
-    "entropy": 0.9990567278352848
-  },
-  {
-    "instance": {
-      "id": 3,
-      "instance": "bursa anatolium müşteriyi kandırma 15 eylül günü bursa anatolium turkcell mağazasına iphone cihazım için şarj kablosu almaya gittim. aksesuar için etikette yazan fiyat 89,90dı turkcell uygulamada son bahar indiriminden dolayı fiyatın 63 tl olduğunu gösterdim; aldığım cevap uygulamadaki ürünün orijinal olmadığıydı. 'o ürün orijinal değil, sıkıntı yaşamak istemiyorsanız bunu alın' gibi bir cevap verildi. ürünü aldım kartımı uzattım şifremi girmek için cihaza yöneldiğimde ekranda 90,00 tl yazdığını fark ettim. sorduğumda ben size 10 kuruş geri veririm ablacım diye bit yanıt aldım. bugün turkcell müşteri hizmetlerini aradım ve uygulamadaki ürünün orijinal olduğunu satış fiyatının farklı olabileceğini öğrendim. satış fiyatı farklı olabilir evet, ama turkcell'i temsil eden bir çalışan nasıl ürünün sahte olduğunu söyleyebilir, ikincisi benden 10 kuruş başkasından 50 kuruş diye diye neyin hesabı bu?",
-      "finalLabel": {
-        "label id": 4,
-        "label text": "Label D"
-      }
+    "number of users assigned": 3,
+    "list of users assigned with completeness percentage": {
+      "User{id=5, name='User5', type='KeywordBot'}": 100,
+      "User{id=3, name='User3', type='RandomBot'}": 0,
+      "User{id=4, name='User4', type='Human'}": 100
     },
-    "number of label assignments": 5,
-    "number of unique label assignments": 4,
-    "number of unique users": 2,
-    "most frequent class label with percentage": {
-      "Label{id=4, text='Label D'}": 40
-    },
-    "all class labels with percentages": {
-      "Label{id=5, text='Label E'}": 20,
-      "Label{id=3, text='Label C'}": 20,
-      "Label{id=2, text='Label B'}": 20,
-      "Label{id=4, text='Label D'}": 40
-    },
-    "entropy": 0.9609640474436811
-  },
-  {
-    "instance": {
-      "id": 4,
-      "instance": "turkcell haksız borçlar turkcell **** numaralı ödediğim faturalardan devir bakiyesini almıyor sonra 2011 yılındaki 1 kuruşluk faturayı ödemediği iddia ederek borcu tarafıma 10 tl olarak icra başlatıyor ve bunu avukat ıvır zıvır olarak 500 tl bitirecek. borcu, reel alacak diye bir firmaya devrediyor turkcell ismine yakışmayan bir şey. 2011 'den bu yana 6 sene içerisinde tarafıma bir tebligat bile yapmıyor yazık yazık.",
-      "finalLabel": {
-        "label id": 3,
-        "label text": "Label C"
-      }
-    },
-    "number of label assignments": 4,
-    "number of unique label assignments": 3,
-    "number of unique users": 2,
-    "most frequent class label with percentage": {
-      "Label{id=3, text='Label C'}": 50
-    },
-    "all class labels with percentages": {
-      "Label{id=3, text='Label C'}": 50,
-      "Label{id=2, text='Label B'}": 25,
-      "Label{id=4, text='Label D'}": 25
-    },
-    "entropy": 0.9463946303571862
-  },
-  {
-    "instance": {
-      "id": 5,
-      "instance": "turkcell bana sormadan paket tanımlanmış! turkcell internet paketim bitince bana sormadan otomatik olarak 1 gb internet tanımlamış ve 10 tl yansıtmış, ayrıca fatura kesim tarihim 1 gün kala bu paketi tanımlamış ve fatura kesim tarihi yani 1 gün sonrasında bu paketi iptal etmiş ve ücreti iptal etmemiştir.",
-      "finalLabel": {
-        "label id": 2,
-        "label text": "Label B"
-      }
-    },
-    "number of label assignments": 4,
-    "number of unique label assignments": 3,
-    "number of unique users": 2,
-    "most frequent class label with percentage": {
-      "Label{id=2, text='Label B'}": 50
-    },
-    "all class labels with percentages": {
-      "Label{id=3, text='Label C'}": 25,
-      "Label{id=2, text='Label B'}": 50,
-      "Label{id=4, text='Label D'}": 25
-    },
-    "entropy": 0.9463946303571862
+    "list of users assigned with consistency percentage": {
+      "User{id=5, name='User5', type='KeywordBot'}": 0,
+      "User{id=4, name='User4', type='Human'}": 100
+    }
   }
 ],
-"user metrics": [
-  {
-    "user": {
-      "user id": 1,
-      "user name": "User1",
-      "user type": "RandomBot",
-      "consistency check probability": 0.1
-    },
-    "number of datasets assigned": 0,
-    "datasets with completeness percentages": {},
-    "number of instances labeled": 0,
-    "number of unique instances labeled": 0,
-    "consistency percentage": 100,
-    "average time spent labeling": "NaN",
-    "standard deviation of time spent labeling": 0.0
-  },
-  {
-    "user": {
-      "user id": 2,
-      "user name": "User2",
-      "user type": "RandomBot",
-      "consistency check probability": 0.1
-    },
-    "number of datasets assigned": 0,
-    "datasets with completeness percentages": {},
-    "number of instances labeled": 0,
-    "number of unique instances labeled": 0,
-    "consistency percentage": 100,
-    "average time spent labeling": "NaN",
-    "standard deviation of time spent labeling": 0.0
-  },
-  {
-    "user": {
-      "user id": 3,
-      "user name": "User3",
-      "user type": "RandomBot",
-      "consistency check probability": 0.1
-    },
-    "number of datasets assigned": 1,
-    "datasets with completeness percentages": {
-      "Dataset{id=999, name='Test Dataset'}": 0
-    },
-    "number of instances labeled": 0,
-    "number of unique instances labeled": 0,
-    "consistency percentage": 100,
-    "average time spent labeling": "NaN",
-    "standard deviation of time spent labeling": 0.0
-  },
-  {
-    "user": {
-      "user id": 4,
-      "user name": "User4",
-      "user type": "Human",
-      "consistency check probability": 0.5,
-      "username": "test",
-      "password": "12345"
-    },
-    "number of datasets assigned": 1,
-    "datasets with completeness percentages": {
-      "Dataset{id=999, name='Test Dataset'}": 100
-    },
-    "number of instances labeled": 6,
-    "number of unique instances labeled": 5,
-    "consistency percentage": 0,
-    "average time spent labeling": 0.5010040000000001,
-    "standard deviation of time spent labeling": 6.301888605806888E-4
-  },
-  {
-    "user": {
-      "user id": 5,
-      "user name": "User5",
-      "user type": "KeywordBot",
-      "consistency check probability": 0.1,
-      "keywords": {
-        "999": {
-          "turkcell": 2,
-          "tl": 3,
-          "kesinti": 1,
-          "sahte": 4
+  "instance metrics": [
+    {
+      "instance": {
+        "id": 1,
+        "instance": "Nice course! Love the exercise! It would be better if there were more exercises and links to the deeper introductions to the functions mentioned in the course.",
+        "finalLabel": {
+          "label id": 4,
+          "label text": "Related to Course"
         }
-      }
+      },
+      "number of label assignments": 1,
+      "number of unique label assignments": 1,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "all class labels with percentages": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "entropy": "NaN"
     },
-    "number of datasets assigned": 1,
-    "datasets with completeness percentages": {
-      "Dataset{id=999, name='Test Dataset'}": 100
+    {
+      "instance": {
+        "id": 2,
+        "instance": "Great experience, it was fun and useful for me like beginer....i like it very much."
+      },
+      "number of label assignments": 0,
+      "number of unique label assignments": 0,
+      "number of unique users": 0,
+      "all class labels with percentages": {},
+      "entropy": 0.0
     },
-    "number of instances labeled": 5,
-    "number of unique instances labeled": 5,
-    "consistency percentage": 0,
-    "average time spent labeling": 0.5026732,
-    "standard deviation of time spent labeling": 0.0017429006569509421
-  }
-]}
+    {
+      "instance": {
+        "id": 3,
+        "instance": "I loved it, but some exercises and challenges did not rhyme with the coursework. Other exercises were difficult with respect to the lesson.",
+        "finalLabel": {
+          "label id": 7,
+          "label text": "Related to Lecture"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=7, text='Related to Lecture'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=7, text='Related to Lecture'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 4,
+        "instance": "There is Clarity in teaching and topics are easy to understand, i will definitely recommend to any python beginner.",
+        "finalLabel": {
+          "label id": 3,
+          "label text": "Level of Attendant"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=3, text='Level of Attendant'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=3, text='Level of Attendant'}": 50,
+        "Label{id=1, text='Programming Language'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 5,
+        "instance": "This course is helpful as I am new to python. this course helped me to make many python projects. I think you should try this course. this course will help you to learn all the basic framework of python. I thank the instructor of this course.",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 6,
+      "number of unique label assignments": 3,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 33
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 33,
+        "Label{id=6, text='Related to Instructor'}": 33,
+        "Label{id=4, text='Related to Course'}": 33
+      },
+      "entropy": 0.9990567278352848
+    },
+    {
+      "instance": {
+        "id": 6,
+        "instance": "Yes, as an absolute beginner in programming and that too from a non-technical background , I could understand the lectures without any outside help and really found the course helpful in learning the basics of python programming. I would definitely look forward to the next level courses by this instructor. Thanks a lot.",
+        "finalLabel": {
+          "label id": 7,
+          "label text": "Related to Lecture"
+        }
+      },
+      "number of label assignments": 5,
+      "number of unique label assignments": 5,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=7, text='Related to Lecture'}": 20
+      },
+      "all class labels with percentages": {
+        "Label{id=7, text='Related to Lecture'}": 20,
+        "Label{id=3, text='Level of Attendant'}": 20,
+        "Label{id=1, text='Programming Language'}": 20,
+        "Label{id=6, text='Related to Instructor'}": 20,
+        "Label{id=4, text='Related to Course'}": 20
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 7,
+        "instance": "Pretty good course, well explained, and good challenges to put our knowledge on test. Recommended.",
+        "finalLabel": {
+          "label id": 2,
+          "label text": "Rating"
+        }
+      },
+      "number of label assignments": 4,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=2, text='Rating'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=2, text='Rating'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 8,
+        "instance": "I feel this course helped me a lot in trying to understand the basics of python and kudos to everyone who helped in making this a success.",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 4,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 9,
+        "instance": "It was wonderful and fulfilled its title by teaching me a good portion of Python without having any past knowledge. The course jumped straight into the actual content and taught me a lot.",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 3,
+      "number of unique label assignments": 3,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 33
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 33,
+        "Label{id=2, text='Rating'}": 33,
+        "Label{id=4, text='Related to Course'}": 33
+      },
+      "entropy": 0.9990567278352848
+    },
+    {
+      "instance": {
+        "id": 10,
+        "instance": "i am learning this language for first time and it is clearing all my doubts. All sections so far done is explained all small topics so well that it makes me easy to understand the python language from basics and fundamentals are getting clear easily.",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 1,
+      "number of unique label assignments": 1,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 100
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 100
+      },
+      "entropy": "NaN"
+    },
+    {
+      "instance": {
+        "id": 11,
+        "instance": "I completed entire course but course is shown 95% completed. what I need to do now.",
+        "finalLabel": {
+          "label id": 4,
+          "label text": "Related to Course"
+        }
+      },
+      "number of label assignments": 1,
+      "number of unique label assignments": 1,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "all class labels with percentages": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "entropy": "NaN"
+    },
+    {
+      "instance": {
+        "id": 12,
+        "instance": "Great course! Will take for sure 5 times longer to go through information here than 3 hour, as full of information which is clearly explained, but definitely takes time to take notes meanwhile and practice yourself. More exercises would make it even better, for those who feel like really want to lock the fresh knowledge in memory.",
+        "finalLabel": {
+          "label id": 4,
+          "label text": "Related to Course"
+        }
+      },
+      "number of label assignments": 1,
+      "number of unique label assignments": 1,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "all class labels with percentages": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "entropy": "NaN"
+    },
+    {
+      "instance": {
+        "id": 13,
+        "instance": "This course is great for beginners who want to learn about Python. The instructor presents the course in an easy to follow format, with short lectures. I will definitely recommend. Thank you.",
+        "finalLabel": {
+          "label id": 7,
+          "label text": "Related to Lecture"
+        }
+      },
+      "number of label assignments": 5,
+      "number of unique label assignments": 5,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=7, text='Related to Lecture'}": 20
+      },
+      "all class labels with percentages": {
+        "Label{id=7, text='Related to Lecture'}": 20,
+        "Label{id=3, text='Level of Attendant'}": 20,
+        "Label{id=1, text='Programming Language'}": 20,
+        "Label{id=6, text='Related to Instructor'}": 20,
+        "Label{id=4, text='Related to Course'}": 20
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 14,
+        "instance": "Great course. The lessons are clear. I knocked off a star because of the exercises. My only suggestion is to simplify the exercises/challenges towards the end of the course. Many of the solutions include code that was not discussed in the course. I found this very discouraging. Also, I would be nice to add exercises/challenges to section 8. Also, maybe a final section of challenges that require concepts from various sections.",
+        "finalLabel": {
+          "label id": 7,
+          "label text": "Related to Lecture"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=7, text='Related to Lecture'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=7, text='Related to Lecture'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 15,
+        "instance": "Explanation could be more in the last few videos."
+      },
+      "number of label assignments": 0,
+      "number of unique label assignments": 0,
+      "number of unique users": 0,
+      "all class labels with percentages": {},
+      "entropy": 0.0
+    },
+    {
+      "instance": {
+        "id": 16,
+        "instance": "Just need clarification on factorials. I don't think there was a section explaining them. Just went straight to the challenge."
+      },
+      "number of label assignments": 0,
+      "number of unique label assignments": 0,
+      "number of unique users": 0,
+      "all class labels with percentages": {},
+      "entropy": 0.0
+    },
+    {
+      "instance": {
+        "id": 17,
+        "instance": "Great course for beginners to learn the basics and start your path to python programming. I highly recommend this to freshers/beginners. Overall, I was pretty impressed with the coding exercises. There was a lot of good information that was clearly explained.",
+        "finalLabel": {
+          "label id": 3,
+          "label text": "Level of Attendant"
+        }
+      },
+      "number of label assignments": 4,
+      "number of unique label assignments": 4,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=3, text='Level of Attendant'}": 25
+      },
+      "all class labels with percentages": {
+        "Label{id=3, text='Level of Attendant'}": 25,
+        "Label{id=1, text='Programming Language'}": 25,
+        "Label{id=2, text='Rating'}": 25,
+        "Label{id=4, text='Related to Course'}": 25
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 18,
+        "instance": "I am really enjoy the way how knowledge has been represent. In very easy and understandable way. Thank you. The one thing I suggest is to have more exercises, practice."
+      },
+      "number of label assignments": 0,
+      "number of unique label assignments": 0,
+      "number of unique users": 0,
+      "all class labels with percentages": {},
+      "entropy": 0.0
+    },
+    {
+      "instance": {
+        "id": 19,
+        "instance": "Yes it gave me a great intro to Python thanks!",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 1,
+      "number of unique label assignments": 1,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 100
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 100
+      },
+      "entropy": "NaN"
+    },
+    {
+      "instance": {
+        "id": 20,
+        "instance": "As a complete beginner it was exactly what I was looking for. It showed you the basic skills to learn Python while also pushing you to think critically with those skills to solve problems and build things. Highly recommended!",
+        "finalLabel": {
+          "label id": 3,
+          "label text": "Level of Attendant"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=3, text='Level of Attendant'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=3, text='Level of Attendant'}": 50,
+        "Label{id=1, text='Programming Language'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 21,
+        "instance": "Being an Python newbie, i feel this course gave me a good overall understanding of the language.",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 3,
+      "number of unique label assignments": 3,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 33
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 33,
+        "Label{id=2, text='Rating'}": 33,
+        "Label{id=4, text='Related to Course'}": 33
+      },
+      "entropy": 0.9990567278352848
+    },
+    {
+      "instance": {
+        "id": 22,
+        "instance": "Yes it was really good.I have finished learning python within a week.Thanks for your help.The professor was too good in teaching.",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 50,
+        "Label{id=2, text='Rating'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 23,
+        "instance": "This course has taught me Python very amazingly, above expectations .",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 24,
+        "instance": "It seems straightforward and clear enough as well as easily repeatable. Sixth week in: Yeah, still holds up."
+      },
+      "number of label assignments": 0,
+      "number of unique label assignments": 0,
+      "number of unique users": 0,
+      "all class labels with percentages": {},
+      "entropy": 0.0
+    },
+    {
+      "instance": {
+        "id": 25,
+        "instance": "This course has been really useful for me to learn the absolute basics of python, as I plan to do computer science at university, the uni of my choice teaches python at year 1, hence why I am here trying to learn and I believe this is a good starting point.",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 3,
+      "number of unique label assignments": 3,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 33
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 33,
+        "Label{id=2, text='Rating'}": 33,
+        "Label{id=4, text='Related to Course'}": 33
+      },
+      "entropy": 0.9990567278352848
+    },
+    {
+      "instance": {
+        "id": 26,
+        "instance": "Yes, this is a great course...learnt many things through this, very good tutor and the exercises after each topics were very helpful.",
+        "finalLabel": {
+          "label id": 2,
+          "label text": "Rating"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=2, text='Rating'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=2, text='Rating'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 27,
+        "instance": "you have some basic things about c . this course is very easier to learn and by the by teaching should be excellent...",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 28,
+        "instance": "The course is for absolute beginners , it's like LKG,UKG division in python. The explanation is good and will definitely help those who are into starting stage of python. Course duration and video length ( more exercises than lectures) is too low. Could have been better..",
+        "finalLabel": {
+          "label id": 7,
+          "label text": "Related to Lecture"
+        }
+      },
+      "number of label assignments": 5,
+      "number of unique label assignments": 5,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=7, text='Related to Lecture'}": 20
+      },
+      "all class labels with percentages": {
+        "Label{id=7, text='Related to Lecture'}": 20,
+        "Label{id=5, text='Topic'}": 20,
+        "Label{id=3, text='Level of Attendant'}": 20,
+        "Label{id=2, text='Rating'}": 20,
+        "Label{id=4, text='Related to Course'}": 20
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 29,
+        "instance": "Obviously it was a good match for me... Thank you udemy for providing this course... Thank you sir for guiding me through this course... really enjoyed it.",
+        "finalLabel": {
+          "label id": 2,
+          "label text": "Rating"
+        }
+      },
+      "number of label assignments": 4,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=2, text='Rating'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=2, text='Rating'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 30,
+        "instance": "I like the course, the instructor is very clear and succinct becoming if a teacher for beginner programmers.",
+        "finalLabel": {
+          "label id": 3,
+          "label text": "Level of Attendant"
+        }
+      },
+      "number of label assignments": 3,
+      "number of unique label assignments": 3,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=3, text='Level of Attendant'}": 33
+      },
+      "all class labels with percentages": {
+        "Label{id=3, text='Level of Attendant'}": 33,
+        "Label{id=6, text='Related to Instructor'}": 33,
+        "Label{id=4, text='Related to Course'}": 33
+      },
+      "entropy": 0.9990567278352848
+    },
+    {
+      "instance": {
+        "id": 31,
+        "instance": "Python for Absolute BeginnersIt is interesting and I am till glad I took this course. It is difficult to understand sometimes, as the theory explained is sometimes skipped in the examples or course work. So when I have to do the program challenges, I feel I have to jump straight to solutions to see how its done. I think more basic exercises would have been more welcomed for a 101 course, they were quite challenging for an absolute beginner. The course is still good from a learning perspective..",
+        "finalLabel": {
+          "label id": 3,
+          "label text": "Level of Attendant"
+        }
+      },
+      "number of label assignments": 4,
+      "number of unique label assignments": 4,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=3, text='Level of Attendant'}": 25
+      },
+      "all class labels with percentages": {
+        "Label{id=3, text='Level of Attendant'}": 25,
+        "Label{id=1, text='Programming Language'}": 25,
+        "Label{id=2, text='Rating'}": 25,
+        "Label{id=4, text='Related to Course'}": 25
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 32,
+        "instance": "This course was a very good introduction to Python for someone who has zero prior experience before. Exercises and challenges helped to put the concepts learnt in a practical example so we can practice them",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 3,
+      "number of unique label assignments": 3,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 33
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 33,
+        "Label{id=2, text='Rating'}": 33,
+        "Label{id=4, text='Related to Course'}": 33
+      },
+      "entropy": 0.9990567278352848
+    },
+    {
+      "instance": {
+        "id": 33,
+        "instance": "Thank you so much for making this great course!!!!! I really love how after each explanation there was exercises and challenges.",
+        "finalLabel": {
+          "label id": 4,
+          "label text": "Related to Course"
+        }
+      },
+      "number of label assignments": 1,
+      "number of unique label assignments": 1,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "all class labels with percentages": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "entropy": "NaN"
+    },
+    {
+      "instance": {
+        "id": 34,
+        "instance": "the course structure and the way u taught us is fine,but wasnt happy with the exercises part,felt you could have given us more programs to solve and stuff .that is it.",
+        "finalLabel": {
+          "label id": 4,
+          "label text": "Related to Course"
+        }
+      },
+      "number of label assignments": 1,
+      "number of unique label assignments": 1,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "all class labels with percentages": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "entropy": "NaN"
+    },
+    {
+      "instance": {
+        "id": 35,
+        "instance": "Good overview with lots of valuable examples, really enjoyed this intro to Python, thank you!",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 50,
+        "Label{id=2, text='Rating'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 36,
+        "instance": "yeah the lectures were pretty good and programming challenges are very helpful to practice.",
+        "finalLabel": {
+          "label id": 7,
+          "label text": "Related to Lecture"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=7, text='Related to Lecture'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=7, text='Related to Lecture'}": 50,
+        "Label{id=2, text='Rating'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 37,
+        "instance": "When I first started coding I had little understanding what was going on. Now I can understand coding and I am more passionate then when I started. A long story short, I loved this course, if you want to get better at coding you got to try this.",
+        "finalLabel": {
+          "label id": 4,
+          "label text": "Related to Course"
+        }
+      },
+      "number of label assignments": 1,
+      "number of unique label assignments": 1,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "all class labels with percentages": {
+        "Label{id=4, text='Related to Course'}": 100
+      },
+      "entropy": "NaN"
+    },
+    {
+      "instance": {
+        "id": 38,
+        "instance": "Course is nicely designed for beginners.It is very useful for people who are new to programming or having programming background for some other language. Content is very basic. Explanation for each module is good.Learned some new things.",
+        "finalLabel": {
+          "label id": 3,
+          "label text": "Level of Attendant"
+        }
+      },
+      "number of label assignments": 3,
+      "number of unique label assignments": 3,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=3, text='Level of Attendant'}": 33
+      },
+      "all class labels with percentages": {
+        "Label{id=3, text='Level of Attendant'}": 33,
+        "Label{id=2, text='Rating'}": 33,
+        "Label{id=4, text='Related to Course'}": 33
+      },
+      "entropy": 0.9990567278352848
+    },
+    {
+      "instance": {
+        "id": 39,
+        "instance": "Yes; It is a good match, I could quickly latch on and learn new programming language. Explanation with examples made it very interesting and Amazing.",
+        "finalLabel": {
+          "label id": 2,
+          "label text": "Rating"
+        }
+      },
+      "number of label assignments": 1,
+      "number of unique label assignments": 1,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=2, text='Rating'}": 100
+      },
+      "all class labels with percentages": {
+        "Label{id=2, text='Rating'}": 100
+      },
+      "entropy": "NaN"
+    },
+    {
+      "instance": {
+        "id": 40,
+        "instance": "Real easy to follow - great job - thus far. I really enjoyed this course. It was well designed with the correct gradient. I was able to understand the teacher; clearly, his vocal cadence will on point. I will practice much of what I have learned from this class, so I am far from completing this course.",
+        "finalLabel": {
+          "label id": 5,
+          "label text": "Topic"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=5, text='Topic'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=5, text='Topic'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 41,
+        "instance": "Using the lesson type as variables was confusing at times. For example, using 'string=' for the example, confused me for a bit on what a string was.",
+        "finalLabel": {
+          "label id": 7,
+          "label text": "Related to Lecture"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=7, text='Related to Lecture'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=7, text='Related to Lecture'}": 50,
+        "Label{id=5, text='Topic'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 42,
+        "instance": "Section 6 loops could have been more detailed as I felt the section was finished in a rush. all in all a good course for learning python for absolute beginners.",
+        "finalLabel": {
+          "label id": 3,
+          "label text": "Level of Attendant"
+        }
+      },
+      "number of label assignments": 4,
+      "number of unique label assignments": 4,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=3, text='Level of Attendant'}": 25
+      },
+      "all class labels with percentages": {
+        "Label{id=3, text='Level of Attendant'}": 25,
+        "Label{id=1, text='Programming Language'}": 25,
+        "Label{id=2, text='Rating'}": 25,
+        "Label{id=4, text='Related to Course'}": 25
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 43,
+        "instance": "It was a really great course. I learned Python which i was willing to do for so long and the lectures were quite interesting. Though i thought this course would give me a certification and i didn't get one.",
+        "finalLabel": {
+          "label id": 7,
+          "label text": "Related to Lecture"
+        }
+      },
+      "number of label assignments": 3,
+      "number of unique label assignments": 3,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=7, text='Related to Lecture'}": 33
+      },
+      "all class labels with percentages": {
+        "Label{id=7, text='Related to Lecture'}": 33,
+        "Label{id=1, text='Programming Language'}": 33,
+        "Label{id=4, text='Related to Course'}": 33
+      },
+      "entropy": 0.9990567278352848
+    },
+    {
+      "instance": {
+        "id": 44,
+        "instance": "This course is really good for beginners interested to learn Python. Even if you don`t have prior programming experience you can still learn this course.",
+        "finalLabel": {
+          "label id": 3,
+          "label text": "Level of Attendant"
+        }
+      },
+      "number of label assignments": 4,
+      "number of unique label assignments": 4,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=3, text='Level of Attendant'}": 25
+      },
+      "all class labels with percentages": {
+        "Label{id=3, text='Level of Attendant'}": 25,
+        "Label{id=1, text='Programming Language'}": 25,
+        "Label{id=2, text='Rating'}": 25,
+        "Label{id=4, text='Related to Course'}": 25
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 45,
+        "instance": "This course is so helpful for beginners. Each section of the course is so clear to understand. I recommend this course for new learners for python.",
+        "finalLabel": {
+          "label id": 3,
+          "label text": "Level of Attendant"
+        }
+      },
+      "number of label assignments": 3,
+      "number of unique label assignments": 3,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=3, text='Level of Attendant'}": 33
+      },
+      "all class labels with percentages": {
+        "Label{id=3, text='Level of Attendant'}": 33,
+        "Label{id=1, text='Programming Language'}": 33,
+        "Label{id=4, text='Related to Course'}": 33
+      },
+      "entropy": 0.9990567278352848
+    },
+    {
+      "instance": {
+        "id": 46,
+        "instance": "Well, this is my first python course and ive acquired some great knowledge from this course :)",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 47,
+        "instance": "This course is exactly what I expected to be. Simple, clear and easy to understand intro to the world of Python. I gained enough knowledge and confidence to take advanced courses.",
+        "finalLabel": {
+          "label id": 1,
+          "label text": "Programming Language"
+        }
+      },
+      "number of label assignments": 2,
+      "number of unique label assignments": 2,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=1, text='Programming Language'}": 50
+      },
+      "all class labels with percentages": {
+        "Label{id=1, text='Programming Language'}": 50,
+        "Label{id=4, text='Related to Course'}": 50
+      },
+      "entropy": 1.0
+    },
+    {
+      "instance": {
+        "id": 48,
+        "instance": "Good communication and explanation timing is perfect.",
+        "finalLabel": {
+          "label id": 2,
+          "label text": "Rating"
+        }
+      },
+      "number of label assignments": 1,
+      "number of unique label assignments": 1,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=2, text='Rating'}": 100
+      },
+      "all class labels with percentages": {
+        "Label{id=2, text='Rating'}": 100
+      },
+      "entropy": "NaN"
+    },
+    {
+      "instance": {
+        "id": 49,
+        "instance": "this is absolutely for a beginner of programming because the author has covered various basic facts in details with this course. it has helped me pickup python and start working with basic coding and given me a foundation that i can use to build on the skill.",
+        "finalLabel": {
+          "label id": 3,
+          "label text": "Level of Attendant"
+        }
+      },
+      "number of label assignments": 3,
+      "number of unique label assignments": 3,
+      "number of unique users": 1,
+      "most frequent class label with percentage": {
+        "Label{id=3, text='Level of Attendant'}": 33
+      },
+      "all class labels with percentages": {
+        "Label{id=3, text='Level of Attendant'}": 33,
+        "Label{id=1, text='Programming Language'}": 33,
+        "Label{id=4, text='Related to Course'}": 33
+      },
+      "entropy": 0.9990567278352848
+    },
+    {
+      "instance": {
+        "id": 50,
+        "instance": "was a great way to learn the basics. I was not looking to become a programmer- just the basics to be able to add to my CV and tinker a bit on my own"
+      },
+      "number of label assignments": 0,
+      "number of unique label assignments": 0,
+      "number of unique users": 0,
+      "all class labels with percentages": {},
+      "entropy": 0.0
+    }
+  ],
+  "user metrics": [
+    {
+      "user": {
+        "user id": 1,
+        "user name": "User1",
+        "user type": "RandomBot",
+        "consistency check probability": 0.1
+      },
+      "number of datasets assigned": 0,
+      "datasets with completeness percentages": {},
+      "number of instances labeled": 0,
+      "number of unique instances labeled": 0,
+      "consistency percentage": 100,
+      "average time spent labeling": "NaN",
+      "standard deviation of time spent labeling": 0.0
+    },
+    {
+      "user": {
+        "user id": 2,
+        "user name": "User2",
+        "user type": "RandomBot",
+        "consistency check probability": 0.1
+      },
+      "number of datasets assigned": 0,
+      "datasets with completeness percentages": {},
+      "number of instances labeled": 0,
+      "number of unique instances labeled": 0,
+      "consistency percentage": 100,
+      "average time spent labeling": "NaN",
+      "standard deviation of time spent labeling": 0.0
+    },
+    {
+      "user": {
+        "user id": 3,
+        "user name": "User3",
+        "user type": "RandomBot",
+        "consistency check probability": 0.1
+      },
+      "number of datasets assigned": 1,
+      "datasets with completeness percentages": {
+        "Dataset{id=999, name='Test Dataset'}": 0
+      },
+      "number of instances labeled": 0,
+      "number of unique instances labeled": 0,
+      "consistency percentage": 100,
+      "average time spent labeling": "NaN",
+      "standard deviation of time spent labeling": 0.0
+    },
+    {
+      "user": {
+        "user id": 4,
+        "user name": "User4",
+        "user type": "Human",
+        "consistency check probability": 0.5,
+        "username": "test",
+        "password": "12345"
+      },
+      "number of datasets assigned": 1,
+      "datasets with completeness percentages": {
+        "Dataset{id=999, name='Test Dataset'}": 100
+      },
+      "number of instances labeled": 6,
+      "number of unique instances labeled": 5,
+      "consistency percentage": 0,
+      "average time spent labeling": 0.5010040000000001,
+      "standard deviation of time spent labeling": 6.301888605806888E-4
+    },
+    {
+      "user": {
+        "user id": 5,
+        "user name": "User5",
+        "user type": "KeywordBot",
+        "consistency check probability": 0.1,
+        "keywords": {
+          "999": {
+            "turkcell": 2,
+            "tl": 3,
+            "kesinti": 1,
+            "sahte": 4
+          }
+        }
+      },
+      "number of datasets assigned": 1,
+      "datasets with completeness percentages": {
+        "Dataset{id=999, name='Test Dataset'}": 100
+      },
+      "number of instances labeled": 5,
+      "number of unique instances labeled": 5,
+      "consistency percentage": 0,
+      "average time spent labeling": 0.5026732,
+      "standard deviation of time spent labeling": 0.0017429006569509421
+    },
+    {
+      "user": {
+        "user id": 7,
+        "user name": "User7",
+        "user type": "KeywordBot",
+        "consistency check probability": 0.1,
+        "keywords": {
+          "4": {
+            "Java": 1,
+            "C++": 1,
+            "Gradient": 5,
+            "Lecture": 7,
+            "Bad": 2,
+            "Expert": 3,
+            "Instructor": 6,
+            "LKG": 5,
+            "String": 5,
+            "Lesson": 7,
+            "Perfect": 2,
+            "UKG": 5,
+            "Okay": 2,
+            "Beginner": 3,
+            "Intermediate": 3,
+            "Good": 2,
+            "Course": 4,
+            " C ": 1,
+            "Python": 1
+          }
+        }
+      },
+      "number of datasets assigned": 1,
+      "datasets with completeness percentages": {
+        "Dataset{id=4, name='Keyword Dataset'}": 0
+      },
+      "number of instances labeled": 48,
+      "number of unique instances labeled": 44,
+      "consistency percentage": 0,
+      "average time spent labeling": 0.5008949583333332,
+      "standard deviation of time spent labeling": 6.648869031434074E-4
+    }
+  ]}
