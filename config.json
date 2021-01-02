@@ -85,7 +85,8 @@
     {
       "dataset id": 2,
       "dataset name": "Multi-label Topic Classification Dataset",
-      "file path": "input-2.json"
+      "file path": "input-2.json",
+      "assigned user ids": [ 1, 4 ]
     },
     {
       "dataset id": 3,

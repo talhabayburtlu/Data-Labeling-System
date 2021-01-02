@@ -2,15 +2,16 @@ package com.DataLabelingSystem.model;
 
 import com.DataLabelingSystem.labelingMechanism.LabelingMechanism;
 import com.DataLabelingSystem.labelingMechanism.LabelingMechanismFactory;
+import com.DataLabelingSystem.labelingMechanism.ManualLabelingMechanism;
 import com.DataLabelingSystem.metric.UserMetric;
 import com.fasterxml.jackson.annotation.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-//TODO Change getMetric method name for all three classes
 @JsonIdentityInfo(scope = User.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "user id")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
@@ -30,7 +31,6 @@ public class User {
     private ArrayList<Dataset> assignedDatasets = new ArrayList<>();
     @JsonIgnore
     private final UserMetric metric = new UserMetric(this);
-    //TODO Try to use object references instead of Integer.
     @JsonProperty("keywords")
     private HashMap<Integer, HashMap<String, Integer>> keywords;
     @JsonProperty("username")
@@ -59,6 +59,10 @@ public class User {
 
     public void labelWithMechanism(Instance instance, ArrayList<Label> labels) {
         mechanism.label(this, instance, labels);
+    }
+
+    public void labelWithMechanism(Instance instance, ArrayList<Label> labels, Duration labelingDuration) {
+        ((ManualLabelingMechanism) mechanism).label(this, instance, labels, labelingDuration);
     }
 
     public int getId() {

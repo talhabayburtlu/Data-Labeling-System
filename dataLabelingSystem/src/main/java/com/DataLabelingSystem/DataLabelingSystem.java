@@ -9,6 +9,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
@@ -86,6 +88,7 @@ public class DataLabelingSystem {
                     System.out.print("[ id=" + label.getId() + ",label text=" + label.getText() + " ]");
                 System.out.println("\nCurrent instance: [ id=" + instance.getId() + ", instance=" + instance.getContent() + " ]");
                 System.out.print("Which label(s) do you want to label this instance? (Enter id's with blank space): ");
+                Instant labelingStart = Instant.now();
                 String inLine = in.nextLine();
                 ArrayList<Integer> ids = new ArrayList<>();
                 ArrayList<Label> labels = new ArrayList<>();
@@ -97,7 +100,9 @@ public class DataLabelingSystem {
                     if (ids.contains(label.getId()))
                         labels.add(label);
 
-                humanUser.labelWithMechanism(instance, labels);
+
+                Duration duration = Duration.between(labelingStart, Instant.now());
+                humanUser.labelWithMechanism(instance, labels, duration);
                 jsonParser.writeAll(currentDataset, datasets, users);
 
                 int labelAgainProbability = (int) (Math.random() * 101);

@@ -195,7 +195,7 @@ public class UserMetric {
             for (int j = 0; j < dataset.getLabelAssignments().size(); j++) {
                 LabelAssignment labelAssignment = dataset.getLabelAssignments().get(j);
                 if (labelAssignment.getUser().getId() == getUser().getId()) {
-                    averageTime += labelAssignment.getDuration().getNano() * Math.pow(10, -9);
+                    averageTime += labelAssignment.getDuration().getSeconds() + (labelAssignment.getDuration().getNano() * Math.pow(10, -9));
                     labelAssignmentCounter++;
                 }
             }

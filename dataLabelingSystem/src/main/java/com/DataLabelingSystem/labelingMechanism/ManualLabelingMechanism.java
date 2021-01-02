@@ -44,4 +44,12 @@ public class ManualLabelingMechanism implements LabelingMechanism {
         instance.getInstanceMetric().updateLabelAssignments();
         instance.getDataset().getDatasetMetric().updateLabelAssignments();
     }
+
+    public void label(User user, Instance instance, ArrayList<Label> label, Duration labelingDuration) {
+        LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager();
+        labelAssignmentManager.createLabelAssignment(user, instance, label, labelingDuration); // Creating label assignment.
+        user.getMetric().updateLabelAssignment();
+        instance.getInstanceMetric().updateLabelAssignments();
+        instance.getDataset().getDatasetMetric().updateLabelAssignments();
+    }
 }
