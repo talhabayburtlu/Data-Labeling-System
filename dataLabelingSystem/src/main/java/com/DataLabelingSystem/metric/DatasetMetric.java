@@ -154,7 +154,7 @@ public class DatasetMetric {
                     labelingMoreThanOnce++;
                     for (int i = 0; i < labels.size(); i++) {
                         for (int j = i + 1; j < labels.size(); j++) {
-                            if (labels.get(i) != labels.get(j)) {
+                            if (labels.get(i).equals(labels.get(j))) {
                                 consistency = false;
                                 break;
                             }
@@ -165,8 +165,8 @@ public class DatasetMetric {
                     inconsistency++;
                 }
             }
-            userPercentage = (((labelingMoreThanOnce - inconsistency) * 1.0) / labelingMoreThanOnce) * 100.0;
-            usersWithConsistencyPercentages.put(user, (int) Math.round(userPercentage));
+            userPercentage = (labelingMoreThanOnce - inconsistency) * 100.0 / labelingMoreThanOnce;
+            usersWithConsistencyPercentages.put(user, (int) userPercentage);
         }
         return usersWithConsistencyPercentages;
     }
