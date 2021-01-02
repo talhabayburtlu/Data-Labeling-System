@@ -10,18 +10,18 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class AutoKeywordLabelingMechanism implements LabelingMechanism {
+public class AutoLabelingMechanism implements LabelingMechanism {
 
-    private static AutoKeywordLabelingMechanism AutoKeywordLabelingMechanism;
+    private static AutoLabelingMechanism AutoLabelingMechanism;
 
-    private static AutoKeywordLabelingMechanism getInstance() {
-        return new AutoKeywordLabelingMechanism();
+    private static AutoLabelingMechanism getInstance() {
+        return new AutoLabelingMechanism();
     }
 
-    protected static AutoKeywordLabelingMechanism getAutoKeywordLabelingMechanism() {
-        if (AutoKeywordLabelingMechanism == null)
-            AutoKeywordLabelingMechanism = getInstance();
-        return AutoKeywordLabelingMechanism;
+    protected static AutoLabelingMechanism getAutoLabelingMechanism() {
+        if (AutoLabelingMechanism == null)
+            AutoLabelingMechanism = getInstance();
+        return AutoLabelingMechanism;
     }
 
     @Override
