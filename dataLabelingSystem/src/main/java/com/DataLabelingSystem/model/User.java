@@ -32,7 +32,7 @@ public class User {
     private final UserMetric metric = new UserMetric(this);
     //TODO Try to use object references instead of Integer.
     @JsonProperty("keywords")
-    private HashMap<String, HashMap<String, Integer>> keywords;
+    private HashMap<Integer, HashMap<String, Integer>> keywords;
     @JsonProperty("username")
     private String username;
     @JsonProperty("password")
@@ -121,11 +121,11 @@ public class User {
         this.username = username;
     }
 
-    public HashMap<String, HashMap<String, Integer>> getKeywords() {
+    public HashMap<Integer, HashMap<String, Integer>> getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(HashMap<String, HashMap<String, Integer>> keywords) {
+    public void setKeywords(HashMap<Integer, HashMap<String, Integer>> keywords) {
         this.keywords = keywords;
     }
 

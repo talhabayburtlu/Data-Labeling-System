@@ -24,7 +24,7 @@
       "user type": "Human",
       "username": "test",
       "password": "12345",
-      "consistency check probability": 0.1
+      "consistency check probability": 0.5
     },
     {
       "user id": 5,
@@ -32,7 +32,7 @@
       "user type": "KeywordBot",
       "consistency check probability": 0.1,
       "keywords": {
-        "1": {
+        "999": {
           "kesinti": 1,
           "turkcell": 2,
           "tl": 3,
@@ -57,6 +57,8 @@
       "dataset name": "Testing Dataset",
       "file path": "test.json",
       "assigned user ids": [
+        3,
+        4,
         5
       ]
     }

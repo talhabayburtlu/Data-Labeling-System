@@ -9,7 +9,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class DataLabelingSystem {
 
@@ -31,9 +34,7 @@ public class DataLabelingSystem {
         if (!optionalDataset.isPresent())
             throw new RuntimeException("Current dataset couldn't found with id=" + datasetId);
         Dataset currentDataset = optionalDataset.get();
-
         boolean isSameDataset = !currentDataset.getLabelAssignments().isEmpty();
-
 
         boolean successfulLogin = false;
         boolean isUserBot = false;
@@ -65,6 +66,11 @@ public class DataLabelingSystem {
 
         if (successfulLogin) { // User is human.
             for (Instance instance : currentDataset.getInstances()) {
+                if (!currentDataset.getAssignedUsers().contains(humanUser)) {
+                    System.out.println("This user id=" + humanUser.getId() + " is not assigned to dataset id=" + currentDataset.getId() + " .");
+                    System.exit(-2);
+                }
+
                 if (isSameDataset) { // If previous dataset is processing again, pass the instances that labeled.
                     ArrayList<Instance> labeledInstances = new ArrayList<>();
                     for (LabelAssignment labelAssignment : currentDataset.getLabelAssignments())
@@ -83,14 +89,46 @@ public class DataLabelingSystem {
                 String inLine = in.nextLine();
                 ArrayList<Integer> ids = new ArrayList<>();
                 ArrayList<Label> labels = new ArrayList<>();
-                Arrays.stream(inLine.split(" ")).forEach(id -> ids.add(Integer.parseInt(id)));
-                currentDataset.getLabels().stream().forEach(l -> {
-                    if (ids.contains(l.getId()))
-                        labels.add(l);
-                });
+
+                for (String id : inLine.split(" "))
+                    ids.add(Integer.parseInt(id));
+
+                for (Label label : currentDataset.getLabels())
+                    if (ids.contains(label.getId()))
+                        labels.add(label);
 
                 humanUser.labelWithMechanism(instance, labels);
                 jsonParser.writeAll(currentDataset, datasets, users);
+
+                int labelAgainProbability = (int) (Math.random() * 101);
+                if (labelAgainProbability <= humanUser.getConsistencyCheckProbability() * 100) {
+                    logger.info("Checking consistency probability for user : " + humanUser.toString());
+                    ArrayList<Instance> labeledInstances = new ArrayList<>();
+                    for (LabelAssignment labelAssignment : currentDataset.getLabelAssignments())
+                        if (labelAssignment.getUser() == humanUser)
+                            labeledInstances.add(labelAssignment.getInstance());
+
+                    int randomInstanceIndex = (int) (Math.random() * labeledInstances.size());
+                    instance = currentDataset.getInstances().get(randomInstanceIndex);
+                    System.out.print("Labels : ");
+                    for (Label label : currentDataset.getLabels())
+                        System.out.print("[ id=" + label.getId() + ",label text=" + label.getText() + " ]");
+                    System.out.println("\nCurrent instance: [ id=" + instance.getId() + ", instance=" + instance.getContent() + " ]");
+                    System.out.print("Which label(s) do you want to label this instance? (Enter id's with blank space): ");
+                    inLine = in.nextLine();
+                    ids = new ArrayList<>();
+                    labels = new ArrayList<>();
+
+                    for (String id : inLine.split(" "))
+                        ids.add(Integer.parseInt(id));
+
+                    for (Label label : currentDataset.getLabels())
+                        if (ids.contains(label.getId()))
+                            labels.add(label);
+
+                    humanUser.labelWithMechanism(instance, labels);
+                    jsonParser.writeAll(currentDataset, datasets, users);
+                }
             }
         } else { // Users are bot.
             for (User user : currentDataset.getAssignedUsers()) {

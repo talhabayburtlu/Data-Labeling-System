@@ -28,7 +28,12 @@ public class KeywordBasedLabelingMechanism implements LabelingMechanism {
     @Override
     public void label(User user, Instance instance, ArrayList<Label> label) {
         Instant labelingStart = Instant.now();
-        HashMap<String, Integer> keywords = user.getKeywords().get(instance.getDataset().getId() + "");
+        HashMap<String, Integer> keywords = user.getKeywords().get(instance.getDataset().getId());
+
+        if (keywords == null) {
+            System.out.println("KeywordBot with id=" + user.getId() + " should have at least one keyword related to database id=" + instance.getDataset().getId() + " .");
+            System.exit(-1);
+        }
 
         ArrayList<Label> assignedLabels = new ArrayList<>();
         for (String keyword : keywords.keySet()) {
@@ -45,7 +50,6 @@ public class KeywordBasedLabelingMechanism implements LabelingMechanism {
                 else
                     break;
             }
-
         }
 
         LabelAssignmentManager labelAssignmentManager = LabelAssignmentManager.getLabelAssignmentManager();

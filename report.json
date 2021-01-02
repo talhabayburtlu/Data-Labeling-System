@@ -6,9 +6,9 @@
   },
   "completeness percentage": 0,
   "class distribution": {
+    "Label{id=1, text='Positive'}": 0,
     "Label{id=2, text='Negative'}": 0,
-    "Label{id=3, text='Notr'}": 0,
-    "Label{id=1, text='Positive'}": 0
+    "Label{id=3, text='Notr'}": 0
   },
   "number of unique instances for labels": {
     "Label{id=1, text='Positive'}": 0,
@@ -19,146 +19,151 @@
   "list of users assigned with completeness percentage": {},
   "list of users assigned with consistency percentage": {}
 },
-{
-  "dataset" : {
-    "dataset id" : 2,
-    "dataset name" : "Multi-label Topic Classification Dataset"
+  {
+    "dataset": {
+      "dataset id": 2,
+      "dataset name": "Multi-label Topic Classification Dataset"
+    },
+    "completeness percentage": 0,
+    "class distribution": {
+      "Label{id=9, text='firma '}": 0,
+      "Label{id=8, text='konu '}": 0,
+      "Label{id=12, text='borç '}": 0,
+      "Label{id=15, text='borç '}": 0,
+      "Label{id=2, text='numara '}": 0,
+      "Label{id=1, text='bayi '}": 0,
+      "Label{id=5, text='müşteri'}": 0,
+      "Label{id=6, text='bilgi '}": 0,
+      "Label{id=13, text='fatura '}": 0,
+      "Label{id=14, text='taraf'}": 0,
+      "Label{id=10, text='cihaz'}": 0,
+      "Label{id=4, text='işlem'}": 0,
+      "Label{id=11, text='hat '}": 0,
+      "Label{id=16, text='paket'}": 0,
+      "Label{id=3, text='hat '}": 0,
+      "Label{id=7, text='telefon'}": 0
+    },
+    "number of unique instances for labels": {
+      "Label{id=9, text='firma '}": 0,
+      "Label{id=8, text='konu '}": 0,
+      "Label{id=12, text='borç '}": 0,
+      "Label{id=15, text='borç '}": 0,
+      "Label{id=2, text='numara '}": 0,
+      "Label{id=1, text='bayi '}": 0,
+      "Label{id=5, text='müşteri'}": 0,
+      "Label{id=6, text='bilgi '}": 0,
+      "Label{id=13, text='fatura '}": 0,
+      "Label{id=14, text='taraf'}": 0,
+      "Label{id=10, text='cihaz'}": 0,
+      "Label{id=4, text='işlem'}": 0,
+      "Label{id=11, text='hat '}": 0,
+      "Label{id=16, text='paket'}": 0,
+      "Label{id=3, text='hat '}": 0,
+      "Label{id=7, text='telefon'}": 0
+    },
+    "number of users assigned": 0,
+    "list of users assigned with completeness percentage": {},
+    "list of users assigned with consistency percentage": {}
   },
-  "completeness percentage" : 0,
-  "class distribution" : {
-    "Label{id=1, text='bayi '}": 0,
-    "Label{id=3, text='hat '}": 0,
-    "Label{id=11, text='hat '}": 0,
-    "Label{id=4, text='işlem'}": 0,
-    "Label{id=15, text='borç '}": 0,
-    "Label{id=12, text='borç '}": 0,
-    "Label{id=16, text='paket'}": 0,
-    "Label{id=5, text='müşteri'}": 0,
-    "Label{id=13, text='fatura '}": 0,
-    "Label{id=8, text='konu '}": 0,
-    "Label{id=7, text='telefon'}": 0,
-    "Label{id=14, text='taraf'}": 0,
-    "Label{id=9, text='firma '}": 0,
-    "Label{id=10, text='cihaz'}": 0,
-    "Label{id=2, text='numara '}": 0,
-    "Label{id=6, text='bilgi '}": 0
-  },
-  "number of unique instances for labels" : {
-    "Label{id=1, text='bayi '}": 0,
-    "Label{id=3, text='hat '}": 0,
-    "Label{id=11, text='hat '}": 0,
-    "Label{id=4, text='işlem'}": 0,
-    "Label{id=15, text='borç '}": 0,
-    "Label{id=12, text='borç '}": 0,
-    "Label{id=16, text='paket'}": 0,
-    "Label{id=5, text='müşteri'}": 0,
-    "Label{id=13, text='fatura '}": 0,
-    "Label{id=8, text='konu '}": 0,
-    "Label{id=7, text='telefon'}": 0,
-    "Label{id=14, text='taraf'}": 0,
-    "Label{id=9, text='firma '}": 0,
-    "Label{id=10, text='cihaz'}": 0,
-    "Label{id=2, text='numara '}": 0,
-    "Label{id=6, text='bilgi '}": 0
-  },
-  "number of users assigned" : 0,
-  "list of users assigned with completeness percentage" : { },
-  "list of users assigned with consistency percentage" : { }
-},
 {
   "dataset" : {
     "dataset id" : 999,
-    "dataset name" : "Test Dataset"
+    "dataset name": "Test Dataset"
   },
-  "completeness percentage" : 100,
-  "class distribution" : {
+  "completeness percentage": 100,
+  "class distribution": {
     "Label{id=5, text='Label E'}": 0,
-    "Label{id=3, text='Label C'}": 80,
-    "Label{id=2, text='Label B'}": 20,
-    "Label{id=1, text='Label A'}": 0,
-    "Label{id=4, text='Label D'}": 0
+    "Label{id=1, text='Label A'}": 20,
+    "Label{id=3, text='Label C'}": 20,
+    "Label{id=2, text='Label B'}": 40,
+    "Label{id=4, text='Label D'}": 20
   },
   "number of unique instances for labels": {
-    "Label{id=5, text='Label E'}": 0,
-    "Label{id=1, text='Label A'}": 1,
-    "Label{id=3, text='Label C'}": 4,
-    "Label{id=2, text='Label B'}": 5,
-    "Label{id=4, text='Label D'}": 1
+    "Label{id=5, text='Label E'}": 1,
+    "Label{id=1, text='Label A'}": 3,
+    "Label{id=3, text='Label C'}": 6,
+    "Label{id=2, text='Label B'}": 8,
+    "Label{id=4, text='Label D'}": 5
   },
-  "number of users assigned": 1,
+  "number of users assigned": 3,
   "list of users assigned with completeness percentage": {
+    "User{id=3, name='User3', type='RandomBot'}": 0,
+    "User{id=4, name='User4', type='Human'}": 100,
     "User{id=5, name='User5', type='KeywordBot'}": 100
   },
   "list of users assigned with consistency percentage": {
-    "User{id=5, name='User5', type='KeywordBot'}": 0
+    "User{id=5, name='User5', type='KeywordBot'}": 0,
+    "User{id=4, name='User4', type='Human'}": 0
   }
 }
 ],
-"instance metrics":
-[
+"instance metrics": [
   {
     "instance": {
       "id": 1,
       "instance": "35 tl kesinti yapmış turkcell'den üzerime kayıtlı numara olmamasına rağmen iki aydır ekstremden 35'er tl. kesilmiştir.",
       "finalLabel": {
-        "label id": 3,
-        "label text": "Label C"
+        "label id": 2,
+        "label text": "Label B"
       }
     },
-    "number of label assignments": 3,
+    "number of label assignments": 7,
     "number of unique label assignments": 3,
-    "number of unique users": 1,
+    "number of unique users": 2,
     "most frequent class label with percentage": {
-      "Label{id=3, text='Label C'}": 33
+      "Label{id=2, text='Label B'}": 42
     },
     "all class labels with percentages": {
-      "Label{id=3, text='Label C'}": 33,
-      "Label{id=2, text='Label B'}": 33,
-      "Label{id=1, text='Label A'}": 33
+      "Label{id=3, text='Label C'}": 28,
+      "Label{id=1, text='Label A'}": 28,
+      "Label{id=2, text='Label B'}": 42
     },
-    "entropy": 0.9990567278352848
+    "entropy": 0.9805197229289554
   },
   {
     "instance": {
       "id": 2,
       "instance": "tele kurye işık hızında turkcell'den aldığım cihaz tele kurye denen ilgisiz, telefonlara bakmayan bir kurye tarafından 10 gündür elime ulaşılmadı. telefonlarıma bakılmıyor ne ciddiyetsiz kurumsallaşmamış bir kurye firması turkcell'e bu katkılarından dolayı teşekkürler!",
       "finalLabel": {
-        "label id": 2,
-        "label text": "Label B"
+        "label id": 1,
+        "label text": "Label A"
       }
     },
-    "number of label assignments": 1,
-    "number of unique label assignments": 1,
-    "number of unique users": 1,
+    "number of label assignments": 3,
+    "number of unique label assignments": 3,
+    "number of unique users": 2,
     "most frequent class label with percentage": {
-      "Label{id=2, text='Label B'}": 100
+      "Label{id=1, text='Label A'}": 33
     },
     "all class labels with percentages": {
-      "Label{id=2, text='Label B'}": 100
+      "Label{id=1, text='Label A'}": 33,
+      "Label{id=2, text='Label B'}": 33,
+      "Label{id=4, text='Label D'}": 33
     },
-    "entropy": "NaN"
+    "entropy": 0.9990567278352848
   },
   {
     "instance": {
       "id": 3,
       "instance": "bursa anatolium müşteriyi kandırma 15 eylül günü bursa anatolium turkcell mağazasına iphone cihazım için şarj kablosu almaya gittim. aksesuar için etikette yazan fiyat 89,90dı turkcell uygulamada son bahar indiriminden dolayı fiyatın 63 tl olduğunu gösterdim; aldığım cevap uygulamadaki ürünün orijinal olmadığıydı. 'o ürün orijinal değil, sıkıntı yaşamak istemiyorsanız bunu alın' gibi bir cevap verildi. ürünü aldım kartımı uzattım şifremi girmek için cihaza yöneldiğimde ekranda 90,00 tl yazdığını fark ettim. sorduğumda ben size 10 kuruş geri veririm ablacım diye bit yanıt aldım. bugün turkcell müşteri hizmetlerini aradım ve uygulamadaki ürünün orijinal olduğunu satış fiyatının farklı olabileceğini öğrendim. satış fiyatı farklı olabilir evet, ama turkcell'i temsil eden bir çalışan nasıl ürünün sahte olduğunu söyleyebilir, ikincisi benden 10 kuruş başkasından 50 kuruş diye diye neyin hesabı bu?",
       "finalLabel": {
-        "label id": 3,
-        "label text": "Label C"
+        "label id": 4,
+        "label text": "Label D"
       }
     },
-    "number of label assignments": 3,
-    "number of unique label assignments": 3,
-    "number of unique users": 1,
+    "number of label assignments": 5,
+    "number of unique label assignments": 4,
+    "number of unique users": 2,
     "most frequent class label with percentage": {
-      "Label{id=3, text='Label C'}": 33
+      "Label{id=4, text='Label D'}": 40
     },
     "all class labels with percentages": {
-      "Label{id=3, text='Label C'}": 33,
-      "Label{id=2, text='Label B'}": 33,
-      "Label{id=4, text='Label D'}": 33
+      "Label{id=5, text='Label E'}": 20,
+      "Label{id=3, text='Label C'}": 20,
+      "Label{id=2, text='Label B'}": 20,
+      "Label{id=4, text='Label D'}": 40
     },
-    "entropy": 0.9990567278352848
+    "entropy": 0.9609640474436811
   },
   {
     "instance": {
@@ -169,42 +174,43 @@
         "label text": "Label C"
       }
     },
-    "number of label assignments": 2,
-    "number of unique label assignments": 2,
-    "number of unique users": 1,
+    "number of label assignments": 4,
+    "number of unique label assignments": 3,
+    "number of unique users": 2,
     "most frequent class label with percentage": {
       "Label{id=3, text='Label C'}": 50
     },
     "all class labels with percentages": {
       "Label{id=3, text='Label C'}": 50,
-      "Label{id=2, text='Label B'}": 50
+      "Label{id=2, text='Label B'}": 25,
+      "Label{id=4, text='Label D'}": 25
     },
-    "entropy": 1.0
+    "entropy": 0.9463946303571862
   },
   {
     "instance": {
       "id": 5,
       "instance": "turkcell bana sormadan paket tanımlanmış! turkcell internet paketim bitince bana sormadan otomatik olarak 1 gb internet tanımlamış ve 10 tl yansıtmış, ayrıca fatura kesim tarihim 1 gün kala bu paketi tanımlamış ve fatura kesim tarihi yani 1 gün sonrasında bu paketi iptal etmiş ve ücreti iptal etmemiştir.",
       "finalLabel": {
-        "label id": 3,
-        "label text": "Label C"
+        "label id": 2,
+        "label text": "Label B"
       }
     },
-    "number of label assignments": 2,
-    "number of unique label assignments": 2,
-    "number of unique users": 1,
+    "number of label assignments": 4,
+    "number of unique label assignments": 3,
+    "number of unique users": 2,
     "most frequent class label with percentage": {
-      "Label{id=3, text='Label C'}": 50
-    },
-    "all class labels with percentages": {
-      "Label{id=3, text='Label C'}": 50,
       "Label{id=2, text='Label B'}": 50
     },
-    "entropy": 1.0
+    "all class labels with percentages": {
+      "Label{id=3, text='Label C'}": 25,
+      "Label{id=2, text='Label B'}": 50,
+      "Label{id=4, text='Label D'}": 25
+    },
+    "entropy": 0.9463946303571862
   }
 ],
-"user metrics":
-[
+"user metrics": [
   {
     "user": {
       "user id": 1,
@@ -242,8 +248,10 @@
       "user type": "RandomBot",
       "consistency check probability": 0.1
     },
-    "number of datasets assigned": 0,
-    "datasets with completeness percentages": {},
+    "number of datasets assigned": 1,
+    "datasets with completeness percentages": {
+      "Dataset{id=999, name='Test Dataset'}": 0
+    },
     "number of instances labeled": 0,
     "number of unique instances labeled": 0,
     "consistency percentage": 100,
@@ -255,17 +263,19 @@
       "user id": 4,
       "user name": "User4",
       "user type": "Human",
-      "consistency check probability": 0.1,
+      "consistency check probability": 0.5,
       "username": "test",
       "password": "12345"
     },
-    "number of datasets assigned": 0,
-    "datasets with completeness percentages": {},
-    "number of instances labeled": 0,
-    "number of unique instances labeled": 0,
-    "consistency percentage": 100,
-    "average time spent labeling": "NaN",
-    "standard deviation of time spent labeling": 0.0
+    "number of datasets assigned": 1,
+    "datasets with completeness percentages": {
+      "Dataset{id=999, name='Test Dataset'}": 100
+    },
+    "number of instances labeled": 6,
+    "number of unique instances labeled": 5,
+    "consistency percentage": 0,
+    "average time spent labeling": 0.5010040000000001,
+    "standard deviation of time spent labeling": 6.301888605806888E-4
   },
   {
     "user": {
@@ -274,10 +284,12 @@
       "user type": "KeywordBot",
       "consistency check probability": 0.1,
       "keywords": {
-        "turkcell": 2,
-        "tl": 3,
-        "kesinti": 1,
-        "sahte": 4
+        "999": {
+          "turkcell": 2,
+          "tl": 3,
+          "kesinti": 1,
+          "sahte": 4
+        }
       }
     },
     "number of datasets assigned": 1,
@@ -287,7 +299,7 @@
     "number of instances labeled": 5,
     "number of unique instances labeled": 5,
     "consistency percentage": 0,
-    "average time spent labeling": 0.5021936,
-    "standard deviation of time spent labeling": 0.0012681188035827062
+    "average time spent labeling": 0.5026732,
+    "standard deviation of time spent labeling": 0.0017429006569509421
   }
 ]}
