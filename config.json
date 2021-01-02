@@ -56,8 +56,15 @@
     {
       "dataset id": 2,
       "dataset name": "Multi-label Topic Classification Dataset",
-      "file path": "input-2.json",
-      "assigned user ids": [ 6 ]
+      "file path": "input-2.json"
+    },
+    {
+      "dataset id": 3,
+      "dataset name": "Auto Labeling Test Dataset",
+      "file path": "input-3.json",
+      "assigned user ids": [
+        6
+      ]
     },
     {
       "dataset id": 999,
