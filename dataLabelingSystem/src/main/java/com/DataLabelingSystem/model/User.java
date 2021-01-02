@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //TODO Change getMetric method name for all three classes
 @JsonIdentityInfo(scope = User.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "user id")
@@ -29,6 +30,13 @@ public class User {
     private ArrayList<Dataset> assignedDatasets = new ArrayList<>();
     @JsonIgnore
     private final UserMetric metric = new UserMetric(this);
+    //TODO Try to use object references instead of Integer.
+    @JsonProperty("keywords")
+    private HashMap<String, HashMap<String, Integer>> keywords;
+    @JsonProperty("username")
+    private String username;
+    @JsonProperty("password")
+    private String password;
 
     @JsonCreator
     User(@JsonProperty("user id") int id,
@@ -103,6 +111,30 @@ public class User {
 
     public UserMetric getMetric() {
         return metric;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public HashMap<String, HashMap<String, Integer>> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(HashMap<String, HashMap<String, Integer>> keywords) {
+        this.keywords = keywords;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

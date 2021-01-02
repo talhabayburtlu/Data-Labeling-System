@@ -22,6 +22,10 @@ public class LabelingMechanismFactory {
         switch (mechanismType) {
             case "RandomBot":
                 return RandomLabelingMechanism.getRandomLabelingMechanism();
+            case "KeywordBot":
+                return KeywordBasedLabelingMechanism.getKeywordBasedLabelingMechanism();
+            case "Human":
+                return ManualLabelingMechanism.getManualLabelingMechanism();
             default:
                 throw new UnsupportedOperationException("Mechanism \"" + mechanismType + "\" cannot be found.");
         }
